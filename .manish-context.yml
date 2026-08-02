@@ -1,0 +1,21 @@
+schema_version: "1.0.0"
+project_name: "manish-sharma-ai.github.io"
+project_type: "public_repo"
+context_pack: "public_context"
+allowed_privacy:
+  - "public_safe"
+public_output_expected: true
+needs:
+  - "identity"
+  - "verified_experience"
+  - "public_links"
+  - "claim_rules"
+  - "public_project_map"
+forbidden:
+  - "private_future_plans"
+  - "private_contacts"
+  - "credentials_or_secrets"
+  - "employer_confidential"
+  - "customer_confidential"
+  - "unverified_claims_as_fact"
+notes: "The website consumes only public-safe governed context; Portfolio OS plans and private venture state never enter this repository."

@@ -1,0 +1,143 @@
+{
+  "schema_version": "1.0.0",
+  "repo_id": "manish-sharma-ai.github.io",
+  "display_name": "manishsharma.dev Website",
+  "visibility": "public",
+  "purpose": "Public technical website and proof surface for Manish Sharma's Industrial AI and Decision Systems identity, LMD/DED evidence, tools, and LMD Decision Brief v1.0.",
+  "start_here": [
+    "README.md",
+    "AGENTS.md",
+    "docs/final-100-checklist.md"
+  ],
+  "capabilities": [
+    {
+      "id": "public-identity-surface",
+      "description": "Publishes the reviewed public identity, thesis, profile, links, and contact surface."
+    },
+    {
+      "id": "industrial-ai-proof",
+      "description": "Presents source-aware public LMD/DED and industrial decision-system proof."
+    },
+    {
+      "id": "lmd-decision-brief-standard",
+      "description": "Hosts the public LMD Decision Brief v1.0 schema, examples, rules, and adoption resources."
+    },
+    {
+      "id": "public-agent-readable-content",
+      "description": "Provides curated public-safe identity, trust, claim, and agent-readable files."
+    },
+    {
+      "id": "static-site-quality-gates",
+      "description": "Runs local accessibility, claim, boundary, link, SEO, security, and rendering audits."
+    }
+  ],
+  "entrypoints": [
+    {
+      "path": "src/pages/index.astro",
+      "kind": "application",
+      "description": "Homepage source for the public technical cockpit."
+    },
+    {
+      "path": "src/config/externalLinks.ts",
+      "kind": "data",
+      "description": "Canonical external public-link configuration."
+    },
+    {
+      "path": "public/llms.txt",
+      "kind": "document",
+      "description": "Concise public agent-readable website map."
+    },
+    {
+      "path": "public/schemas/lmd-decision-brief-v1.schema.json",
+      "kind": "schema",
+      "description": "Public portable LMD Decision Brief v1.0 schema."
+    }
+  ],
+  "produces": [
+    {
+      "artifact_id": "public-proof-surface",
+      "path": "src",
+      "description": "Reviewed static-site source for the public identity, proof, tools, and resources.",
+      "audience": "public_after_approval"
+    },
+    {
+      "artifact_id": "lmd-decision-brief-standard",
+      "path": "public/schemas/lmd-decision-brief-v1.schema.json",
+      "description": "Portable public schema and related evidence-bounded output contract.",
+      "audience": "public_safe"
+    },
+    {
+      "artifact_id": "public-agent-readable-content",
+      "path": "public/llms.txt",
+      "description": "Public-safe discovery and agent-readable content.",
+      "audience": "public_safe"
+    }
+  ],
+  "consumes": [
+    {
+      "source_repo_id": "manish-sharma-context",
+      "artifact_id": "public-safe-context-export",
+      "required": true,
+      "mode": "read_only",
+      "description": "Consumes only reviewed public-safe identity and claim context."
+    },
+    {
+      "source_repo_id": "manish-authority-engine",
+      "artifact_id": "website-handoff",
+      "required": false,
+      "mode": "read_only",
+      "description": "May consume an exact reviewed handoff after separate website write authorization."
+    },
+    {
+      "source_repo_id": "manish-writer",
+      "artifact_id": "article-candidate-artifacts",
+      "required": false,
+      "mode": "read_only",
+      "description": "May consume exact approved public publication artifacts after release review."
+    },
+    {
+      "source_repo_id": "external-public-sources",
+      "artifact_id": "cited-public-proof",
+      "required": true,
+      "mode": "read_only",
+      "description": "Uses source-attributed public evidence within documented claim boundaries."
+    }
+  ],
+  "safe_commands": [
+    {
+      "command": "npm.cmd run check",
+      "working_directory": ".",
+      "side_effect_class": "local_generated_files",
+      "network_access": false,
+      "description": "Runs local Astro and TypeScript checks using installed dependencies."
+    },
+    {
+      "command": "npm.cmd run test",
+      "working_directory": ".",
+      "side_effect_class": "local_runtime_state",
+      "network_access": false,
+      "description": "Runs the local website test suite."
+    },
+    {
+      "command": "npm.cmd run build",
+      "working_directory": ".",
+      "side_effect_class": "local_generated_files",
+      "network_access": false,
+      "description": "Builds the static website locally without publishing it."
+    },
+    {
+      "command": "npm.cmd run audit:all",
+      "working_directory": ".",
+      "side_effect_class": "local_runtime_state",
+      "network_access": false,
+      "description": "Runs local public-safety, claim, boundary, accessibility, and quality audits."
+    }
+  ],
+  "privacy_boundaries": [
+    "This public repository may consume only public-safe reviewed inputs.",
+    "Never add private venture plans, private relationships, customer or employer confidential information, credentials, or unannounced concepts.",
+    "Every material public claim requires source context and must stay within the Exafuse, inspection, and engineering-decision boundaries.",
+    "A local build is not publication; pushing, deployment, indexing, profile edits, and public release require exact human authorization."
+  ],
+  "external_actions": "human_approval_required"
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "repo_id": "manish-sharma-ai.github.io",
+  "display_name": "manishsharma.dev Website",
+  "privacy_class": "public",
+  "canonical_for": [
+    "public_identity_surface",
+    "public_technical_proof",
+    "lmd_decision_brief_standard",
+    "public_contact_surface"
+  ],
+  "non_responsibilities": [
+    "private_portfolio_strategy",
+    "private_venture_plans",
+    "private_relationship_records",
+    "authority_runtime_state"
+  ],
+  "lifecycle_stage": "active_public_proof_surface",
+  "status_source": "README.md",
+  "current_milestone": "Maintain a source-aware public proof surface centered on Industrial AI, LMD and the LMD Decision Brief standard.",
+  "next_human_decision": "Approve any material public claim, route, or commercial boundary change before publication.",
+  "external_action_locked": true,
+  "updated_at": "2026-08-02T10:05:00+02:00"
+}

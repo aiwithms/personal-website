@@ -31,7 +31,7 @@ Public technical lab: https://manishsharma.dev
 
 ## Suggested Pinned Repositories
 
-- `manish-sharma-ai.github.io`
+- `personal-website`
 
 Avoid pinning or naming future repositories until they are public and ready.
 

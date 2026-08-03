@@ -6,8 +6,10 @@ Every AI coding agent working in this repository must read this file before edit
 
 - Project: Manish Sharma Lab
 - Canonical site: `https://manishsharma.dev`
-- GitHub organization: `manish-sharma-ai`
-- Repository: `manish-sharma-ai/manish-sharma-ai.github.io`
+- Canonical source owner: `aiwithms`
+- Repository: `aiwithms/personal-website`
+- Legacy Pages organization: `manish-sharma-ai`
+- Legacy Pages deployment repository: `manish-sharma-ai/manish-sharma-ai.github.io` (deployment and rollback provenance only)
 - GitHub profile for Manish: `https://github.com/aiwithms`
 - Public category: Manish Sharma - Industrial AI & Decision Systems
 - Primary promise: AI for Laser Metal Deposition decisions you can verify.
@@ -15,7 +17,7 @@ Every AI coding agent working in this repository must read this file before edit
 - Established public proof domain: AI for Laser Metal Deposition and Directed Energy Deposition at Exafuse, Germany
 - Company connection: Exafuse, Germany
 
-Never replace the canonical site with the `aiwithms` GitHub Pages URL. The `aiwithms` account is only relevant as GitHub profile/account context, not as the website canonical URL.
+Never replace the canonical site with any GitHub Pages URL. The `aiwithms` account owns the canonical source repository; `manish-sharma-ai/manish-sharma-ai.github.io` remains only as legacy Pages deployment and rollback provenance.
 
 ## Stack
 
@@ -64,7 +66,7 @@ On Windows PowerShell, use `npm.cmd` if execution policy blocks `npm`.
 - Human-facing pages must not show internal migration CTA language. Use "Contact Exafuse" or "Request Exafuse review" with the small helper text `New Exafuse case/tool deep links will activate after production migration.` where production-safe context is needed.
 - Render public proof metrics from `src/data/publicClaims.ts`; do not hard-code CS15 or other proof metrics in page components.
 - Do not render image-generation prompts, diagram helper text, or long SVG descriptions as visible page text. Decorative visuals should keep internals out of rendered text and use concise accessibility labels.
-- Keep identity facts unambiguous: `aiwithms` is the GitHub profile, `manish-sharma-ai` is the GitHub organization/site repository owner, and `manish-sharma-ai/manish-sharma-ai.github.io` is the repository.
+- Keep identity facts unambiguous: `aiwithms` owns the canonical `aiwithms/personal-website` source repository; `manish-sharma-ai/manish-sharma-ai.github.io` is retained only as the legacy Pages deployment and rollback repository.
 - Keep the homepage cockpit-first. A first-time visitor should be able to start the LMD Decision Cockpit before proof maps or long reference sections.
 - Keep LMD Decision Brief v1.0 as the central product artifact across cockpit, tools, demo, template, playbooks, and AI-readable files.
 - Treat `/brief-standard/` as the public, portable LMD Decision Brief v1.0 standard. Keep its schema, examples, adoption package, AI-readable files, and docs synchronized.
@@ -166,8 +168,8 @@ The final state should be:
 On a new Windows PC, fresh clone:
 
 ```bash
-git clone https://github.com/manish-sharma-ai/manish-sharma-ai.github.io.git
-cd manish-sharma-ai.github.io
+git clone https://github.com/aiwithms/personal-website.git
+cd personal-website
 npm install
 npm run dev
 ```
@@ -175,7 +177,7 @@ npm run dev
 If the repo already exists on Windows:
 
 ```bash
-cd manish-sharma-ai.github.io
+cd personal-website
 git checkout main
 git pull --ff-only
 npm install

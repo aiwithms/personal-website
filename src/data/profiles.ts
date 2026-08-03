@@ -20,7 +20,7 @@ export const PROFILE_URLS = {
   exafuse: SITE_CONFIG.exafuse.canonicalLinks.homepage,
   linkedin: SITE_CONFIG.person.links.linkedin,
   github: SITE_CONFIG.person.links.github,
-  githubOrganization: "https://github.com/manish-sharma-ai",
+  repositoryOwner: "https://github.com/aiwithms",
   repository: SITE_CONFIG.site.repository,
   orcid: SITE_CONFIG.person.links.orcid,
   zenodo: SITE_CONFIG.person.links.zenodo,
@@ -37,14 +37,14 @@ export const GITHUB_IDENTITY = {
     description: "Personal public GitHub profile for Manish Sharma."
   },
   repositoryOwner: {
-    label: "Site/repository owner",
-    slug: "manish-sharma-ai",
-    href: PROFILE_URLS.githubOrganization,
-    description: "GitHub organization that owns the GitHub Pages repository."
+    label: "Canonical source owner",
+    slug: "aiwithms",
+    href: PROFILE_URLS.repositoryOwner,
+    description: "GitHub account that owns the canonical website source repository."
   },
   repository: {
     label: "Website repository",
-    slug: "manish-sharma-ai/manish-sharma-ai.github.io",
+    slug: "aiwithms/personal-website",
     href: PROFILE_URLS.repository,
     description: "Public source repository for this website."
   },

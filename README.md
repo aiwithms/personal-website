@@ -2,9 +2,11 @@
 
 Canonical site: https://manishsharma.dev
 
-GitHub organization: https://github.com/manish-sharma-ai
+Canonical source owner: https://github.com/aiwithms
 
-Repository: https://github.com/manish-sharma-ai/manish-sharma-ai.github.io
+Legacy Pages deployment: https://github.com/manish-sharma-ai/manish-sharma-ai.github.io
+
+Repository: https://github.com/aiwithms/personal-website
 
 GitHub user profile: https://github.com/aiwithms
 
@@ -142,7 +144,7 @@ Canonical URL rules:
 - Site: `https://manishsharma.dev`
 - Exafuse base: `https://exafuse.de`
 - GitHub profile: `https://github.com/aiwithms`
-- GitHub repository: `https://github.com/manish-sharma-ai/manish-sharma-ai.github.io`
+- GitHub repository: `https://github.com/aiwithms/personal-website`
 - LinkedIn: `https://www.linkedin.com/in/manishsharma5/`
 
 Do not add staging URLs, `www.exafuse.de` variants, fake profile URLs, or `href="#"` placeholders to production-facing content.
@@ -190,9 +192,9 @@ Visual text rule:
 Identity alias rule:
 
 - GitHub profile: `https://github.com/aiwithms`
-- Site/repository owner: `https://github.com/manish-sharma-ai`
-- Repository: `https://github.com/manish-sharma-ai/manish-sharma-ai.github.io`
-- Do not blur the personal GitHub profile with the GitHub organization/repository owner.
+- Canonical source owner: `https://github.com/aiwithms`
+- Repository: `https://github.com/aiwithms/personal-website`
+- Treat `aiwithms/personal-website` as canonical source. The old organization repository is deployment and rollback provenance only.
 
 Recommended audits:
 
@@ -334,8 +336,9 @@ Active:
 - Exafuse: https://exafuse.de/
 - LinkedIn: https://www.linkedin.com/in/manishsharma5/
 - GitHub profile: https://github.com/aiwithms
-- GitHub organization / repository owner: https://github.com/manish-sharma-ai
-- Website repository: https://github.com/manish-sharma-ai/manish-sharma-ai.github.io
+- Canonical source owner: https://github.com/aiwithms
+- Legacy Pages deployment/rollback repository: https://github.com/manish-sharma-ai/manish-sharma-ai.github.io
+- Website repository: https://github.com/aiwithms/personal-website
 
 Only real URLs should appear in JSON-LD `sameAs`.
 

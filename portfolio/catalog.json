@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "repo_id": "manish-sharma-ai.github.io",
+  "repo_id": "personal-website",
   "display_name": "manishsharma.dev Website",
   "visibility": "public",
   "purpose": "Public technical website and proof surface for Manish Sharma's Industrial AI and Decision Systems identity, LMD/DED evidence, tools, and LMD Decision Brief v1.0.",
@@ -82,14 +82,14 @@
       "description": "Consumes only reviewed public-safe identity and claim context."
     },
     {
-      "source_repo_id": "manish-authority-engine",
+      "source_repo_id": "authority-engine",
       "artifact_id": "website-handoff",
       "required": false,
       "mode": "read_only",
       "description": "May consume an exact reviewed handoff after separate website write authorization."
     },
     {
-      "source_repo_id": "manish-writer",
+      "source_repo_id": "personal-brand-writer",
       "artifact_id": "article-candidate-artifacts",
       "required": false,
       "mode": "read_only",

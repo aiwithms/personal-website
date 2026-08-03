@@ -7,7 +7,7 @@ import {
 export { MANISH_SITE_URL };
 export const EXAFUSE_BASE_URL = EXAFUSE_PRODUCTION_BASE_URL;
 export const GITHUB_PROFILE_URL = "https://github.com/aiwithms";
-export const GITHUB_REPO_URL = "https://github.com/manish-sharma-ai/manish-sharma-ai.github.io";
+export const GITHUB_REPO_URL = "https://github.com/aiwithms/personal-website";
 export const LINKEDIN_URL = "https://www.linkedin.com/in/manishsharma5/";
 
 export const EXAFUSE_URLS = {

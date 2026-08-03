@@ -10,7 +10,7 @@ This file tracks profile facts and public identity items that need human review 
 - LinkedIn: `https://www.linkedin.com/in/manishsharma5/`
 - GitHub: `https://github.com/aiwithms`
 - Exafuse: `https://exafuse.de/`
-- Repository: `https://github.com/manish-sharma-ai/manish-sharma-ai.github.io`
+- Repository: `https://github.com/aiwithms/personal-website`
 
 ## Planned Profiles With No Public URL Yet
 

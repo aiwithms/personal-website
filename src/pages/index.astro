@@ -128,30 +128,12 @@ const homepageProcessSteps = [
   ]}
 >
   <section class="home-premium-hero home-chapter home-chapter--position" data-page-chapter="position">
-    <picture
-      class="home-premium-hero__media"
-      aria-hidden="true"
-      data-audit-context="Illustrative LMD process schematic"
-    >
-      <source media="(max-width: 639px)" type="image/webp" srcset="/images/melt-pool-hero-1024.webp" />
-      <source type="image/webp" srcset="/images/melt-pool-hero.webp" />
-      <source media="(max-width: 639px)" srcset="/images/melt-pool-hero-1024.jpg" />
-      <img
-        src="/images/melt-pool-hero.jpg"
-        alt=""
-        aria-hidden="true"
-        width="1586"
-        height="992"
-        loading="eager"
-        fetchpriority="high"
-        decoding="async"
-      />
-    </picture>
-    <div class="home-premium-hero__wash" aria-hidden="true"></div>
     <div class="site-shell home-hero-grid">
       <div class="home-hero__copy">
+        <p class="home-hero__eyebrow">Industrial AI / decision systems</p>
         <h1 class="home-hero__title">
-          I build AI systems for industrial decisions that need evidence, not just predictions.
+          <span class="home-hero__title-main">I build AI systems for industrial decisions</span>
+          <span class="home-hero__title-evidence"><em>that need evidence,</em> not just predictions.</span>
         </h1>
         <p class="home-hero__intro">
           I build evidence-aware AI systems for industrial decisions. My deepest public work is in Laser Metal Deposition and Directed Energy Deposition at Exafuse, where signals, models, engineering constraints, and human judgment must resolve into a defensible next action.
@@ -165,11 +147,49 @@ const homepageProcessSteps = [
           <a href="/thesis">Read the method</a> before using a prediction as a decision.
         </p>
       </div>
+
+      <div class="home-hero__evidence-grid">
+        <section class="home-hero__evidence-note" aria-labelledby="home-hero-process-title">
+          <p class="home-hero__panel-label" id="home-hero-process-title">Process context</p>
+          <p>Signals become useful only when the material, operating context, and evidence needed stay visible.</p>
+        </section>
+
+        <figure class="home-hero__melt-pool" data-audit-context="Illustrative LMD process schematic">
+          <picture>
+            <source media="(max-width: 639px)" type="image/webp" srcset="/images/melt-pool-hero-1024.webp" />
+            <source type="image/webp" srcset="/images/melt-pool-hero.webp" />
+            <source media="(max-width: 639px)" srcset="/images/melt-pool-hero-1024.jpg" />
+            <img
+              src="/images/melt-pool-hero.jpg"
+              alt="Melt pool created during the laser metal deposition process."
+              width="1586"
+              height="992"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+            />
+          </picture>
+          <figcaption>
+            <span>Melt pool</span>
+            <span>Created in the laser metal deposition process.</span>
+          </figcaption>
+        </figure>
+
+        <section class="home-hero__evidence-note home-hero__evidence-note--action" aria-labelledby="home-hero-action-title">
+          <p class="home-hero__panel-label" id="home-hero-action-title">Next action</p>
+          <a href="#lmd-decision-cockpit">Open the LMD Decision Cockpit <span aria-hidden="true">→</span></a>
+          <p>Make critical gaps, risk, evidence needed, and the next action explicit.</p>
+        </section>
+      </div>
+
+      <ul class="home-hero__principles" aria-label="Decision system principles">
+        <li>Evidence first</li>
+        <li>Human review</li>
+        <li>Traceability</li>
+        <li>Public provenance</li>
+        <li>Trust boundary</li>
+      </ul>
     </div>
-    <p class="home-premium-hero__image-caption">
-      <span class="home-premium-hero__image-caption-title">Melt pool</span>
-      <span class="home-premium-hero__image-caption-copy">Created in the laser metal deposition process.</span>
-    </p>
   </section>
 
   {flagshipProof && (

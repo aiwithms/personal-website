@@ -24,13 +24,29 @@ LMD Decision Brief v1.0 Standard: https://manishsharma.dev/brief-standard
 
 ## Summary
 
-Public profile materials describe Manish Sharma as building AI systems for industrial decisions that need evidence, not just predictions. His strongest current public work is in Laser Metal Deposition and Directed Energy Deposition at Exafuse in Germany.
+Manish Sharma is Head of AI & R&D at Exafuse. He leads additive-manufacturing projects across process development, sensing, software, quality checks and delivery. He has been involved since the company's inception and shares operational responsibilities in its small team, including quotations and cost comparisons.
 
 Current public focus includes process monitoring, machine vision, robotic DED/LMD workflows, RFQ intelligence, inspection-aware decision support, and quality-evidence boundaries. LMD/DED is the current proving ground for a broader Industrial AI & Decision Systems method.
 
 Profile details should be verified against LinkedIn, a current CV, or official event material where required.
 
 This site avoids confidential employer, customer, and private project data. Public technical content is educational and decision-support oriented.
+
+## Professional background
+
+Profile reviewed with Manish on 23 September 2026. Current duties and external collaborations are self-reported professional experience.
+
+- Exafuse: Head of AI & R&D since January 2024; Machine Learning and Systems Engineer from January 2020 to December 2023.
+- BreitbahnDED: leads Exafuse's contribution and helped develop and write the project proposal; also works with Ruhr University Bochum on new research proposals.
+- ISRO, India: recurring invited guest lectures in a personal capacity, additive-manufacturing advice and contributions to WAAM machine development for rocket-nozzle manufacturing.
+- Tata Steel and BHEL Haridwar: additive-manufacturing advice to technical teams.
+- Outokumpu Metal Powder Event, Krefeld: invited speaker/expert in LMD and powder metallurgy applications, 25 September 2025.
+- Data Science Ruhrgebiet, Bochum: speaker on Laser Metal Deposition, 2021.
+- PhD at Ruhr University Bochum: research work completed; thesis at submission stage. Degree not yet awarded.
+- M.Sc. Lasers and Photonics, Ruhr University Bochum, 2020; B.Tech. Electrical Engineering, Rajasthan Technical University, 2016.
+- English C1; German B1, studying toward B2 with completion targeted for December 2026; Hindi native.
+
+The external activities describe Manish's contributions and do not imply organizational endorsement, a staff appointment or qualified rocket-hardware deployment. Company case-study metrics are attributed to Exafuse separately.
 
 ## Current Focus
 

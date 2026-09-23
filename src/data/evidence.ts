@@ -1,4 +1,4 @@
-import { LINKS, SITE } from "./site";
+import { LINKS } from "./site";
 
 export const RESEARCH_SCAN = {
   count: 500,
@@ -121,14 +121,6 @@ export const EVIDENCE_FACTS = [
       "I keep details like this visible because they are more useful than a generic portfolio claim.",
     source: "Sharma et al., Procedia CIRP 2018",
     href: "https://www.sciencedirect.com/science/article/pii/S2212827118308849"
-  },
-  {
-    metric: "5-10 mm / >95%",
-    label: "BreitbahnDED project targets",
-    detail:
-      "From my public profile material: broad-track DED goals include rotating multi-spot optics, 5-10 mm wide tracks, multimodal monitoring, layer-to-layer control, and a >95% powder-utilization target. This is a project target, not a published result claim.",
-    source: "Manish Sharma public profile material",
-    href: `${SITE.canonicalUrl}/profile/public-profile`
   }
 ];
 

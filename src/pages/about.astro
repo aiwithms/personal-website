@@ -1,423 +1,120 @@
 ---
-import Badge from "@components/Badge.astro";
-import ExafuseProofMedia from "@components/ExafuseProofMedia.astro";
 import Layout from "@layouts/Layout.astro";
-import SectionHeading from "@components/SectionHeading.astro";
-import SourceLinks from "@components/SourceLinks.astro";
-import EvidenceFactGrid from "@components/EvidenceFactGrid.astro";
 import ProfileImage from "@components/ProfileImage.astro";
-import { EVIDENCE_FACTS, FIELD_NOTES, RESEARCH_SCAN } from "@data/evidence";
-import { EXAFUSE_PROOF_CASES } from "@data/exafuse";
-import { EXAFUSE_PUBLIC_PROOF } from "@data/exafusePublicProof";
-import { CORE_TOPICS, LINKS, PERSON, SITE } from "@data/site";
+import SectionHeading from "@components/SectionHeading.astro";
+import { LINKS, PERSON, SITE } from "@data/site";
+import { PROFESSIONAL_PROFILE as profile } from "@data/professionalProfile";
 import { absoluteUrl } from "@utils/urls";
 
-const title = "About Manish Sharma - Industrial AI & Decision Systems";
-const description =
-  "Manish Sharma's background, working method, and current public proof in industrial AI and decision systems, grounded in LMD/DED at Exafuse.";
-const flagshipProof = EXAFUSE_PUBLIC_PROOF.find((proof) => proof.id === "cs15-duisburg-bridge");
-
-const stats = [
-  ["Since", "2018", "Laser Metal Deposition work"],
-  ["Public role", "AI + R&D", "Exafuse, Germany"],
-  ["Research", "Public profile material", "Ruhr University Bochum"],
-  ["Focus", "Industrial AI", "Decision systems, monitoring, LMD/DED"]
-];
-
-const focusAreas = [
-  {
-    title: "Industrial AI and decision support",
-    text: "Decision-support systems that keep signals, assumptions, risks, recommendations, and verification evidence traceable."
-  },
-  {
-    title: "Process monitoring and machine vision",
-    text: "Vision-based monitoring, melt-pool and bead-geometry indicators, anomaly signals, and data pipelines that make process behavior easier to review."
-  },
-  {
-    title: "Robotic industrial workflows",
-    text: "Robotic DED toolpaths, KUKA workflows, slicer post-processing, ROS2 integration, sensor and camera control, and real-time system interfaces."
-  },
-  {
-    title: "LMD/DED process understanding",
-    text: "Process windows, repair and cladding workflows, traceability packs, inspection-ready documentation, and repeatability."
-  },
-  {
-    title: "AI with engineering evidence",
-    text: "AI outputs used to organize signals and questions, with inspection and engineering evidence kept central when risk requires it."
-  },
-  {
-    title: "RFQ and engineering information structure",
-    text: "Frameworks, schemas, prompts, and public notes that help people separate known facts, missing information, assumptions, and risks."
-  }
-];
-
-const timeline = [
-  {
-    period: "Jan 2024 - Present",
-    role: "Head of AI and R&D",
-    org: "Exafuse GmbH, Bochum",
-    text: "Technology owner for monitoring and control concepts for industrial DED/LMD cells, including robotic and large-format systems, sensor/camera stacks, calibration routines, traceability, and inspection-ready reporting."
-  },
-  {
-    period: "Jan 2020 - Dec 2023",
-    role: "Machine Learning and Systems Engineer",
-    org: "Exafuse GmbH",
-    text: "Built machine-vision monitoring systems for LMD, developed neural-network models for feature extraction and quality indicators, integrated model outputs into automation interfaces, and supported toolpath refinement."
-  },
-  {
-    period: "Dec 2017 - Jun 2021",
-    role: "Research Assistant / Wissenschaftlicher Mitarbeiter",
-    org: "Ruhr University Bochum, Chair of Applied Laser Technology",
-    text: "Worked on vision systems and machine-learning approaches for Laser Metal Deposition, including lattice-structure deposition experiments and process understanding."
-  }
-];
-
-const expertise = [
-  "Directed Energy Deposition",
-  "Laser Metal Deposition",
-  "DED-LB/M",
-  "Repair and cladding",
-  "Thin-wall builds",
-  "Coaxial vision",
-  "Pyrometry",
-  "Height sensing",
-  "ROS2",
-  "KUKA workflows",
-  "Python",
-  "C++",
-  "MATLAB",
-  "Process windows",
-  "Traceability packs",
-  "Inspection evidence"
-];
-
-const education = [
-  {
-    title: "External PhD Researcher",
-    org: "Ruhr University Bochum, Chair of Applied Laser Technology",
-    detail: "Vision-based process control for Laser Metal Deposition with Artificial Intelligence. Mar 2020 - Present."
-  },
-  {
-    title: "M.Sc. Lasers and Photonics",
-    org: "Ruhr University Bochum",
-    detail: "Faculty Prize / Best Student, grade 97%. Apr 2017 - Jan 2020."
-  },
-  {
-    title: "B.Tech. Electrical Engineering",
-    org: "Rajasthan Technical University, India",
-    detail: "Gold Medal, grade 87%. May 2012 - Jun 2016."
-  }
-];
-
-const publicWork = [
-  "Invited Speaker / Expert - Outokumpu Metal Powder Event, Krefeld, Germany, Sep 25, 2025.",
-  "Speaker - Data Science Ruhrgebiet 2021, Bochum.",
-  "Publication - Laser metal deposition of lattice structures by columnar built-up, CIRP LANE 2018.",
-  "M.Sc. thesis - Machine learning approaches in laser metal deposition of lattice structures, 2019."
-];
-
-const awards = [
-  "Material Horizon Prize - Best presentation at CIRP LANE 2018.",
-  "DAAD Graduation Scholarship for International Students, 2019.",
-  "C++ Nanodegree - Udacity, 2022.",
-  "TOEFL iBT 112/120; German B1."
-];
-
-const links = [
-  { label: "Industrial AI thesis", href: "/thesis" },
-  { label: "Public work", href: "/public-work" },
-  { label: "LinkedIn", href: LINKS.linkedin },
-  { label: "Contact", href: "/contact" }
-];
-
-const proofArtifacts = [
-  { label: "2018 LMD lattice paper", href: "/evidence" },
-  { label: "Exafuse LMD/DED public context", href: "/industrial-proof" },
-  { label: "LMD Decision Workbench", href: "/tools" },
-  { label: "Quality Evidence Ladder", href: "/frameworks/lmd-quality-evidence-ladder" }
-];
-
-const aboutPageJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "AboutPage",
-  "@id": `${SITE.canonicalUrl}/about#page`,
-  url: `${SITE.canonicalUrl}/about`,
-  name: "About Manish Sharma",
-  description,
-  mainEntity: {
-    "@id": `${SITE.canonicalUrl}/identity#manish-sharma`
-  },
-  about: CORE_TOPICS,
-  image: absoluteUrl(PERSON.image)
+const title = "Manish Sharma — Additive Manufacturing and Industrial AI";
+const description = "Head of AI & R&D at Exafuse. Manufacturing project leadership, LMD/DED monitoring, WAAM collaboration, invited teaching and research at Ruhr University Bochum.";
+const jsonLd = {
+  "@context": "https://schema.org", "@type": "AboutPage",
+  "@id": `${SITE.canonicalUrl}/about#page`, url: `${SITE.canonicalUrl}/about`,
+  name: title, description, dateModified: profile.reviewed,
+  mainEntity: { "@id": `${SITE.canonicalUrl}/identity#manish-sharma` }, image: absoluteUrl(PERSON.image)
 };
 ---
-
-<Layout title={title} description={description} canonical="/about" jsonLd={aboutPageJsonLd}>
-  <div class="info-page info-page--profile">
-  <section class="site-shell info-page__masthead grid min-h-[calc(100svh-4.5rem)] items-center gap-12 py-16 lg:grid-cols-[0.98fr_1.02fr] lg:py-20">
-    <div>
-      <div class="flex flex-wrap gap-2">
-        <Badge>Personal profile</Badge>
-        <Badge tone="laser">Current LMD/DED proving ground</Badge>
-        <Badge tone="steel">Industrial AI</Badge>
-      </div>
-      <p class="metric-label mt-8">About Manish Sharma</p>
-      <h1 class="mt-4 text-5xl font-black leading-[0.98] text-white md:text-7xl">
-        I build industrial AI
-        <span class="block bg-gradient-to-r from-cyan-100 via-white to-orange-100 bg-clip-text pt-3 text-transparent">
-          for decisions that need evidence.
-        </span>
-      </h1>
-      <p class="mt-7 max-w-2xl text-lg leading-8 text-slate-300 md:text-xl">
-        I work on industrial AI and decision systems for engineering processes. My strongest public work today is in Laser Metal Deposition and Directed Energy Deposition at Exafuse.
-      </p>
-      <p class="mt-4 max-w-2xl text-base leading-7 text-slate-400">
-        Across lasers and photonics, machine vision, robotics, and LMD, I kept meeting the same gap: a model can be technically good and still leave the decision unclear. That moved my focus from individual models toward complete decision systems.
-      </p>
-      <p class="mt-5 max-w-2xl rounded-lg border border-cyan-300/20 bg-cyan-300/8 p-4 text-base font-bold leading-7 text-cyan-50">
-        I use LMD/DED as a proving ground because it brings together process monitoring, robotics, repair decisions, RFQ quality, and physical inspection in one consequential workflow.
-      </p>
-      <div class="mt-9 flex flex-wrap gap-3">
-        <a href="/thesis" class="btn btn-primary">Read how I think</a>
-        <a href="/public-work" class="btn btn-secondary">Explore my work</a>
-        <a href={LINKS.linkedin} class="btn btn-primary" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a href="/domains/lmd-ded" class="btn btn-laser">Current LMD/DED work</a>
-      </div>
-    </div>
-    <div class="glass-panel profile-image-panel overflow-hidden rounded-lg p-3">
-      <ProfileImage eager withCaption />
-    </div>
-  </section>
-
-  <section class="about-human-note site-shell section-y">
-    <SectionHeading
-      eyebrow="Human note"
-      title="Why this site exists"
-      description="I am interested in systems that make uncertainty, engineering judgment, and the next verification step legible—not products that treat AI as a feature."
-    />
-    <div class="about-human-note__body">
-      <p>
-        I want to make complex industrial knowledge easier to structure: for buyers preparing RFQs, engineers reviewing risk, and developers building technical tools. Over time, I want to help build products, systems, and ventures around difficult industrial decisions—not AI as a feature. I will expand one real problem at a time, build the necessary domain understanding, and earn credibility through working systems and evidence. My current public proof is LMD/DED; other applications remain direction and research until validated.
-      </p>
-      <SourceLinks links={links} />
-    </div>
-  </section>
-
-  {flagshipProof && (
-    <section class="site-shell section-y about-proof-context" aria-labelledby="about-proof-context-title">
-      <div class="about-proof-context__grid">
-        <div>
-          <p class="metric-label">Current public proof context</p>
-          <h2 id="about-proof-context-title">The current method is being tested against physical LMD decisions, not presented as a universal industrial deployment.</h2>
-          <p>{flagshipProof.mainDecisionLesson}</p>
-          <ul>
-            <li>Working product: <a href="/tools#lmd-decision-cockpit">LMD Decision Cockpit</a></li>
-            <li>Authored thinking: <a href="/lab-notes/camera-is-not-a-certificate">Camera Is Not a Certificate</a></li>
-            <li>Not claimed: personal ownership of Exafuse project execution, certification, or engineering approval.</li>
-          </ul>
-          <a href={`/public-work/exafuse/${flagshipProof.slug}`}>Read the public proof story <span aria-hidden="true">→</span></a>
+<Layout title={title} description={description} canonical="/about" jsonLd={jsonLd}>
+  <div class="professional-page">
+    <section class="site-shell section-y grid items-center gap-10 lg:grid-cols-[1.35fr_.65fr]" aria-labelledby="profile-title">
+      <div>
+        <p class="metric-label">Manish Sharma · Industrial AI &amp; Decision Systems</p>
+        <h1 id="profile-title" class="mt-5 text-4xl font-black leading-[1.07] tracking-tight text-white md:text-6xl">From process development<br /><span class="text-cyan-100">to manufacturing delivery.</span></h1>
+        <p class="mt-6 text-xl font-bold text-white">{profile.role}</p>
+        <p class="mt-4 max-w-2xl text-lg leading-8 text-slate-300">I lead additive-manufacturing projects across sourcing, CAD, processing, monitoring, quality checks and shipment. My work connects practical manufacturing, sensing and software with research and commercial decisions.</p>
+        <p class="mt-4 text-base leading-7 text-slate-300">LMD/DED process development · Machine vision and robotics · WAAM collaboration</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="#selected-work" class="btn btn-primary">Explore selected work</a>
+          <a href={LINKS.linkedin} class="btn btn-secondary" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="/contact" class="btn btn-secondary">Contact</a>
         </div>
-        <ExafuseProofMedia proof={flagshipProof} sizes="(max-width: 767px) calc(100vw - 2rem), 46vw" />
+        <nav class="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-base text-cyan-100" aria-label="Professional profile sections">
+          <a href="#collaborations">Teaching and advice</a><a href="#experience">Experience</a><a href="#education">Education</a>
+        </nav>
+      </div>
+      <div class="profile-image-panel max-w-sm overflow-hidden rounded-lg border border-white/15 p-3 lg:max-w-none">
+        <ProfileImage eager withCaption />
+        <p class="px-2 pb-1 pt-4 text-base leading-7 text-slate-300">Engineering, research and delivery<br /><strong class="text-slate-100">Exafuse · Ruhr University Bochum</strong></p>
       </div>
     </section>
-  )}
 
-  <section class="band section-y">
-    <div class="site-shell grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
-      <div class="ordered-card-strong p-7">
-        <p class="metric-label">Current focus</p>
-        <h2 class="mt-3 text-3xl font-black leading-tight text-white">Industrial AI tied to the complete decision.</h2>
-        <p class="mt-4 text-sm leading-7 text-slate-300">
-          I work at the practical intersection of process signals, models, robotics, repair choices, RFQ quality, and inspection evidence in LMD/DED workflows. A signal or output has to lead to a clear next action and show what still needs checking.
-        </p>
-      </div>
-      <div class="ordered-card p-7">
-        <p class="metric-label">Selected public artifacts</p>
-        <div class="mt-5 grid gap-3 sm:grid-cols-2">
-          {proofArtifacts.map((item) => (
-            <a href={item.href} class="result-card text-sm font-black text-cyan-50 hover:border-cyan-300/35 hover:text-white">{item.label}</a>
+    <section class="band section-y">
+      <div class="site-shell">
+        <SectionHeading eyebrow="Project responsibility" title="The complete manufacturing chain" description="In a small manufacturing team, I work across the interfaces between engineering, operations and commercial delivery." />
+        <ol class="mt-10 grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
+          {profile.workCycle.map((step) => (
+            <li class="border-t border-cyan-100/25 pt-5"><span class="font-mono text-base text-cyan-200" aria-hidden="true">{step.number}</span><h3 class="mt-3 text-xl font-bold text-white">{step.title}</h3><p class="mt-3 text-base leading-7 text-slate-300">{step.text}</p></li>
           ))}
-        </div>
+        </ol>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="site-shell section-y">
-    <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-      <SectionHeading
-        eyebrow="Current work"
-        title="Where my work sits"
-        description="I work in the middle of process development, monitoring, robotics, and AI. The aim is to make industrial decisions clearer while keeping the physical-world evidence visible."
-      />
-      <div class="prose-lab">
-        <p>
-          My public work combines DED/LMD process development, machine vision, neural-network-based feature extraction, robotic toolpath refinement, and traceable build documentation. I tend to look at the whole chain rather than isolate one model or component: process stability, repeatability, and the evidence needed after a decision leaves the model.
-        </p>
-        <p>
-          This site is where I turn that work into public notes, frameworks, and small tools. It is for engineers, technical leaders, collaborators, students, buyers, and developers who need clearer language around LMD, DED, laser cladding, monitoring, repairability, and RFQ preparation.
-        </p>
-        <p>
-          I am researching how this discipline may apply to industrial decisions that combine incomplete physical signals, operational risk, and human responsibility. The method of asking better questions may transfer; the physics, failure modes, economics, regulations, tolerances, and verification methods must be rebuilt for each domain. This is a direction for future work, not a claim of completed cross-industry deployment. This site avoids confidential employer or customer data.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <details class="about-reference">
-    <summary class="site-shell about-reference__summary">
-      <span>
-        <strong>Formal experience and evidence</strong>
-        <span>Career chronology, checked working numbers, technical focus, education, public work, and awards.</span>
-      </span>
-      <span aria-hidden="true">View reference</span>
-    </summary>
-    <div class="about-reference__content">
-
-  <section class="band">
-    <div class="site-shell grid gap-4 py-6 sm:grid-cols-2 lg:grid-cols-4">
-      {stats.map(([label, value, text]) => (
-        <div class="ordered-card p-4">
-          <p class="metric-label">{label}</p>
-          <p class="mt-2 text-xl font-black text-white">{value}</p>
-          <p class="mt-1 text-sm leading-6 text-slate-400">{text}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <section class="band section-y">
-    <div class="site-shell">
-      <SectionHeading
-        eyebrow="Working numbers"
-        title="The scale I keep in mind"
-        description={`I keep a ${RESEARCH_SCAN.count}-record LMD/DED reference map for orientation, but the numbers below are only used where a checked source or public profile material supports them.`}
-      />
+    <section id="selected-work" class="site-shell section-y">
+      <SectionHeading eyebrow="Selected work" title="Manufacturing experience with technical depth" />
       <div class="mt-10">
-        <EvidenceFactGrid facts={EVIDENCE_FACTS.slice(4)} />
-      </div>
-      <a href="/evidence" class="btn btn-secondary mt-8">See full evidence base</a>
-    </div>
-  </section>
-
-  <section class="band section-y">
-    <div class="site-shell">
-      <SectionHeading eyebrow="Focus areas" title="What I work on" />
-      <div class="equal-card-grid mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-        {focusAreas.map((item) => (
-          <article class="ordered-card-strong card-hover p-6">
-            <h3 class="text-xl font-black text-white">{item.title}</h3>
-            <p class="mt-4 text-sm leading-6 text-slate-400">{item.text}</p>
+        {profile.engineeringWork.map((project) => (
+          <article class="grid gap-6 border-t border-white/15 py-8 md:grid-cols-[.85fr_1.2fr] md:gap-12">
+            <div><p class="metric-label">{project.label}</p><h3 class="mt-3 text-2xl font-black text-white">{project.title}</h3><p class="mt-3 text-base text-cyan-100">{project.role}</p></div>
+            <div><p class="text-base leading-8 text-slate-300">{project.text}</p><a href={project.href} class="mt-5 inline-block text-base font-bold text-cyan-100 underline underline-offset-4">{project.link}<span aria-hidden="true"> →</span></a></div>
           </article>
         ))}
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="site-shell section-y">
-    <div class="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
-      <SectionHeading
-        eyebrow="Exafuse public context"
-        title="The public industrial work behind the themes"
-        description="The site should not just use words like AI, monitoring, repair, and RFQ. It should point to the industrial situations where those ideas actually matter."
-      />
-      <div class="grid gap-4 md:grid-cols-2">
-        {EXAFUSE_PROOF_CASES.map((item) => (
-          <a href={item.href} class="ordered-card-strong card-hover p-5" target="_blank" rel="noreferrer">
-            <p class="metric-label">{item.code}</p>
-            <h3 class="mt-3 text-xl font-black text-white">{item.title}</h3>
-            <p class="mt-3 text-sm leading-6 text-slate-400">{item.labConnection}</p>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="site-shell section-y">
-    <div class="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
-      <SectionHeading
-        eyebrow="Field principles"
-        title="What I bring to the work"
-        description="These are the instincts behind the frameworks: stay practical, keep inspection visible, and be skeptical of overconfident AI claims."
-      />
-      <div class="grid gap-4 md:grid-cols-2">
-        {FIELD_NOTES.map((note) => (
-          <article class="ordered-card-strong p-5">
-            <h3 class="text-xl font-black text-white">{note.title}</h3>
-            <p class="mt-3 text-sm leading-6 text-slate-400">{note.text}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="site-shell section-y">
-    <SectionHeading eyebrow="Experience" title="Career timeline" />
-    <div class="mt-10 grid gap-4">
-      {timeline.map((item) => (
-        <article class="ordered-card grid gap-5 p-6 md:grid-cols-[14rem_1fr]">
-          <div>
-            <p class="metric-label">{item.period}</p>
-            <p class="mt-3 text-sm font-bold text-cyan-100">{item.org}</p>
-          </div>
-          <div>
-            <h3 class="text-2xl font-black text-white">{item.role}</h3>
-            <p class="mt-4 text-sm leading-7 text-slate-300">{item.text}</p>
-          </div>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="band section-y">
-    <div class="site-shell grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
-      <SectionHeading
-        eyebrow="Technical stack"
-        title="Methods, systems, and materials"
-        description="A compact map of the technical vocabulary that shows up repeatedly in my public work."
-      />
-      <div class="flex flex-wrap content-start gap-2">
-        {expertise.map((item) => (
-          <span class="ordered-card px-3 py-2 text-sm font-bold text-slate-200">{item}</span>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="site-shell section-y">
-    <div class="grid gap-10 lg:grid-cols-2">
-      <div>
-        <SectionHeading eyebrow="Education" title="Academic foundation" />
-        <div class="mt-8 grid gap-4">
-          {education.map((item) => (
-            <article class="ordered-card p-5">
-              <h3 class="text-xl font-black text-white">{item.title}</h3>
-              <p class="mt-2 text-sm font-bold text-cyan-100">{item.org}</p>
-              <p class="mt-3 text-sm leading-6 text-slate-400">{item.detail}</p>
-            </article>
+    <section id="collaborations" class="band section-y">
+      <div class="site-shell">
+        <SectionHeading eyebrow="Knowledge exchange" title="Invited teaching and technical advice" />
+        <div class="mt-10 grid gap-6 md:grid-cols-2">
+          {profile.collaborations.map((item) => (
+            <article class="ordered-card p-7"><p class="metric-label">{item.label}</p><h3 class="mt-3 text-2xl font-black text-white">{item.title}</h3><p class="mt-5 text-base leading-8 text-slate-300">{item.text}</p></article>
           ))}
         </div>
       </div>
-      <div>
-        <SectionHeading eyebrow="Public work" title="Selected talks, publication, and awards" />
-        <div class="mt-8 grid gap-4">
-          <div class="ordered-card p-5">
-            <h3 class="text-xl font-black text-white">Public work</h3>
-            <ul class="mt-4 grid gap-3 text-sm leading-6 text-slate-300">
-              {publicWork.map((item) => <li>{item}</li>)}
-            </ul>
-          </div>
-          <div class="ordered-card p-5">
-            <h3 class="text-xl font-black text-white">Awards and signals</h3>
-            <ul class="mt-4 grid gap-3 text-sm leading-6 text-slate-300">
-              {awards.map((item) => <li>{item}</li>)}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-    </div>
-  </details>
+    <section id="experience" class="site-shell section-y">
+      <SectionHeading eyebrow="Professional background" title="Experience" />
+      <div class="mt-10">
+        {profile.timeline.map((item) => (
+          <article class="grid gap-5 border-t border-white/15 py-7 md:grid-cols-[.6fr_1.4fr] md:gap-10"><div><p class="metric-label">{item.period}</p><p class="mt-3 text-base font-bold text-cyan-100">{item.org}</p></div><div><h3 class="text-2xl font-bold text-white">{item.role}</h3><p class="mt-4 text-base leading-8 text-slate-300">{item.text}</p></div></article>
+        ))}
+      </div>
+    </section>
+
+    <section id="education" class="band section-y">
+      <div class="site-shell">
+        <SectionHeading eyebrow="Research and education" title="A foundation in photonics, control and AI" />
+        <div class="mt-10 grid gap-8 lg:grid-cols-3">
+          {profile.education.map((item) => (
+            <article class="border-t border-cyan-100/25 pt-5"><h3 class="text-xl font-bold text-white">{item.title}</h3><p class="mt-3 text-base text-cyan-100">{item.org}</p><p class="mt-4 text-base leading-8 text-slate-300">{item.text}</p></article>
+          ))}
+        </div>
+        <p class="mt-10 border-t border-white/15 pt-6 text-base leading-8 text-slate-300"><strong class="block text-white">Languages</strong>{profile.languages}</p>
+      </div>
+    </section>
+
+    <section class="site-shell section-y grid gap-12 lg:grid-cols-[1.2fr_.8fr]">
+      <div>
+        <SectionHeading eyebrow="Publication and speaking" title="Sharing practical engineering knowledge" />
+        <ul class="mt-8 grid gap-5 text-base leading-8 text-slate-300">
+          <li><a href="/evidence" class="text-cyan-100 underline underline-offset-4">Laser metal deposition of lattice structures by columnar built-up</a> · CIRP LANE 2018.</li>
+          {profile.talks.map((talk) => <li>{talk}</li>)}
+          <li>Material Horizon Prize, CIRP LANE 2018; DAAD Graduation Scholarship, 2019; C++ Nanodegree, 2022.</li>
+        </ul>
+      </div>
+      <div class="border-l-2 border-cyan-200/50 pl-7">
+        <h2 class="text-3xl font-black leading-tight text-white">Discuss an engineering challenge</h2>
+        <p class="my-6 text-base leading-8 text-slate-300">Manufacturing digitalization, process monitoring, research collaboration or a guest lecture.</p>
+        <a href="/contact" class="btn btn-primary">Start a conversation</a>
+        <p class="mt-6 text-sm text-slate-400">Profile updated September 2026</p>
+      </div>
+    </section>
   </div>
 </Layout>
+
+<style>
+  .professional-page section[id] { scroll-margin-top: 7rem; }
+  .professional-page nav a { text-decoration: underline; text-underline-offset: .25em; }
+  .professional-page :is(h1, h2, h3, p, li) { overflow-wrap: break-word; }
+</style>

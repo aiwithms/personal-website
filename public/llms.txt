@@ -14,6 +14,16 @@ Working method: Sense -> Model -> Decide -> Verify.
 
 Manish Sharma builds evidence-aware AI decision systems. His deepest current public proving ground is Laser Metal Deposition and Directed Energy Deposition at Exafuse in Germany. This establishes specialist LMD/DED context; it is not a claim of validated deployment across unrelated industries.
 
+## Professional background
+
+Manish is Head of AI & R&D at Exafuse. He leads AM projects across sourcing, CAD, process development, monitoring, quality checks and shipment, and shares operational responsibilities including quotations. He leads Exafuse's contribution to BreitbahnDED and helped develop the proposal; he also works with Ruhr University Bochum on new proposals.
+
+He gives recurring invited ISRO guest lectures in a personal capacity, contributes to WAAM machine development at ISRO for rocket-nozzle manufacturing, and advises AM teams at ISRO, Tata Steel and BHEL Haridwar. His LMD talks include Outokumpu's Metal Powder Event in Krefeld (25 September 2025) and Data Science Ruhrgebiet in Bochum (2021).
+
+PhD research completed; thesis at submission stage at RUB; degree not awarded. English C1; German B1, studying toward B2 with completion targeted for December 2026; Hindi native.
+
+Professional facts reviewed with Manish on 23 September 2026. Current duties and external activities are self-reported. They do not imply organizational endorsement or qualified rocket-hardware deployment. See [professional background](https://manishsharma.dev/about).
+
 ## Five canonical pages
 
 - [Home](https://manishsharma.dev/)

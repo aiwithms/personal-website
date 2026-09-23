@@ -1,6 +1,6 @@
 # Manish Sharma - Industrial AI & Decision Systems
 
-Manish Sharma builds AI systems for industrial decisions that need evidence, not just predictions. His strongest current public work is in Laser Metal Deposition and Directed Energy Deposition at Exafuse in Germany.
+Manish Sharma is Head of AI & R&D at Exafuse. He leads additive-manufacturing projects across process development, sensing, software, quality checks and delivery. His strongest technical focus is Laser Metal Deposition and Directed Energy Deposition.
 
 Primary promise: AI for industrial decisions that need evidence, not just predictions.
 
@@ -26,12 +26,20 @@ This site avoids confidential customer, employer, and private project data.
 | Method | Sense -> Model -> Decide -> Verify |
 | Current LMD/DED proving ground | AI for LMD/DED at Exafuse |
 | Company connection | Exafuse |
+| Research responsibility | Company-side lead and proposal contributor for BreitbahnDED; new research proposals with Ruhr University Bochum |
+| PhD status | Research completed; thesis at submission stage at RUB; degree not yet awarded |
+| Invited teaching and advice | Recurring ISRO guest lectures in a personal capacity; AM advice to ISRO teams, Tata Steel and BHEL Haridwar |
+| WAAM contribution | Involved in WAAM machine development at ISRO for rocket-nozzle manufacturing |
+| Invited talks | Outokumpu Metal Powder Event, Krefeld, 25 September 2025; Data Science Ruhrgebiet, Bochum, 2021 |
+| Languages | English C1; German B1, B2 completion targeted for December 2026; Hindi native |
 | Location | Germany |
 | Core topics | industrial AI, decision support systems, process monitoring, machine vision, robotics, engineering evidence, LMD, DED, DED-LB/M, laser cladding, melt-pool monitoring, industrial repair, RFQ intelligence, metal additive manufacturing |
 | Verified public profiles | Website, Exafuse, LinkedIn, GitHub profile |
 | GitHub profile | aiwithms - https://github.com/aiwithms |
 
 ## sameAs
+
+Professional facts reviewed with Manish on 23 September 2026. Current duties and external activities are self-reported; they do not imply endorsement by the named organizations or qualified rocket-hardware deployment.
 
 Only real URLs should be used in JSON-LD sameAs.
 

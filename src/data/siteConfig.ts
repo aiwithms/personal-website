@@ -7,6 +7,7 @@ import {
   LINKEDIN_URL,
   MANISH_SITE_URL
 } from "./externalUrls";
+import { PROFESSIONAL_PROFILE } from "./professionalProfile";
 
 export const SITE_CONFIG = {
   site: {
@@ -27,12 +28,11 @@ export const SITE_CONFIG = {
     positioning: "Industrial AI and decision systems, grounded in current LMD/DED work",
     promise: "AI for industrial decisions that need evidence, not just predictions.",
     method: "Sense -> Model -> Decide -> Verify",
-    shortBio:
-      "Manish Sharma works on industrial AI and decision systems, with his strongest public work in LMD/DED, process monitoring, robotics, repair, and evidence-aware engineering decisions at Exafuse.",
+    shortBio: PROFESSIONAL_PROFILE.shortBio,
     longBio:
-      "Manish Sharma builds AI systems for industrial decisions that need evidence, not just predictions. His current public proving ground is Laser Metal Deposition and Directed Energy Deposition at Exafuse in Germany, where process signals, models, materials, robotics, repair, inspection, and engineering judgment need to stay connected. Manish Sharma Lab publishes public frameworks, tools, source maps, glossary notes, and RFQ resources that make this working method inspectable.",
+      `${PROFESSIONAL_PROFILE.shortBio} His work connects LMD/DED process development, machine vision, robotics and engineering decision support. ${PROFESSIONAL_PROFILE.research} Manish Sharma Lab publishes technical resources and the LMD Decision Brief to make engineering assumptions and evidence needs inspectable.`,
     location: "Germany",
-    currentPublicRole: "Industrial AI and decision systems, with established public LMD/DED work at Exafuse",
+    currentPublicRole: PROFESSIONAL_PROFILE.role,
     domains: [
       "Industrial AI",
       "Decision systems",

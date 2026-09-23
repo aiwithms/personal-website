@@ -10,6 +10,14 @@ Public identity facts for Manish Sharma and Manish Sharma Lab.
 | Focus | Industrial AI & Decision Systems |
 | Primary promise | AI for industrial decisions that need evidence, not just predictions |
 | Company connection | Exafuse, Germany |
+| Current role | Head of AI & R&D at Exafuse, since January 2024 |
+| Project responsibility | AM delivery from sourcing and CAD through processing, monitoring, quality checks and shipment; quotations and shared operations |
+| Research leadership | Leads Exafuse's contribution to BreitbahnDED and helped develop its proposal; works with RUB on new research proposals |
+| PhD | Research completed; thesis at submission stage at Ruhr University Bochum; degree not yet awarded |
+| Invited teaching | Recurring guest lectures at ISRO, India, in a personal capacity |
+| External contributions | WAAM machine development at ISRO for rocket-nozzle manufacturing; AM advice to ISRO teams, Tata Steel and BHEL Haridwar |
+| Talks | Outokumpu Metal Powder Event, Krefeld, 25 September 2025; Data Science Ruhrgebiet, Bochum, 2021; LMD expertise |
+| Languages | English C1; German B1, B2 study completion targeted for December 2026; Hindi native |
 | Location | Germany |
 | Website | https://manishsharma.dev |
 | LinkedIn | https://www.linkedin.com/in/manishsharma5/ |
@@ -36,5 +44,7 @@ Public identity facts for Manish Sharma and Manish Sharma Lab.
 - Laser Metal Deposition Decision Map
 
 ## Boundary
+
+Professional facts reviewed with Manish on 23 September 2026. Current duties and external collaborations are self-reported. Named activities do not imply institutional endorsement, employment at the named organizations or qualified rocket-hardware deployment.
 
 This is public profile information only. It is not confidential company/customer material, engineering approval, material certification, safety-critical acceptance, or a guarantee of part quality.

@@ -10,6 +10,20 @@ GitHub identity note: `aiwithms` is Manish Sharma's verified public GitHub profi
 
 Manish Sharma - Industrial AI & Decision Systems.
 
+Current role: Head of AI & R&D at Exafuse since January 2024, following Machine Learning and Systems Engineer from January 2020 to December 2023. He leads AM work from sourcing and CAD through process development, monitoring, quality checks and shipment, with shared operations and quotation responsibilities.
+
+Research leadership: leads Exafuse's contribution to BreitbahnDED and helped develop and write the project proposal; collaborates with Ruhr University Bochum on new research proposals.
+
+External activities: recurring invited guest lectures at ISRO in India in a personal capacity; contributions to WAAM machine development at ISRO for rocket-nozzle manufacturing; additive-manufacturing advice to ISRO teams, Tata Steel and BHEL Haridwar.
+
+LMD talks: Outokumpu Metal Powder Event, Krefeld, 25 September 2025; Data Science Ruhrgebiet, Bochum, 2021.
+
+Education status: PhD research complete, thesis at submission stage at Ruhr University Bochum, degree not yet awarded. M.Sc. Lasers and Photonics, RUB (2020); B.Tech. Electrical Engineering, Rajasthan Technical University (2016).
+
+Languages: English C1; German B1, studying toward B2 with completion targeted for December 2026; Hindi native.
+
+Profile facts reviewed with Manish on 23 September 2026. Current duties and external activities are self-reported. They do not establish organizational endorsement, a staff appointment at the named advisory organizations or qualified rocket-hardware deployment. Professional background: https://manishsharma.dev/about
+
 Primary promise: AI for industrial decisions that need evidence, not just predictions.
 
 Operating method: Sense -> Model -> Decide -> Verify.

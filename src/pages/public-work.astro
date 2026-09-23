@@ -8,6 +8,7 @@ import { ACTIVE_PROFILE_LINKS } from "@data/profiles";
 import { EXAFUSE_PUBLIC_PROOF } from "@data/exafusePublicProof";
 import { FRAMEWORKS, LINKS, PERSON, SITE } from "@data/site";
 import { EXAFUSE_SOURCE_LINKS } from "@data/exafuse";
+import { PROFESSIONAL_PROFILE as profile } from "@data/professionalProfile";
 
 const title = "Current Work and Public Evidence";
 const description =
@@ -130,6 +131,19 @@ const jsonLd = {
   </div>
 
   <div class="public-work-chapter public-work-chapter--proof" data-page-chapter="proof">
+  <section class="band section-y" aria-labelledby="professional-work-title">
+    <div class="site-shell">
+      <p class="metric-label">Professional experience</p>
+      <h2 id="professional-work-title" class="mt-3 text-3xl font-black text-white">Manufacturing leadership, research and collaboration</h2>
+      <p class="mt-5 max-w-4xl text-lg leading-8 text-slate-300">{profile.shortBio}</p>
+      <div class="mt-8 grid gap-6 md:grid-cols-3">
+        <article class="ordered-card p-6"><h3 class="text-xl font-bold text-white">BreitbahnDED</h3><p class="mt-4 text-base leading-7 text-slate-300">Company-side project leadership and proposal development, connecting manufacturing requirements with university research.</p></article>
+        <article class="ordered-card p-6"><h3 class="text-xl font-bold text-white">ISRO collaboration</h3><p class="mt-4 text-base leading-7 text-slate-300">Personally invited guest lectures, additive-manufacturing advice and contributions to WAAM machine development for rocket-nozzle manufacturing.</p></article>
+        <article class="ordered-card p-6"><h3 class="text-xl font-bold text-white">Industry knowledge exchange</h3><p class="mt-4 text-base leading-7 text-slate-300">Additive-manufacturing advice to Tata Steel and BHEL Haridwar, and technical talks at Outokumpu and Data Science Ruhrgebiet.</p></article>
+      </div>
+      <a href="/about" class="btn btn-secondary mt-8">View responsibilities and background</a>
+    </div>
+  </section>
   <section class="site-shell section-y public-work-index__established">
     <div class="public-work-index__established-grid grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
       <SectionHeading

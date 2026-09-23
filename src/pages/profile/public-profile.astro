@@ -5,6 +5,7 @@ import SectionHeading from "@components/SectionHeading.astro";
 import SourceLinks from "@components/SourceLinks.astro";
 import { ACTIVE_PROFILE_LINKS } from "@data/profiles";
 import { CORE_TOPICS, LINKS, PERSON, SITE } from "@data/site";
+import { PROFESSIONAL_PROFILE as profile } from "@data/professionalProfile";
 
 const title = "Manish Sharma Public Profile";
 const description =
@@ -12,6 +13,11 @@ const description =
 
 const facts = [
   ["Name", PERSON.name],
+  ["Current role", profile.role],
+  ["Project responsibility", "R&D and manufacturing delivery from sourcing and CAD through processing, monitoring, quality checks and shipment; quotations and cost/price evaluation."],
+  ["Research status", profile.research],
+  ["Teaching and advisory work", profile.externalWork],
+  ["Languages", profile.languages],
   ["Focus", SITE.publicCategory],
   ["Primary promise", SITE.primaryPromise],
   ["Public technical context", "AI for LMD/DED, process monitoring, robotics, industrial repair, and RFQ intelligence at Exafuse."],
@@ -49,6 +55,7 @@ const jsonLd = {
         A public profile reference for identity facts used across this website. It avoids confidential employer, customer, project, or commercially sensitive information.
       </p>
       <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/about" class="btn btn-primary">Professional background</a>
         <a href="/identity" class="btn btn-primary">Official Profile</a>
         <a href="/thesis" class="btn btn-secondary">Operating Thesis</a>
         <a href="/domains/lmd-ded" class="btn btn-secondary">LMD / DED Hub</a>

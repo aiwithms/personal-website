@@ -6,6 +6,7 @@ import SourceLinks from "@components/SourceLinks.astro";
 import { CORE_TOPICS, DISCLAIMER, LINKS, PERSON, SAME_AS, SITE } from "@data/site";
 import { ACTIVE_PROFILE_LINKS } from "@data/profiles";
 import { absoluteUrl } from "@utils/urls";
+import { PROFESSIONAL_PROFILE as profile } from "@data/professionalProfile";
 
 const title = "Manish Sharma Press Kit — Industrial AI & Decision Systems";
 const description =
@@ -13,6 +14,8 @@ const description =
 
 const identityFacts = [
   ["Name", PERSON.name],
+  ["Current role", profile.role],
+  ["Research status", profile.research],
   ["Preferred identity", "Manish Sharma - Industrial AI & Decision Systems"],
   ["Primary promise", SITE.primaryPromise],
   ["Public LMD/DED context", "AI for Laser Metal Deposition and Directed Energy Deposition at Exafuse"],
@@ -26,19 +29,19 @@ const identityFacts = [
 const bios = [
   {
     label: "One-line bio",
-    text: "Manish Sharma builds evidence-aware AI systems for industrial decisions, with his strongest public work in LMD/DED, process monitoring, robotics, repair, and RFQ structure at Exafuse."
+    text: profile.shortBio
   },
   {
     label: "Short bio",
-    text: "Manish Sharma works on Industrial AI & Decision Systems for engineering processes. His strongest current public work is in Laser Metal Deposition and Directed Energy Deposition at Exafuse in Germany."
+    text: `${profile.shortBio} ${profile.research}`
   },
   {
     label: "Medium bio",
-    text: "Manish Sharma builds AI systems for industrial decisions that need evidence, not just predictions. His current public work spans LMD/DED process monitoring, machine vision, robotics, industrial repair, and RFQ intelligence at Exafuse. Through Manish Sharma Lab, he publishes frameworks, tools, and technical notes that keep signals, assumptions, decisions, and verification connected."
+    text: `${profile.shortBio} ${profile.externalWork}`
   },
   {
     label: "Long bio",
-    text: "Manish Sharma works across industrial AI, process monitoring, machine vision, robotics, and engineering decision support. His deepest current public proof is in Laser Metal Deposition and Directed Energy Deposition at Exafuse in Germany, including monitoring workflows, industrial repair, robotic systems, RFQ structure, traceability, and inspection-aware decision making. Manish Sharma Lab is his public technical platform for publishing frameworks, tools, research maps, and practical notes around a transferable evidence-aware decision-system method."
+    text: `${profile.shortBio} ${profile.externalWork} ${profile.research} Through Manish Sharma Lab, he shares frameworks, tools and technical notes connecting process signals with reviewable engineering decisions.`
   }
 ];
 

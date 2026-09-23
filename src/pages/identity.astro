@@ -8,13 +8,13 @@ import SourceLinks from "@components/SourceLinks.astro";
 import { CORE_TOPICS, LINKS, METHOD_LOOP, PERSON, SAME_AS, SITE } from "@data/site";
 import { ACTIVE_PROFILE_LINKS } from "@data/profiles";
 import { absoluteUrl } from "@utils/urls";
+import { PROFESSIONAL_PROFILE as profile } from "@data/professionalProfile";
 
 const title = "Manish Sharma - Industrial AI & Decision Systems";
 const description =
   "Public identity page for Manish Sharma, focused on industrial AI and decision systems, with established public work in AI for LMD/DED at Exafuse in Germany.";
 
-const personDescription =
-  "Manish Sharma works on industrial AI and decision systems for engineering processes, with established public work in AI for Laser Metal Deposition and Directed Energy Deposition at Exafuse in Germany.";
+const personDescription = profile.shortBio;
 
 const personJsonLd = {
   "@context": "https://schema.org",
@@ -23,7 +23,7 @@ const personJsonLd = {
   name: PERSON.name,
   description: personDescription,
   image: absoluteUrl(PERSON.image),
-  jobTitle: "Industrial AI and Decision Systems",
+  jobTitle: "Head of AI & R&D",
   worksFor: {
     "@type": "Organization",
     name: "Exafuse",
@@ -48,6 +48,10 @@ const profilePageJsonLd = {
 
 const fields = [
   ["Name", PERSON.name],
+  ["Current role", profile.role],
+  ["Research status", profile.research],
+  ["Teaching and advisory work", profile.externalWork],
+  ["Languages", profile.languages],
   ["Primary category", SITE.publicCategory],
   ["Primary promise", SITE.primaryPromise],
   ["Public LMD/DED context", "AI for LMD/DED at Exafuse"],
@@ -73,12 +77,13 @@ const fields = [
       </div>
       <h1 class="mt-6 text-5xl font-black leading-tight text-white md:text-6xl">{title}</h1>
       <p class="mt-6 text-xl leading-9 text-slate-200">
-        Manish Sharma works on industrial AI and decision systems for engineering processes, with established public work in AI for Laser Metal Deposition and Directed Energy Deposition at Exafuse in Germany.
+        {profile.shortBio}
       </p>
       <p class="mt-4 text-lg leading-8 text-slate-300">
         His public work focuses on process monitoring, machine vision, robotic workflows, industrial repair, RFQ intelligence, and decision support that remains connected to engineering evidence.
       </p>
       <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/about" class="btn btn-primary">Professional background</a>
         <a href="/thesis" class="btn btn-primary">Read the thesis</a>
         <a href="/domains/lmd-ded" class="btn btn-secondary">LMD / DED hub</a>
         <a href="/decision-map" class="btn btn-secondary">LMD Decision Map</a>

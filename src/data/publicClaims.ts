@@ -211,19 +211,6 @@ export const PUBLIC_CLAIMS: PublicClaim[] = [
     lastReviewed: "2026-07-07",
     allowedPages: ["/evidence", "/about"],
     limitation: "Paper parameter context; not a production parameter recommendation."
-  },
-  {
-    id: "breitbahn-ded-targets",
-    shortLabel: "BreitbahnDED targets",
-    value: "5-10 mm / >95%",
-    unit: "project targets",
-    fullText: "Public profile material describes broad-track DED targets including 5-10 mm tracks and a >95% powder-utilization target.",
-    sourceType: "public-profile",
-    sourceUrl: `${SITE.canonicalUrl}/profile/public-profile`,
-    confidence: "publicly-supported",
-    lastReviewed: "2026-07-07",
-    allowedPages: ["/evidence", "/about", "/profile/public-profile"],
-    limitation: "Project target, not a published production result claim."
   }
 ];
 
@@ -273,8 +260,6 @@ export function getClaimHumanExplanation(claim: PublicClaim) {
       return "The 500-record map gives AI agents and readers a broad orientation layer, while the site still distinguishes metadata from a formal literature review.";
     case "sharma-2018-lmd-parameters":
       return "The paper parameters anchor one public research reference point, but they are historical experiment context rather than a production recipe.";
-    case "breitbahn-ded-targets":
-      return "Public target language belongs in the profile layer because targets explain direction; they should not be repeated as achieved production results.";
     default:
       return "This claim is kept with source status and limits so readers can use it as public context without turning it into a universal capability claim.";
   }

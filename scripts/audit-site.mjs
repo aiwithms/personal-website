@@ -1888,8 +1888,18 @@ function auditPersonalContribution() {
   const registryPath = "src/data/exafusePublicProof.ts";
   const source = existsSync(join(root, registryPath)) ? read(registryPath) : "";
   const entriesSource = source.slice(source.indexOf("export const EXAFUSE_PUBLIC_PROOF"));
-  const nullContributions = entriesSource.match(/personalContribution:\s*null/g) ?? [];
-  if (nullContributions.length !== 4) findings.push(`${registryPath}: all four imported company cases must retain null personalContribution without public contribution evidence`);
+  const contributionEntries = [...entriesSource.matchAll(/id:\s*"([^"]+)"[\s\S]*?personalContribution:\s*(null|"[^"\n]+"),\s*personalContributionSource:\s*(null|\{[\s\S]*?\n    \})/g)];
+  const caseCount = (entriesSource.match(/\n    id:/g) ?? []).length;
+  if (contributionEntries.length !== caseCount || caseCount === 0) findings.push(`${registryPath}: each case must declare its personal contribution and source together`);
+  for (const [, id, contribution, contributionSource] of contributionEntries) {
+    if (contribution === "null") {
+      if (contributionSource !== "null") findings.push(`${registryPath}: ${id} has a source without a contribution`);
+      continue;
+    }
+    if (contributionSource === "null" || !contributionSource.includes('type: "self-reported"') || !/reviewed:\s*"\d{4}-\d{2}-\d{2}"/.test(contributionSource) || !/scope:\s*"[^"\n]+"/.test(contributionSource) || !contributionSource.includes(`url: "${canonicalSite}/about/#`)) {
+      findings.push(`${registryPath}: ${id} needs a dated, scoped personal account and public profile source`);
+    }
+  }
   const risky = /Manish Sharma[^.]{0,100}\b(designed|built|led|validated|delivered|manufactured)\b/gi;
   for (const { file, text } of scanFiles(["src"], [".astro", ".ts", ".tsx"])) {
     if (file === registryPath) continue;

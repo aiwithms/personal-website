@@ -40,6 +40,7 @@ Every rendered use includes the Exafuse name, a concise caption, and a direct pu
 
 ## Claim and contribution rules
 
+- Update, 23 September 2026: the Duisburg case now carries Manish's reviewed personal account of his 2024 monitoring/control and project-timeline responsibility, published at `/about/#duisburg`. Testing is excluded from his remit. The source is labelled self-reported; company production facts remain Exafuse-attributed. Other imported cases retain null contributions. Current production facts were checked against the live Exafuse case; the original media-import commit above is unchanged.
 - Metrics live in `src/data/exafusePublicProof.ts` and include a source path and limitation.
 - Existing public claim IDs remain in `src/data/publicClaims.ts` where a metric is used by a legacy claim surface.
 - Manish Sharma’s `personalContribution` is `null` for every imported company case unless a separate public contribution source exists.

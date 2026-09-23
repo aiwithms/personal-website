@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-07",
+  "generated_at": "2026-09-23",
   "source_base": "https://exafuse.de",
   "link_policy": "verified-public-exafuse-routes",
   "purpose": "Public Exafuse context signals used to strengthen Manish Sharma Lab without duplicating company service pages or treating process-monitoring content as certification.",
@@ -65,8 +65,16 @@
     {
       "code": "CS15",
       "title": "Duisburg Bridge Components with LMD",
-      "url": "https://exafuse.de/fallstudien/",
-      "source_route": "current Exafuse public case-study or contact route",
+      "url": "https://exafuse.de/fallstudien/duisburger-bruecke-lmd-fallstudie/",
+      "source_route": "verified Exafuse Duisburg case page",
+      "personal_contribution": {
+        "year": 2024,
+        "scope": "Process monitoring and control enabling unattended builds; coordination of the overall project timeline. Testing was outside his role.",
+        "verification": "self-reported by Manish Sharma",
+        "source": "https://manishsharma.dev/about/#duisburg",
+        "reviewed": "2026-09-23",
+        "limit": "No unattended-duration claim; company production and testing results remain separately attributed."
+      },
       "status": "current public Exafuse route",
       "claim_ids": [
         "cs15-bridge-components-750kg",

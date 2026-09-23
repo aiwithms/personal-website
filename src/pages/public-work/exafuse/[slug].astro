@@ -81,7 +81,7 @@ const jsonLd = [
     <header class="exafuse-proof-story__masthead site-shell section-y">
       <div class="exafuse-proof-story__masthead-grid">
         <div class="exafuse-proof-story__intro">
-          <p class="metric-label">Exafuse public case context</p>
+          <p class="metric-label">{proof.personalContribution ? "Selected project · Exafuse" : "Exafuse public case context"}</p>
           <h1>{proof.title}</h1>
           <p>{proof.problem}</p>
           <div class="exafuse-proof-story__masthead-actions">
@@ -95,9 +95,19 @@ const jsonLd = [
 
     <section class="exafuse-proof-story__ownership" aria-label="Ownership boundary">
       <div class="site-shell">
-        <p><strong>Exafuse owns the company case and commercial route.</strong> Manish Sharma Lab uses this public context to explain a decision pattern, not to claim project execution, engineering approval, or certification.</p>
+        <p><strong>Exafuse owns the company case and commercial route.</strong> {proof.personalContribution ? "The project results below come from Exafuse's published record. My personal contribution is described separately." : "Manish Sharma Lab uses this public context to explain a decision pattern, not to claim project execution, engineering approval, or certification."}</p>
       </div>
     </section>
+
+    {proof.personalContribution && proof.personalContributionSource && (
+      <section class="site-shell section-y" aria-labelledby="personal-role-title">
+        <p class="metric-label">Personal contribution · 2024</p>
+        <h2 id="personal-role-title" class="mt-3 text-3xl font-black text-white">Monitoring, control and the project timeline</h2>
+        <p class="mt-5 max-w-4xl text-lg leading-8 text-slate-200">{proof.personalContribution}</p>
+        <p class="mt-4 max-w-4xl text-sm leading-7 text-slate-400">Personal professional account, reviewed {proof.personalContributionSource.reviewed}. {proof.personalContributionSource.scope}</p>
+        <a href={proof.personalContributionSource.url} class="mt-5 inline-block text-base font-bold text-cyan-100 underline underline-offset-4">View my professional background</a>
+      </section>
+    )}
 
     <section class="site-shell section-y exafuse-proof-story__route" aria-labelledby="route-title">
       <div class="exafuse-proof-story__section-heading">

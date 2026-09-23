@@ -33,8 +33,13 @@ export type ExafusePublicProof = {
   mainDecisionLesson: string;
   whatItProves: string[];
   whatItDoesNotProve: string[];
-  personalContribution: null;
-  personalContributionSource: null;
+  personalContribution: string | null;
+  personalContributionSource: {
+    url: string;
+    type: "self-reported";
+    reviewed: string;
+    scope: string;
+  } | null;
   interpretationByManishSharmaLab: string;
   selectedMedia: {
     src: string;
@@ -88,11 +93,11 @@ export const EXAFUSE_PUBLIC_PROOF: ExafusePublicProof[] = [
         limitation: "A project count, not a claim that another structural component is approved."
       },
       {
-        label: "Single-node build",
+        label: "Knoten 10 build",
         value: "219",
         unit: "h",
         sourcePath: "src/data/contentData.js (CS15)",
-        limitation: "Project build-duration context only; it is not a productivity, scheduling, or cost commitment."
+        limitation: "Build duration for Knoten 10 only. It is not an unattended-duration claim or a future scheduling commitment."
       },
       {
         label: "Six-node robot path",
@@ -122,9 +127,14 @@ export const EXAFUSE_PUBLIC_PROOF: ExafusePublicProof[] = [
       "It does not replace structural engineering, inspection, certification, or customer acceptance.",
       "It does not make the public production figures a commitment for another geometry or material."
     ],
-    personalContribution: null,
-    personalContributionSource: null,
-    interpretationByManishSharmaLab: "This public case context is used here to explain an evidence-aware decision pattern. It is not a statement of personal ownership of Exafuse's project execution.",
+    personalContribution: "In 2024, I led process monitoring and control work that enabled unattended builds for Exafuse's Duisburg bridge-component project, and coordinated the overall project timeline. Testing was outside my role.",
+    personalContributionSource: {
+      url: "https://manishsharma.dev/about/#duisburg",
+      type: "self-reported",
+      reviewed: "2026-09-23",
+      scope: "Personal account of monitoring, process control and project scheduling. Company production figures and external testing remain separately attributed."
+    },
+    interpretationByManishSharmaLab: "This project connected process monitoring and control with the practical demands of long-duration manufacturing. The engineering lesson is to design the control system around the build, the available measurements and a clear response to process changes, while keeping physical testing and acceptance separate.",
     selectedMedia: {
       src: "/media/exafuse/bridge/duisburg-bridge-node-960.jpg",
       avifSrcset: "/media/exafuse/bridge/duisburg-bridge-node-480.avif 480w, /media/exafuse/bridge/duisburg-bridge-node-768.avif 768w, /media/exafuse/bridge/duisburg-bridge-node-960.avif 960w",
@@ -137,7 +147,7 @@ export const EXAFUSE_PUBLIC_PROOF: ExafusePublicProof[] = [
     captions: "Large structural LMD proof component from the Duisburg bridge story.",
     altText: "Large LMD-manufactured bridge node component from the Duisburg project",
     imageCredit: "Exafuse",
-    lastReviewed: "2026-07-19"
+    lastReviewed: "2026-09-23"
   },
   {
     id: "cs10-nobufil-extrusion-screw",

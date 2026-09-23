@@ -12,6 +12,10 @@ Manish Sharma - Industrial AI & Decision Systems.
 
 Current role: Head of AI & R&D at Exafuse since January 2024, following Machine Learning and Systems Engineer from January 2020 to December 2023. He leads AM work from sourcing and CAD through process development, monitoring, quality checks and shipment, with shared operations and quotation responsibilities.
 
+Selected delivery, 2024: led process monitoring and control work enabling unattended builds for Exafuse's Duisburg bridge components, and coordinated the overall project timeline. Testing was outside his role. This personal scope and outcome are self-reported. Exafuse's public case separately reports more than 750 kg of LMD components in total, including six structural nodes and handrail elements. Knoten 10's published 219-hour build duration does not establish unattended operating hours. Company source: https://exafuse.de/en/case-studies/duisburg-bridge-lmd-case-study/
+
+Integrated system development: built an LMD control system spanning modelling, simulation, path planning, monitoring and live control with cameras/sensors, software development and data handling. This is part of his doctoral thesis work. Do not infer every module was used for the 2024 bridge project or that the full research system has production qualification. Website development: built Exafuse's website, with public services, technical case studies and enquiry-preparation tools. These authorship/contribution claims are self-reported.
+
 Research leadership: leads Exafuse's contribution to BreitbahnDED and helped develop and write the project proposal; collaborates with Ruhr University Bochum on new research proposals.
 
 External activities: recurring invited guest lectures at ISRO in India in a personal capacity; contributions to WAAM machine development at ISRO for rocket-nozzle manufacturing; additive-manufacturing advice to ISRO teams, Tata Steel and BHEL Haridwar.

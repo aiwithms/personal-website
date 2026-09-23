@@ -26,6 +26,9 @@ This site avoids confidential customer, employer, and private project data.
 | Method | Sense -> Model -> Decide -> Verify |
 | Current LMD/DED proving ground | AI for LMD/DED at Exafuse |
 | Company connection | Exafuse |
+| Selected delivery | Duisburg bridge components, 2024: monitoring/control enabling unattended builds and coordination of the overall project timeline; testing outside his remit |
+| System development | Built an integrated LMD control system covering modelling, simulation, path planning, camera/sensor monitoring, software, data and live control, forming part of his doctoral thesis |
+| Public software delivery | Built Exafuse's website |
 | Research responsibility | Company-side lead and proposal contributor for BreitbahnDED; new research proposals with Ruhr University Bochum |
 | PhD status | Research completed; thesis at submission stage at RUB; degree not yet awarded |
 | Invited teaching and advice | Recurring ISRO guest lectures in a personal capacity; AM advice to ISRO teams, Tata Steel and BHEL Haridwar |

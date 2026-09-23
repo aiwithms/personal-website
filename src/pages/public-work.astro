@@ -137,9 +137,16 @@ const jsonLd = {
       <h2 id="professional-work-title" class="mt-3 text-3xl font-black text-white">Manufacturing leadership, research and collaboration</h2>
       <p class="mt-5 max-w-4xl text-lg leading-8 text-slate-300">{profile.shortBio}</p>
       <div class="mt-8 grid gap-6 md:grid-cols-3">
+        <article class="ordered-card p-6"><h3 class="text-xl font-bold text-white">Duisburg bridge components · 2024</h3><p class="mt-4 text-base leading-7 text-slate-300">{profile.selectedDelivery}</p><a href="/public-work/exafuse/duisburg-bridge-components" class="mt-5 inline-block font-bold text-cyan-100 underline underline-offset-4">Read the project and my role</a></article>
+        <article class="ordered-card p-6"><h3 class="text-xl font-bold text-white">Integrated LMD control system</h3><p class="mt-4 text-base leading-7 text-slate-300">{profile.integratedSystem}</p></article>
         <article class="ordered-card p-6"><h3 class="text-xl font-bold text-white">BreitbahnDED</h3><p class="mt-4 text-base leading-7 text-slate-300">Company-side project leadership and proposal development, connecting manufacturing requirements with university research.</p></article>
         <article class="ordered-card p-6"><h3 class="text-xl font-bold text-white">ISRO collaboration</h3><p class="mt-4 text-base leading-7 text-slate-300">Personally invited guest lectures, additive-manufacturing advice and contributions to WAAM machine development for rocket-nozzle manufacturing.</p></article>
         <article class="ordered-card p-6"><h3 class="text-xl font-bold text-white">Industry knowledge exchange</h3><p class="mt-4 text-base leading-7 text-slate-300">Additive-manufacturing advice to Tata Steel and BHEL Haridwar, and technical talks at Outokumpu and Data Science Ruhrgebiet.</p></article>
+      </div>
+      <div id="website-development" class="mt-8 border-t border-white/15 pt-7">
+        <h3 class="text-xl font-bold text-white">Exafuse website development</h3>
+        <p class="mt-4 max-w-4xl text-base leading-7 text-slate-300">{profile.websiteDelivery}</p>
+        <a href={LINKS.exafuse} class="mt-5 inline-block font-bold text-cyan-100 underline underline-offset-4" target="_blank" rel="noreferrer">Visit Exafuse</a>
       </div>
       <a href="/about" class="btn btn-secondary mt-8">View responsibilities and background</a>
     </div>
@@ -168,7 +175,7 @@ const jsonLd = {
       <SectionHeading
         eyebrow="Documented examples"
         title="Company-owned cases used as source-bound industrial context"
-        description="Each story keeps the real industrial problem, exact public source, and limitation together. Manish Sharma Lab uses them to explain decision patterns, not to claim company project ownership."
+        description="Each story keeps the industrial problem, public source and scope together. The Duisburg page also includes my personal account of monitoring, control and timeline responsibility. Company project results remain attributed to Exafuse."
       />
       <div class="public-work-index__case-grid public-work-index__case-grid--proof-led mt-10">
         {EXAFUSE_PUBLIC_PROOF.map((item, index) => {

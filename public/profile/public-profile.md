@@ -11,6 +11,9 @@ Public identity facts for Manish Sharma and Manish Sharma Lab.
 | Primary promise | AI for industrial decisions that need evidence, not just predictions |
 | Company connection | Exafuse, Germany |
 | Current role | Head of AI & R&D at Exafuse, since January 2024 |
+| Selected delivery | Duisburg bridge components, 2024: led monitoring/control enabling unattended builds and coordinated the overall project timeline; testing was outside his role |
+| Integrated system | Built an LMD control system spanning models, simulation, path planning, cameras/sensors, software, data and live control; forms part of his doctoral thesis |
+| Website development | Built Exafuse's website |
 | Project responsibility | AM delivery from sourcing and CAD through processing, monitoring, quality checks and shipment; quotations and shared operations |
 | Research leadership | Leads Exafuse's contribution to BreitbahnDED and helped develop its proposal; works with RUB on new research proposals |
 | PhD | Research completed; thesis at submission stage at Ruhr University Bochum; degree not yet awarded |

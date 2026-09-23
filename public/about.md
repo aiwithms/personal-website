@@ -37,6 +37,9 @@ This site avoids confidential employer, customer, and private project data. Publ
 Profile reviewed with Manish on 23 September 2026. Current duties and external collaborations are self-reported professional experience.
 
 - Exafuse: Head of AI & R&D since January 2024; Machine Learning and Systems Engineer from January 2020 to December 2023.
+- Duisburg bridge components, 2024: led process monitoring and control work that enabled unattended builds, and coordinated the overall project timeline. Testing was outside his role.
+- Built an integrated LMD control system spanning modelling, simulation, path planning, camera/sensor monitoring, software, data and live control. This work forms part of his doctoral thesis; not every module is asserted to have been used on the bridge project.
+- Built Exafuse's website, which presents industrial services, case studies and enquiry-preparation tools.
 - BreitbahnDED: leads Exafuse's contribution and helped develop and write the project proposal; also works with Ruhr University Bochum on new research proposals.
 - ISRO, India: recurring invited guest lectures in a personal capacity, additive-manufacturing advice and contributions to WAAM machine development for rocket-nozzle manufacturing.
 - Tata Steel and BHEL Haridwar: additive-manufacturing advice to technical teams.
@@ -46,7 +49,7 @@ Profile reviewed with Manish on 23 September 2026. Current duties and external c
 - M.Sc. Lasers and Photonics, Ruhr University Bochum, 2020; B.Tech. Electrical Engineering, Rajasthan Technical University, 2016.
 - English C1; German B1, studying toward B2 with completion targeted for December 2026; Hindi native.
 
-The external activities describe Manish's contributions and do not imply organizational endorsement, a staff appointment or qualified rocket-hardware deployment. Company case-study metrics are attributed to Exafuse separately.
+The external activities describe Manish's contributions and do not imply organizational endorsement, a staff appointment or qualified rocket-hardware deployment. [Exafuse's Duisburg case study](https://exafuse.de/en/case-studies/duisburg-bridge-lmd-case-study/) reports more than 750 kg of components in total, including six structural nodes and handrail elements. These are company project results; Manish's personal role and unattended-build outcome are his professional account. The reported 219-hour Knoten 10 build is not an unattended-duration claim.
 
 ## Current Focus
 

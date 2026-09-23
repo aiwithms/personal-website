@@ -16,6 +16,10 @@ Manish Sharma builds evidence-aware AI decision systems. His deepest current pub
 
 ## Professional background
 
+Selected delivery: in 2024, he led process monitoring and control work enabling unattended builds for Exafuse's Duisburg bridge components, and coordinated the overall project timeline. Testing was outside his role. Personal responsibility and unattended operation are self-reported; Exafuse's published case separately reports more than 750 kg of components, six structural nodes and handrail elements. Build-duration figures do not establish unattended operating hours.
+
+He built an integrated LMD control system covering modelling, simulation, path planning, camera/sensor monitoring, software, data and live control, forming part of his doctoral thesis. Do not infer that every module was used on the bridge project. He also built Exafuse's public website.
+
 Manish is Head of AI & R&D at Exafuse. He leads AM projects across sourcing, CAD, process development, monitoring, quality checks and shipment, and shares operational responsibilities including quotations. He leads Exafuse's contribution to BreitbahnDED and helped develop the proposal; he also works with Ruhr University Bochum on new proposals.
 
 He gives recurring invited ISRO guest lectures in a personal capacity, contributes to WAAM machine development at ISRO for rocket-nozzle manufacturing, and advises AM teams at ISRO, Tata Steel and BHEL Haridwar. His LMD talks include Outokumpu's Metal Powder Event in Krefeld (25 September 2025) and Data Science Ruhrgebiet in Bochum (2021).

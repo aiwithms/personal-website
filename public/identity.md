@@ -30,8 +30,8 @@ This site avoids confidential customer, employer, and private project data.
 | System development | Built an integrated LMD control system covering modelling, simulation, path planning, camera/sensor monitoring, software, data and live control, forming part of his doctoral thesis |
 | Public software delivery | Built Exafuse's website |
 | Research responsibility | Company-side lead and proposal contributor for BreitbahnDED; new research proposals with Ruhr University Bochum |
-| PhD status | Research completed; thesis at submission stage at RUB; degree not yet awarded |
-| Invited teaching and advice | Recurring ISRO guest lectures in a personal capacity; AM advice to ISRO teams, Tata Steel and BHEL Haridwar |
+| PhD status | PhD expected in 2027; research completed, thesis at submission stage at Ruhr University Bochum |
+| Invited teaching and advice | Recurring guest lectures at the Indian Space Research Organisation (ISRO) in a personal capacity; AM advice to ISRO teams, Tata Steel and Bharat Heavy Electricals Limited (BHEL), Haridwar |
 | WAAM contribution | Involved in WAAM machine development at ISRO for rocket-nozzle manufacturing |
 | Invited talks | Outokumpu Metal Powder Event, Krefeld, 25 September 2025; Data Science Ruhrgebiet, Bochum, 2021 |
 | Languages | English C1; German B1, B2 completion targeted for December 2026; Hindi native |

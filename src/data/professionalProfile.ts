@@ -7,9 +7,9 @@ export const PROFESSIONAL_PROFILE = {
   reviewed: "2026-09-23",
   role: "Head of AI & R&D at Exafuse",
   shortBio: "Manish Sharma is Head of AI & R&D at Exafuse. He leads additive-manufacturing projects across process development, sensing, software, quality checks and delivery.",
-  research: "PhD research completed; thesis at submission stage at Ruhr University Bochum. The degree has not yet been awarded.",
+  research: "PhD at Ruhr University Bochum expected in 2027; research completed, thesis at the submission stage.",
   languages: "English C1; German B1, studying toward B2 with completion targeted for December 2026; Hindi native.",
-  externalWork: "Recurring invited guest lectures at ISRO in India in a personal capacity; contributions to WAAM machine development at ISRO for rocket-nozzle manufacturing; additive-manufacturing advice to ISRO teams, Tata Steel and BHEL Haridwar.",
+  externalWork: "Recurring invited guest lectures at the Indian Space Research Organisation (ISRO) in India in a personal capacity; contributions to WAAM machine development at ISRO for rocket-nozzle manufacturing; additive-manufacturing advice to ISRO teams, Tata Steel and Bharat Heavy Electricals Limited (BHEL), Haridwar.",
   selectedDelivery: "Duisburg bridge components, 2024: led process monitoring and control work that enabled unattended builds and coordinated the overall project timeline. Testing was outside his role.",
   integratedSystem: "Built an integrated LMD control system spanning modelling, simulation, path planning, camera and sensor monitoring, software, data processing and live control. This work forms part of his doctoral thesis.",
   websiteDelivery: "Built Exafuse's website, presenting industrial services, technical case studies and tools for preparing engineering enquiries.",
@@ -26,8 +26,8 @@ export const PROFESSIONAL_PROFILE = {
     { label: "Delivered software", title: "Exafuse's website", role: "Website development", text: "I built Exafuse's website. It brings industrial services, technical case studies and enquiry-preparation tools into a public interface for engineering customers.", href: "/public-work#website-development", link: "View the delivered website" }
   ],
   collaborations: [
-    { title: "ISRO, India", label: "Invited teaching and engineering contributions", text: "I give recurring invited guest lectures at ISRO in a personal capacity. I also advise ISRO teams on additive manufacturing and contribute to WAAM machine development for rocket-nozzle manufacturing." },
-    { title: "Tata Steel and BHEL Haridwar", label: "Technical advisory work", text: "I advise teams at Tata Steel and BHEL Haridwar on additive manufacturing, drawing on my experience in process development, monitoring and manufacturing workflows." }
+    { title: "Indian Space Research Organisation (ISRO), India", label: "Invited teaching and engineering contributions", text: "I give recurring invited guest lectures at ISRO in a personal capacity. I also advise ISRO teams on additive manufacturing and contribute to WAAM machine development for rocket-nozzle manufacturing." },
+    { title: "Tata Steel and Bharat Heavy Electricals Limited (BHEL), Haridwar", label: "Technical advisory work", text: "I advise teams at Tata Steel and Bharat Heavy Electricals Limited (BHEL), Haridwar on additive manufacturing, drawing on my experience in process development, monitoring and manufacturing workflows." }
   ],
   timeline: [
     { period: "Jan 2024 – Present", role: "Head of AI & R&D", org: "Exafuse, Bochum", text: "I lead R&D and manufacturing projects from sourcing and CAD through processing, monitoring, quality checks and shipment. In our small team, I share operational responsibility and prepare quotations and cost comparisons. I have been involved since the company's inception." },
@@ -35,7 +35,7 @@ export const PROFESSIONAL_PROFILE = {
     { period: "Dec 2017 – Jun 2021", role: "University research roles", org: "Ruhr University Bochum", text: "Research Assistant from December 2017 to December 2019, followed by Wissenschaftlicher Mitarbeiter from January 2020 to June 2021. Research covered LMD vision systems, machine learning and lattice-structure deposition." }
   ],
   education: [
-    { title: "External PhD — submission stage", org: "Ruhr University Bochum", text: "Research work completed in vision-based LMD process control with Artificial Intelligence. Thesis at submission stage; degree not yet awarded. Since March 2020." },
+    { title: "External PhD — expected 2027", org: "Ruhr University Bochum", text: "Research work completed in vision-based LMD process control with Artificial Intelligence. Thesis at submission stage; PhD expected in 2027. Since March 2020." },
     { title: "M.Sc. Lasers and Photonics", org: "Ruhr University Bochum", text: "April 2017 – January 2020. Faculty Prize / Best Student recognition. Thesis on machine-learning approaches in LMD lattice structures." },
     { title: "B.Tech. Electrical Engineering", org: "Rajasthan Technical University, India", text: "May 2012 – June 2016. Gold Medal / first-rank academic recognition." }
   ],

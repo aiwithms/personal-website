@@ -7,11 +7,11 @@ import {
   REVIEW_PHASE_OPTIONS,
   REVIEW_ROLE_OPTIONS,
   WORN_SHAFT_SCENARIO,
-  createDecisionBrief,
-  formatReviewContextFacts,
   getCockpitPreset
 } from "../lib/decisionBrief";
-import type { ReviewPhaseId, ReviewRoleId } from "../lib/decisionBrief";
+import { createEngineeringBrief, emptyProblem, problemFromPreset, updateEngineeringDetail } from "../lib/engineeringEnquiry";
+import type { EngineeringInput, ProblemField } from "../lib/engineeringEnquiry";
+import EngineeringBriefPanel from "./EngineeringBriefPanel";
 
 const DEFAULT_EXAFUSE_URL = "/contact";
 const DEFAULT_EXAFUSE_LABEL = "Contact routes";
@@ -63,15 +63,9 @@ const situations = [
 ] as const;
 
 const infoOptions = [
-  ["materialKnown", "Material known?"],
-  ["drawingAvailable", "Drawing/CAD available?"],
-  ["photosAvailable", "Photos available?"],
-  ["damageDepthKnown", "Damage depth known?"],
-  ["toleranceKnown", "Tolerance known?"],
-  ["operatingKnown", "Operating conditions known?"],
-  ["inspectionKnown", "Inspection requirement known?"],
-  ["dimensionsKnown", "Dimensions / approximate mass known?"],
-  ["timelineKnown", "Quantity / target date known?"]
+  ["drawingAvailable", "Drawing / CAD available"],
+  ["photosAvailable", "Photos available"],
+  ["measurementsAvailable", "Measurement / inspection records available"]
 ] as const;
 
 const riskOptions = [
@@ -82,10 +76,6 @@ const riskOptions = [
   ["noInspection", "No inspection path?"]
 ] as const;
 
-type SituationId = (typeof situations)[number]["id"];
-type InfoId = (typeof infoOptions)[number][0];
-type RiskId = (typeof riskOptions)[number][0];
-
 interface CockpitProps {
   exafuseUrl?: string;
   exafuseLabel?: string;
@@ -93,42 +83,12 @@ interface CockpitProps {
   defaultMode?: "example" | "blank";
 }
 
-interface CockpitState {
-  situation: SituationId;
-  info: InfoId[];
-  risk: RiskId[];
-  role: ReviewRoleId | null;
-  phase: ReviewPhaseId | null;
-}
-
+type CockpitState = EngineeringInput;
 const emptyState: CockpitState = {
-  situation: "repair",
-  info: [],
-  risk: [],
-  role: null,
-  phase: null
+  situation: "repair", details: { ...emptyProblem }, materialConfirmed: false,
+  info: [], risk: [], role: null, phase: null
 };
-
-const wornShaftPreset = getCockpitPreset("worn-shaft") ?? COCKPIT_PRESETS[0];
-
-function stateFromPreset(presetId: string): CockpitState {
-  const preset = getCockpitPreset(presetId) ?? wornShaftPreset;
-  return {
-    situation: preset.state.situation as SituationId,
-    info: [...preset.state.info] as InfoId[],
-    risk: [...preset.state.risk] as RiskId[],
-    role: null,
-    phase: null
-  };
-}
-
-function labelForInfo(id: InfoId) {
-  return infoOptions.find(([optionId]) => optionId === id)?.[1].replace("?", "") ?? id;
-}
-
-function labelForRisk(id: RiskId) {
-  return riskOptions.find(([optionId]) => optionId === id)?.[1].replace("?", "") ?? id;
-}
+const stateFromPreset = problemFromPreset;
 
 export default function LmdDecisionCockpit({
   exafuseUrl = DEFAULT_EXAFUSE_URL,
@@ -144,7 +104,9 @@ export default function LmdDecisionCockpit({
   useEffect(() => {
     const loadHashPreset = () => {
       const match = window.location.hash.match(/preset=([^&]+)/);
-      const preset = match ? getCockpitPreset(decodeURIComponent(match[1])) : undefined;
+      let preset;
+      try { preset = match ? getCockpitPreset(decodeURIComponent(match[1])) : undefined; }
+      catch { return; }
       if (!preset) return;
       setState(stateFromPreset(preset.id));
       setActivePresetId(preset.id);
@@ -157,100 +119,13 @@ export default function LmdDecisionCockpit({
 
   const result = useMemo(() => {
     const situation = situations.find((item) => item.id === state.situation) ?? situations[0];
-    const knownTechnicalFacts = infoOptions
-      .filter(([id]) => state.info.includes(id))
-      .map(([id]) => labelForInfo(id).toLowerCase());
-    const contextFacts = formatReviewContextFacts(state.role, state.phase);
-    const known = knownTechnicalFacts.length
-      ? [...contextFacts, ...knownTechnicalFacts]
-      : ["No concrete technical facts selected yet.", ...contextFacts];
-    const missing = infoOptions
-      .filter(([id]) => !state.info.includes(id))
-      .map(([id]) => labelForInfo(id).toLowerCase());
-    const selectedRisks = riskOptions
-      .filter(([id]) => state.risk.includes(id))
-      .map(([id]) => labelForRisk(id).toLowerCase());
+    const brief = createEngineeringBrief(state);
+    return { brief, decisionSignal: brief.preliminaryRoute, reviewReadiness: brief.reviewReadiness, toolRoute: situation.route };
+  }, [state]);
 
-    const riskFlags = selectedRisks.length
-      ? selectedRisks.map((risk) => `${risk} can change the route or evidence burden.`)
-      : ["No high-risk flag selected yet; missing data may still change the decision."];
-
-    const evidenceNeeded = [
-      state.info.includes("inspectionKnown")
-        ? "Defined inspection requirement"
-        : "Inspection requirement to be defined",
-      state.info.includes("materialKnown") && !state.risk.includes("unknownMaterial")
-        ? "Confirmed material grade/source"
-        : "Material grade and compatibility evidence",
-      state.info.includes("toleranceKnown") || state.risk.includes("tightTolerance")
-        ? "Dimensional inspection and post-machining plan"
-        : "Tolerance target and finishing route",
-      state.info.includes("dimensionsKnown")
-        ? "Dimensions / approximate mass context"
-        : "Dimensions / approximate mass to be defined",
-      state.info.includes("timelineKnown")
-        ? "Quantity / target date context"
-        : "Quantity / target date to be defined",
-      state.situation === "monitoring"
-        ? "Correlation between process signal and inspection result"
-        : "Part-specific feasibility review"
-    ];
-
-    const reviewReadiness = state.risk.includes("safetyCritical") || state.risk.includes("noInspection")
-      ? "Requires formal inspection / qualification planning"
-      : missing.length > 4
-        ? "Not enough information"
-        : missing.length > 2
-          ? "Ready for preliminary discussion"
-          : "Ready for expert review";
-
-    const decisionSignal = `${situation.label}: start with ${situation.tool}.`;
-    const activePreset = activePresetId ? getCockpitPreset(activePresetId) : undefined;
-    const brief =
-      activePreset?.brief ??
-      createDecisionBrief({
-        situation: decisionSignal,
-        component: "Component not specified in cockpit selections.",
-        goal: situation.action,
-        material: state.risk.includes("unknownMaterial")
-          ? "Unknown material flagged."
-          : state.info.includes("materialKnown")
-            ? "Material marked known; exact grade still needs review context."
-            : "Material not yet specified.",
-        geometryOrSize: state.info.includes("drawingAvailable")
-          ? "Drawing/CAD marked available."
-          : "Geometry, CAD, or drawing not yet available.",
-        damageOrBuildArea:
-          state.situation === "repair"
-            ? "Damage or wear area needs depth, extent, access, and finishing context."
-            : state.situation === "cladding"
-              ? "Surface function, build area, and finishing route need definition."
-              : "Build area or feature context needs definition.",
-        availableData: known,
-        knownFacts: known,
-        missingInformation: missing,
-        riskFlags,
-        evidenceNeeded,
-        preliminaryRoute: decisionSignal,
-        reviewReadiness,
-        nextAction: situation.action,
-        exafuseReviewRoute: `${exafuseLabel}. Exafuse performs commercial and technical review after the question is structured.`,
-        generatedFrom: "LMD Decision Cockpit"
-      });
-
-    return {
-      situation,
-      known,
-      missing,
-      riskFlags,
-      evidenceNeeded,
-      reviewReadiness,
-      decisionSignal,
-      nextAction: situation.action,
-      toolRoute: situation.route,
-      brief
-    };
-  }, [activePresetId, exafuseLabel, state]);
+  function updateDetail(key: ProblemField, value: string) {
+    updateState(updateEngineeringDetail(state, key, value));
+  }
 
   function loadPreset(id: string) {
     const preset = getCockpitPreset(id);
@@ -301,7 +176,7 @@ export default function LmdDecisionCockpit({
             Start with a rough LMD question. Leave with a brief.
           </h2>
           <p className="mt-4 text-sm leading-6 text-slate-300 md:text-base md:leading-7">
-            Pick the situation, mark what is known, then expose missing information, risk flags, evidence needed, and an Exafuse review route. Inputs stay in this browser session only.
+            Describe the part, the problem and the constraints. Get the questions to resolve first, a route for technical review and an editable enquiry draft. Inputs stay in this browser session only.
           </p>
           {!compact && (
             <div className="cockpit-output-modes mt-4 flex flex-wrap gap-2">
@@ -317,9 +192,9 @@ export default function LmdDecisionCockpit({
                 <button
                   type="button"
                   onClick={() => loadPreset("worn-shaft")}
-                  aria-pressed={Boolean(activePresetId)}
+                  aria-pressed={Boolean(state.exampleId)}
                   aria-label="Show example: worn-shaft example"
-                  className={`btn min-h-10 px-4 py-2 text-sm ${activePresetId ? "btn-primary" : "btn-secondary"}`}
+                  className={`btn min-h-10 px-4 py-2 text-sm ${state.exampleId ? "btn-primary" : "btn-secondary"}`}
                 >
                   Show example
                 </button>
@@ -329,9 +204,9 @@ export default function LmdDecisionCockpit({
                 <button
                   type="button"
                   onClick={startBlank}
-                  aria-pressed={!activePresetId}
+                  aria-pressed={!state.exampleId}
                   aria-label="Start blank: LMD Decision Brief"
-                  className={`btn min-h-10 px-4 py-2 text-sm ${activePresetId ? "btn-secondary" : "btn-primary"}`}
+                  className={`btn min-h-10 px-4 py-2 text-sm ${state.exampleId ? "btn-secondary" : "btn-primary"}`}
                 >
                   {compact ? "Start your own brief" : "Start blank"}
                 </button>
@@ -342,9 +217,11 @@ export default function LmdDecisionCockpit({
               <p className="mt-3 text-sm font-semibold leading-6 text-cyan-50">
                 Example scenario: {activeExampleText}
               </p>
+            ) : state.exampleId ? (
+              <p className="mt-3 text-sm font-semibold leading-6 text-cyan-50">Modified example: sample facts remain in this brief. Replace them before sharing, or start blank for a real enquiry.</p>
             ) : (
               <p className="mt-3 text-sm font-semibold leading-6 text-slate-300">
-                Blank mode: make selections below. The brief updates in this browser session.
+                Blank mode: describe your engineering problem below. The brief updates in this browser session.
               </p>
             )}
             {compact && !controlsExpanded && (
@@ -379,9 +256,64 @@ export default function LmdDecisionCockpit({
               </ul>
             </fieldset>
 
+            <fieldset className="grid gap-4">
+              <legend className="metric-label mb-3">2. Describe the engineering problem</legend>
+              <ProblemInput field="component" label="Component or process" placeholder="e.g. Drive shaft, worn bearing seat" state={state} onChange={updateDetail} />
+              <ProblemInput field="goal" label="What needs to change or be decided?" placeholder="e.g. Restore the seat and compare repair with replacement" state={state} onChange={updateDetail} multiline />
+              <ProblemInput field="material" label="Material grade and condition" placeholder="e.g. 42CrMo4, quenched and tempered; or leave unknown" state={state} onChange={updateDetail} />
+              <Toggle label="Exact grade confirmed from a drawing, certificate or test" checked={state.materialConfirmed} onChange={(checked) => updateState({ ...state, materialConfirmed: checked })} />
+              <ProblemInput field="geometry" label="Dimensions and access" placeholder="Include units, feature size and access restrictions" state={state} onChange={updateDetail} multiline />
+              {state.situation === "monitoring" ?
+                <ProblemInput field="signals" label="Signals and observed anomaly" placeholder="Which sensor, when, which track or layer, and what changed?" state={state} onChange={updateDetail} multiline /> :
+                <ProblemInput field="scope" label={state.situation === "repair" ? "Damage depth and extent" : "Build or coating area and function"} placeholder={state.situation === "repair" ? "Extent, measured depth, cracks and previous repairs" : "Feature or coating area, thickness and intended function"} state={state} onChange={updateDetail} multiline />}
+            </fieldset>
+
+            <details className="ordered-card p-4" open>
+              <summary className="min-h-11 cursor-pointer text-sm font-black text-white">3. Define requirements and supporting evidence</summary>
+              <div className="mt-4 grid gap-4 border-t border-white/10 pt-4">
+                <ProblemInput field="service" label={state.situation === "monitoring" ? "Machine and operating conditions" : "Service conditions"} placeholder={state.situation === "monitoring" ? "Machine, process settings, baseline and acquisition conditions" : "Loads, temperature, wear or corrosion exposure"} state={state} onChange={updateDetail} multiline />
+                <ProblemInput field="requirements" label="Tolerances and surface targets" placeholder="Numerical targets, machining allowance and finishing access" state={state} onChange={updateDetail} multiline />
+                <ProblemInput field="inspection" label="Inspection and acceptance requirements" placeholder="Required checks, acceptance criteria and responsible reviewer" state={state} onChange={updateDetail} multiline />
+                <ProblemInput field="delivery" label="Quantity, target date and downtime" placeholder="e.g. 2 parts, needed by 30 November; two-week shutdown" state={state} onChange={updateDetail} />
+                <fieldset>
+                  <legend className="text-sm font-bold text-white">Files available to share separately</legend>
+                  <p className="mt-1 text-sm leading-6 text-slate-400">No files are uploaded here. Mark only what you can include with your enquiry.</p>
+                  <div className="mt-3 grid gap-2">
+                    {infoOptions.map(([id, label]) => <Toggle key={id} label={label} checked={state.info.includes(id)} onChange={(checked) => updateState({ ...state, info: checked ? [...state.info, id] : state.info.filter((item) => item !== id) })} />)}
+                  </div>
+                </fieldset>
+              </div>
+            </details>
+
+            <details className="ordered-card p-4">
+              <summary className="flex min-h-11 items-center justify-between gap-3 text-sm font-black text-white">
+                <span>4. What is the risk?</span>
+                <span className="chip chip--amber">{state.risk.length}/{riskOptions.length} flagged</span>
+              </summary>
+              <fieldset className="mt-4 border-t border-white/10 pt-4">
+                <legend className="sr-only">What is the risk?</legend>
+                <div className="grid gap-2 sm:grid-cols-2">
+                  {riskOptions.map(([id, label]) => (
+                    <Toggle
+                      key={id}
+                      label={label}
+                      checked={state.risk.includes(id)}
+                      onChange={(checked) =>
+                        updateState({
+                          ...state,
+                          risk: checked ? [...state.risk, id] : state.risk.filter((item) => item !== id)
+                        })
+                      }
+                      risk
+                    />
+                  ))}
+                </div>
+              </fieldset>
+            </details>
+
             <details className="ordered-card p-4" data-review-context>
               <summary className="flex min-h-11 items-center justify-between gap-3 text-sm font-black text-white">
-                <span>2. What is the review context? <span className="font-semibold text-slate-400">Optional</span></span>
+                <span>5. What is the review context? <span className="font-semibold text-slate-400">Optional</span></span>
                 <span className="chip chip--steel">{Number(Boolean(state.role)) + Number(Boolean(state.phase))}/2 marked</span>
               </summary>
               <div className="mt-4 grid gap-5 border-t border-white/10 pt-4">
@@ -426,57 +358,6 @@ export default function LmdDecisionCockpit({
                   </button>
                 )}
               </div>
-            </details>
-
-            <details className="ordered-card p-4">
-              <summary className="flex min-h-11 items-center justify-between gap-3 text-sm font-black text-white">
-                <span>3. What information is available?</span>
-                <span className="chip chip--steel">{state.info.length}/{infoOptions.length} marked</span>
-              </summary>
-              <fieldset className="mt-4 border-t border-white/10 pt-4">
-                <legend className="sr-only">What information is available?</legend>
-                <div className="grid gap-2 sm:grid-cols-2">
-                  {infoOptions.map(([id, label]) => (
-                    <Toggle
-                      key={id}
-                      label={label}
-                      checked={state.info.includes(id)}
-                      onChange={(checked) =>
-                        updateState({
-                          ...state,
-                          info: checked ? [...state.info, id] : state.info.filter((item) => item !== id)
-                        })
-                      }
-                    />
-                  ))}
-                </div>
-              </fieldset>
-            </details>
-
-            <details className="ordered-card p-4">
-              <summary className="flex min-h-11 items-center justify-between gap-3 text-sm font-black text-white">
-                <span>4. What is the risk?</span>
-                <span className="chip chip--amber">{state.risk.length}/{riskOptions.length} flagged</span>
-              </summary>
-              <fieldset className="mt-4 border-t border-white/10 pt-4">
-                <legend className="sr-only">What is the risk?</legend>
-                <div className="grid gap-2 sm:grid-cols-2">
-                  {riskOptions.map(([id, label]) => (
-                    <Toggle
-                      key={id}
-                      label={label}
-                      checked={state.risk.includes(id)}
-                      onChange={(checked) =>
-                        updateState({
-                          ...state,
-                          risk: checked ? [...state.risk, id] : state.risk.filter((item) => item !== id)
-                        })
-                      }
-                      risk
-                    />
-                  ))}
-                </div>
-              </fieldset>
             </details>
 
             {!compact && (
@@ -530,20 +411,16 @@ export default function LmdDecisionCockpit({
         <aside className="ordered-card tool-output-rail h-fit p-5 md:p-6" aria-label={OUTPUT_BOUNDARY_LABELS.join(" / ")}>
           <div className="tool-pane-heading mb-5">
             <p className="metric-label">Output pane</p>
-            <p className="tool-pane-title">Standard decision brief</p>
-            <p className="tool-pane-copy">The result updates locally as the situation, evidence, and risk controls change.</p>
+            <p className="tool-pane-title">Engineering review brief</p>
+            <p className="tool-pane-copy">Your entered facts and open questions stay together in the copied brief and email draft.</p>
           </div>
-          <ResultSection label="Decision signal" value={result.decisionSignal} large />
-          <DecisionBriefCard
+          {compact && !controlsExpanded ? <DecisionBriefCard
             brief={result.brief as DecisionBrief}
-            eyebrow="Cockpit output"
-            title={result.brief.briefVersion}
-            exafuseUrl={exafuseUrl}
-            exafuseLabel={exafuseLabel}
-            matchingToolHref={compact && activePresetId ? `/tools/#preset=${activePresetId}` : compact ? "/tools#lmd-decision-cockpit" : result.toolRoute}
-            matchingToolLabel={compact ? "Open full brief" : "Open matching tool"}
-            compact={compact}
-          />
+            eyebrow="Cockpit output" title={result.brief.briefVersion}
+            matchingToolHref={activePresetId ? `/tools/#preset=${activePresetId}` : undefined}
+            compact
+          /> : <EngineeringBriefPanel brief={result.brief} exafuseUrl={exafuseUrl} exafuseLabel={exafuseLabel} />}
+
         </aside>
       </div>
     </section>
@@ -587,21 +464,14 @@ function Toggle({
   );
 }
 
-function ResultSection({
-  label,
-  value,
-  large = false
-}: {
-  label: string;
-  value: string;
-  large?: boolean;
+function ProblemInput({ field, label, placeholder, state, onChange, multiline = false }: {
+  field: ProblemField; label: string; placeholder: string; state: CockpitState;
+  onChange: (field: ProblemField, value: string) => void; multiline?: boolean;
 }) {
-  return (
-    <div className="mb-5">
-      <p className="text-sm font-bold text-white">{label}:</p>
-      <p className={`result-card mt-2 leading-6 text-slate-300 ${large ? "text-xl font-black text-white md:text-2xl" : "text-sm"}`}>
-        {value}
-      </p>
-    </div>
-  );
+  const className = "mt-2 w-full min-w-0 rounded-lg border border-white/20 bg-slate-950 p-3 text-base leading-6 text-white placeholder:text-slate-500 focus:border-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-300/40";
+  return <label className="block min-w-0 text-sm font-bold text-slate-200">
+    {label}
+    {multiline ? <textarea rows={3} maxLength={1500} value={state.details[field]} onChange={(event) => onChange(field, event.target.value)} placeholder={placeholder} className={className} /> :
+      <input type="text" maxLength={500} value={state.details[field]} onChange={(event) => onChange(field, event.target.value)} placeholder={placeholder} className={className} />}
+  </label>;
 }

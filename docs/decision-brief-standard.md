@@ -4,6 +4,16 @@
 
 It turns rough LMD, DED, repair, cladding, monitoring, and RFQ questions into a copyable review structure. It is preliminary decision-support only.
 
+## Engineering enquiry workflow reviewed 23 September 2026
+
+The full cockpit on `/tools/` captures the component, engineering question, material grade, dimensions/access, damage or build scope, service conditions, tolerance, inspection requirements and delivery constraints. Monitoring enquiries use a signal/anomaly field. Supporting-file checkboxes record availability only; they do not count as supplied specifications or upload files.
+
+`src/lib/engineeringEnquiry.ts` turns these inputs into the existing v1.0 schema. It prioritizes missing questions by situation and gives route-specific review guidance. A material-confirmation checkbox cannot override an unknown-material flag. Completeness describes the presence of enquiry fields; a reviewer must verify their technical adequacy. The tool does not calculate feasibility, validate a process or estimate cost.
+
+Preset facts remain editable and survive changing another field. The homepage retains its compact example; starting a personal brief opens the full local input/output flow there. No user inputs are stored, added to URLs, sent to analytics or transmitted to a server. Markdown, JSON, technical text, manual email drafts and AI summaries use the same brief. The canonical example files remain reusable standard examples; the editable cockpit may produce a different question order as input changes.
+
+Validation covers missing specifications despite checked documents, unknown values, conflicting material entries, example edits, situation-specific questions, formal-inspection flags and preservation of user facts in exports.
+
 Public standard route: `https://manishsharma.dev/brief-standard`
 
 Adoption package: `https://manishsharma.dev/brief-standard#adoption`

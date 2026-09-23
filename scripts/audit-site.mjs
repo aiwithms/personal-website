@@ -1536,14 +1536,14 @@ function auditExperience() {
   const toolsFile = "dist/tools/index.html";
   if (existsSync(join(root, toolsFile))) {
     const visibleText = visibleTextFromHtml(read(toolsFile));
-    for (const marker of ["Decision signal", "Top 3 critical gaps", "Top 3 risk flags", "Evidence needed", "Open full brief"]) {
+    for (const marker of ["Decision signal", "Top 3 critical gaps", "Top 3 risk flags", "Evidence needed", "Prepare your enquiry"]) {
       if (!visibleText.includes(marker)) findings.push(`${toolsFile}: missing progressive-output marker "${marker}"`);
     }
     const cockpitSource = read("src/components/LmdDecisionCockpit.tsx");
     for (const marker of [
       "What is the review context?",
-      "Dimensions / approximate mass known?",
-      "Quantity / target date known?",
+      "Dimensions and access",
+      "Quantity, target date and downtime",
       "This only gives the reviewer context; it does not change technical evidence requirements."
     ]) {
       if (!cockpitSource.includes(marker)) findings.push(`${cockpitSource}: missing progressive intake-context marker "${marker}"`);

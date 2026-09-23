@@ -4,6 +4,7 @@ import { useId, useState } from "react";
 import { internalHref } from "@utils/urlPolicy.mjs";
 import { COPY_UNAVAILABLE_MESSAGE, copyText } from "../lib/clipboard";
 import type { DecisionBrief } from "../lib/decisionBrief";
+import { printDecisionBrief } from "../lib/printDecisionBrief";
 import {
   formatAiAgentPrompt,
   formatAiAgentSafeSummary,
@@ -26,6 +27,7 @@ interface DecisionBriefExportProps {
   matchingToolHref?: string;
   matchingToolLabel?: string;
   compact?: boolean;
+  engineerMode?: boolean;
 }
 
 type CopyKey = "technical" | "missing" | "evidence" | "email" | "ai" | "internal" | "linkedin" | "prompt" | "exafuse" | null;
@@ -37,7 +39,8 @@ export default function DecisionBriefExport({
   toolkitHref = "/agent-pack",
   matchingToolHref,
   matchingToolLabel = "Open matching tool",
-  compact = false
+  compact = false,
+  engineerMode = false
 }: DecisionBriefExportProps) {
   const headingId = useId();
   const [copied, setCopied] = useState<CopyKey>(null);
@@ -61,8 +64,30 @@ export default function DecisionBriefExport({
   }
 
   function printBrief() {
-    window.print();
+    printDecisionBrief(brief);
   }
+
+  if (engineerMode) return <section className="no-print border-t border-white/10 pt-5" aria-labelledby={`${headingId}-enquiry-export`}>
+    <h4 id={`${headingId}-enquiry-export`} className="text-lg font-black text-white">Prepare your enquiry</h4>
+    <p className="mt-2 text-sm leading-6 text-slate-300">Review your facts and open questions before sharing. Attach drawings and records separately in your email client.</p>
+    <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+      <ActionItem><ActionButton copied={copied === "email"} onClick={() => copy("email", emailDraft)} label="Copy Exafuse email draft" /></ActionItem>
+      <ActionItem><ActionButton copied={copied === "technical"} onClick={() => copy("technical", markdown)} label="Copy technical brief" /></ActionItem>
+      <ActionItem><DownloadButton label="Download editable brief (.md)" filename="lmd-decision-brief-v1.md" content={markdown} mime="text/markdown;charset=utf-8" /></ActionItem>
+      <ActionItem><button type="button" onClick={() => { window.location.href = mailtoHref; }} className="btn btn-secondary w-full justify-start whitespace-normal text-left"><Mail aria-hidden="true" className="h-4 w-4 shrink-0" />Open mail client with draft</button></ActionItem>
+    </ul>
+    <p className="mt-3 text-sm leading-6 text-slate-400">Manual draft only. Nothing is sent unless you send it from your own email client. For long briefs, copy the email draft if your mail client truncates it.</p>
+    <p className="sr-only" aria-live="polite">{copyError ?? (copied ? "Brief copied." : "")}</p>
+    {copyError && <p role="status" className="mt-3 text-sm text-orange-100">{copyError}</p>}
+    <details className="mt-4">
+      <summary className="cursor-pointer py-2 text-sm font-bold text-slate-300">More export formats</summary>
+      <ul className="mt-3 grid gap-3 sm:grid-cols-2">
+        <ActionItem><DownloadButton label="Download .json" filename="lmd-decision-brief-v1.json" content={json} mime="application/json;charset=utf-8" /></ActionItem>
+        <ActionItem><ActionButton copied={copied === "ai"} onClick={() => copy("ai", aiSummary)} label="Copy AI summary" /></ActionItem>
+        <ActionItem><button type="button" onClick={printBrief} className="btn btn-secondary w-full justify-start"><Printer aria-hidden="true" className="h-4 w-4 shrink-0" />Print / save as PDF</button></ActionItem>
+      </ul>
+    </details>
+  </section>;
 
   return (
     <div className="no-print mt-6">

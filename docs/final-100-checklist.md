@@ -15,6 +15,9 @@ Use this before a public release.
 - Shared CSS is emitted as a cacheable asset instead of duplicated into every page.
 - Production dependency audit reports zero vulnerabilities at moderate severity or higher.
 - Decision Brief unit tests pass.
+- Engineering enquiries retain actual specifications in email, Markdown and JSON exports; document availability alone does not count as supplied technical evidence.
+- Editing a material resets its confirmation; edited presets keep their example provenance until a blank enquiry is started.
+- Print exports isolate the selected brief and include all critical questions and evidence sections.
 - Pull-request and deploy workflows run security, test, build, and release-audit gates.
 - Homepage operating loop appears once.
 - Homepage puts the LMD Decision Cockpit before proof/resource sections.

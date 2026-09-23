@@ -16,11 +16,11 @@ Selected delivery, 2024: led process monitoring and control work enabling unatte
 
 Integrated system development: built an LMD control system spanning modelling, simulation, path planning, monitoring and live control with cameras/sensors, software development and data handling. This is part of his doctoral thesis work. Do not infer every module was used for the 2024 bridge project or that the full research system has production qualification. Website development: built Exafuse's website, with public services, technical case studies and enquiry-preparation tools. These authorship/contribution claims are self-reported.
 
-Research leadership: leads Exafuse's contribution to BreitbahnDED and helped develop and write the project proposal; collaborates with Ruhr University Bochum on new research proposals.
+Research leadership: leads Exafuse's contribution to [BreitbahnDED](https://exafuse.de/en/article/A21/) and helped develop and write the project proposal; collaborates with Ruhr University Bochum on new research proposals.
 
 External activities: recurring invited guest lectures at the Indian Space Research Organisation (ISRO) in India in a personal capacity; contributions to WAAM machine development at ISRO for rocket-nozzle manufacturing; additive-manufacturing advice to ISRO teams, Tata Steel and Bharat Heavy Electricals Limited (BHEL), Haridwar.
 
-LMD talks: Outokumpu Metal Powder Event, Krefeld, 25 September 2025; Data Science Ruhrgebiet, Bochum, 2021.
+LMD talks: [Outokumpu Metal Powder Event](https://www.linkedin.com/posts/outokumpu_join-us-on-september-25th-in-krefeld-germany-activity-7369306359361736707-bLgx), Krefeld, 25 September 2025; [Data Science Ruhrgebiet](https://data-science.ruhr/rueckblicke/programm-2021/), online, 1 July 2021.
 
 Education status: PhD at Ruhr University Bochum expected in 2027; research complete, thesis at submission stage. M.Sc. Lasers and Photonics, RUB (2020); B.Tech. Electrical Engineering, Rajasthan Technical University (2016).
 

@@ -9,11 +9,13 @@ import {
   formatGermanDecisionBriefTemplateMarkdown
 } from "../lib/decisionBrief";
 import { PERSON, SITE } from "@data/site";
+import { PROFESSIONAL_PROFILE as profile } from "@data/professionalProfile";
 
 const title = "Deutsch: Manish Sharma — Industrielle KI und Entscheidungssysteme";
 const description =
   "Deutsche Übersicht von Manish Sharma zu industrieller KI und Entscheidungssystemen, mit aktuellem öffentlichem Schwerpunkt auf LMD/DED bei Exafuse und nachweisgestützter Entscheidungshilfe.";
 const exafuseContactLink = resolveExafuseLink("contact");
+const breitbahnLink = resolveExafuseLink("breitbahnDedGuide");
 const germanTemplate = formatGermanDecisionBriefTemplateMarkdown();
 
 const bullets = [
@@ -109,11 +111,12 @@ const jsonLd = {
         <article class="ordered-card p-6">
           <h3 class="text-xl font-bold text-white">Projektverantwortung</h3>
           <p class="mt-4 text-base leading-7 text-slate-300">Ich leite den Beitrag von Exafuse zum Forschungsprojekt BreitbahnDED und habe an der Entwicklung und Erstellung des Projektantrags mitgewirkt. Mit der Ruhr-Universität Bochum arbeite ich außerdem an neuen Forschungsanträgen.</p>
+          <a href={breitbahnLink.href} class="mt-5 inline-block font-bold text-cyan-100 underline underline-offset-4">Projektbericht bei Exafuse (Englisch)</a>
         </article>
         <article class="ordered-card p-6">
           <h3 class="text-xl font-bold text-white">Lehre und technische Beratung</h3>
           <p class="mt-4 text-base leading-7 text-slate-300">Auf persönliche Einladung halte ich regelmäßig Gastvorträge bei der Indian Space Research Organisation (ISRO) in Indien. Ich wirke an der Entwicklung von WAAM-Anlagen für Raketendüsen mit und berate Teams bei ISRO, Tata Steel und Bharat Heavy Electricals Limited (BHEL), Haridwar zur additiven Fertigung.</p>
-          <p class="mt-4 text-base leading-7 text-slate-300">Weitere Fachvorträge: Outokumpu Metal Powder Event, Krefeld (2025), und Data Science Ruhrgebiet, Bochum (2021), mit Schwerpunkt LMD.</p>
+          <p class="mt-4 text-base leading-7 text-slate-300">Weitere Fachvorträge mit Schwerpunkt LMD: <a href={profile.talks[0].href} class="text-cyan-100 underline underline-offset-4">Outokumpu Metal Powder Event</a>, Krefeld (25. September 2025), und <a href={profile.talks[1].href} class="text-cyan-100 underline underline-offset-4">Data Science Ruhrgebiet</a>, online (1. Juli 2021).</p>
         </article>
         <article class="ordered-card p-6">
           <h3 class="text-xl font-bold text-white">Promotion und Sprachen</h3>

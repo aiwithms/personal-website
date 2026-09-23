@@ -123,7 +123,7 @@ const jsonLd = {
         <SectionHeading eyebrow="Publication and speaking" title="Sharing practical engineering knowledge" />
         <ul class="mt-8 grid gap-5 text-base leading-8 text-slate-300">
           <li><a href="/evidence" class="text-cyan-100 underline underline-offset-4">Laser metal deposition of lattice structures by columnar built-up</a> · CIRP LANE 2018.</li>
-          {profile.talks.map((talk) => <li>{talk}</li>)}
+          {profile.talks.map((talk) => <li><a href={talk.href} class="text-cyan-100 underline underline-offset-4">{talk.event}</a> · {talk.detail}</li>)}
           <li>Material Horizon Prize, CIRP LANE 2018; DAAD Graduation Scholarship, 2019; C++ Nanodegree, 2022.</li>
         </ul>
       </div>

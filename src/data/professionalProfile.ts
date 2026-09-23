@@ -1,3 +1,5 @@
+import { resolveExafuseUrl } from "../config/externalLinks";
+
 /** Public wording reviewed with Manish on 23 September 2026.
  * Career/education: existing CV records. Current responsibilities, research
  * status and external collaborations: direct self-reported confirmation.
@@ -21,7 +23,7 @@ export const PROFESSIONAL_PROFILE = {
   ],
   engineeringWork: [
     { label: "Integrated manufacturing systems", title: "From models and toolpaths to live control", role: "System development and doctoral research", text: "I built an integrated LMD control system covering modelling, simulation, path planning, camera and sensor monitoring, software, data processing and live control. This work forms part of my doctoral thesis. It combines the physical process with the software and data needed to operate it.", href: "/domains/lmd-ded", link: "Explore the LMD/DED work" },
-    { label: "Collaborative research", title: "BreitbahnDED", role: "Lead for the company's contribution", text: "I lead our company contribution to BreitbahnDED and helped develop and write the project proposal. My responsibilities connect manufacturing requirements, monitoring and software work with university research. I also work with Ruhr University Bochum on new research proposals.", href: "/about#experience", link: "View my professional background" },
+    { label: "Collaborative research", title: "BreitbahnDED", role: "Lead for the company's contribution", text: "I lead our company contribution to BreitbahnDED and helped develop and write the project proposal. My responsibilities connect manufacturing requirements, monitoring and software work with university research. I also work with Ruhr University Bochum on new research proposals.", href: resolveExafuseUrl("breitbahnDedGuide"), link: "Read the Exafuse project article" },
     { label: "Public technical work", title: "LMD Decision Brief and research", role: "Engineering knowledge made inspectable", text: "My public work includes a portable brief for LMD/DED engineering questions, technical notes and a research publication on lattice-structure deposition. The tools make assumptions and evidence needs explicit; physical inspection remains essential.", href: "/brief-standard", link: "Read the LMD Decision Brief" },
     { label: "Delivered software", title: "Exafuse's website", role: "Website development", text: "I built Exafuse's website. It brings industrial services, technical case studies and enquiry-preparation tools into a public interface for engineering customers.", href: "/public-work#website-development", link: "View the delivered website" }
   ],
@@ -40,7 +42,7 @@ export const PROFESSIONAL_PROFILE = {
     { title: "B.Tech. Electrical Engineering", org: "Rajasthan Technical University, India", text: "May 2012 – June 2016. Gold Medal / first-rank academic recognition." }
   ],
   talks: [
-    "Invited speaker/expert in LMD and powder metallurgy applications, Outokumpu Metal Powder Event, Krefeld — 25 September 2025.",
-    "Speaker on Laser Metal Deposition, Data Science Ruhrgebiet, Bochum — 2021."
+    { event: "Outokumpu Metal Powder Event", detail: "Krefeld — 25 September 2025. Invited speaker on LMD and powder metallurgy applications.", href: "https://www.linkedin.com/posts/outokumpu_join-us-on-september-25th-in-krefeld-germany-activity-7369306359361736707-bLgx" },
+    { event: "Data Science Ruhrgebiet", detail: "Online — 1 July 2021. Process control in metal 3D additive manufacturing with deep learning image processing.", href: "https://data-science.ruhr/rueckblicke/programm-2021/" }
   ]
 } as const;

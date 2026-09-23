@@ -29,11 +29,11 @@ This site avoids confidential customer, employer, and private project data.
 | Selected delivery | Duisburg bridge components, 2024: monitoring/control enabling unattended builds and coordination of the overall project timeline; testing outside his remit |
 | System development | Built an integrated LMD control system covering modelling, simulation, path planning, camera/sensor monitoring, software, data and live control, forming part of his doctoral thesis |
 | Public software delivery | Built Exafuse's website |
-| Research responsibility | Company-side lead and proposal contributor for BreitbahnDED; new research proposals with Ruhr University Bochum |
+| Research responsibility | Company-side lead and proposal contributor for [BreitbahnDED](https://exafuse.de/en/article/A21/); new research proposals with Ruhr University Bochum |
 | PhD status | PhD expected in 2027; research completed, thesis at submission stage at Ruhr University Bochum |
 | Invited teaching and advice | Recurring guest lectures at the Indian Space Research Organisation (ISRO) in a personal capacity; AM advice to ISRO teams, Tata Steel and Bharat Heavy Electricals Limited (BHEL), Haridwar |
 | WAAM contribution | Involved in WAAM machine development at ISRO for rocket-nozzle manufacturing |
-| Invited talks | Outokumpu Metal Powder Event, Krefeld, 25 September 2025; Data Science Ruhrgebiet, Bochum, 2021 |
+| Invited talks | [Outokumpu Metal Powder Event](https://www.linkedin.com/posts/outokumpu_join-us-on-september-25th-in-krefeld-germany-activity-7369306359361736707-bLgx), Krefeld, 25 September 2025; [Data Science Ruhrgebiet](https://data-science.ruhr/rueckblicke/programm-2021/), online, 1 July 2021 |
 | Languages | English C1; German B1, B2 completion targeted for December 2026; Hindi native |
 | Location | Germany |
 | Core topics | industrial AI, decision support systems, process monitoring, machine vision, robotics, engineering evidence, LMD, DED, DED-LB/M, laser cladding, melt-pool monitoring, industrial repair, RFQ intelligence, metal additive manufacturing |

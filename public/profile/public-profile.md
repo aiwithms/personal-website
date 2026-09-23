@@ -15,11 +15,11 @@ Public identity facts for Manish Sharma and Manish Sharma Lab.
 | Integrated system | Built an LMD control system spanning models, simulation, path planning, cameras/sensors, software, data and live control; forms part of his doctoral thesis |
 | Website development | Built Exafuse's website |
 | Project responsibility | AM delivery from sourcing and CAD through processing, monitoring, quality checks and shipment; quotations and shared operations |
-| Research leadership | Leads Exafuse's contribution to BreitbahnDED and helped develop its proposal; works with RUB on new research proposals |
+| Research leadership | Leads Exafuse's contribution to [BreitbahnDED](https://exafuse.de/en/article/A21/) and helped develop its proposal; works with RUB on new research proposals |
 | PhD | Expected in 2027; research completed, thesis at submission stage at Ruhr University Bochum |
 | Invited teaching | Recurring guest lectures at Indian Space Research Organisation (ISRO), India, in a personal capacity |
 | External contributions | WAAM machine development at ISRO for rocket-nozzle manufacturing; AM advice to ISRO teams, Tata Steel and Bharat Heavy Electricals Limited (BHEL), Haridwar |
-| Talks | Outokumpu Metal Powder Event, Krefeld, 25 September 2025; Data Science Ruhrgebiet, Bochum, 2021; LMD expertise |
+| Talks | [Outokumpu Metal Powder Event](https://www.linkedin.com/posts/outokumpu_join-us-on-september-25th-in-krefeld-germany-activity-7369306359361736707-bLgx), Krefeld, 25 September 2025; [Data Science Ruhrgebiet](https://data-science.ruhr/rueckblicke/programm-2021/), online, 1 July 2021; LMD expertise |
 | Languages | English C1; German B1, B2 study completion targeted for December 2026; Hindi native |
 | Location | Germany |
 | Website | https://manishsharma.dev |

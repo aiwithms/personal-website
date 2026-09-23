@@ -61,7 +61,7 @@ const productionSafePaths: Record<ExafuseUrlKey, string> = {
   lmdVsSlmGuide: "/wissen/",
   largePartLmdGuide: "/wissen/",
   monitoringGuide: "/wissen/",
-  breitbahnDedGuide: "/wissen/",
+  breitbahnDedGuide: "/en/article/A21/",
   powder2024Guide: "/wissen/",
   hammerRepairGuide: "/wissen/",
   neuralImageProcessingGuide: "/wissen/",
@@ -256,11 +256,11 @@ const routes: Record<ExafuseUrlKey, ExafuseRoute> = {
     group: "knowledge"
   },
   breitbahnDedGuide: {
-    label: "Exafuse BreitbahnDED guide",
-    productionSafeLabel: "Contact Exafuse",
-    productionSafePath: "/wissen/",
-    postMigrationPath: "/wissen/breitbahn-ded-lmd/",
-    statusInProductionSafe: "production-link-after-migration",
+    label: "Exafuse BreitbahnDED project",
+    productionSafeLabel: "Exafuse BreitbahnDED project",
+    productionSafePath: "/en/article/A21/",
+    postMigrationPath: "/en/article/A21/",
+    statusInProductionSafe: "public-production",
     group: "knowledge"
   },
   powder2024Guide: {

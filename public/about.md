@@ -40,11 +40,11 @@ Profile reviewed with Manish on 23 September 2026. Current duties and external c
 - Duisburg bridge components, 2024: led process monitoring and control work that enabled unattended builds, and coordinated the overall project timeline. Testing was outside his role.
 - Built an integrated LMD control system spanning modelling, simulation, path planning, camera/sensor monitoring, software, data and live control. This work forms part of his doctoral thesis; not every module is asserted to have been used on the bridge project.
 - Built Exafuse's website, which presents industrial services, case studies and enquiry-preparation tools.
-- BreitbahnDED: leads Exafuse's contribution and helped develop and write the project proposal; also works with Ruhr University Bochum on new research proposals.
+- [BreitbahnDED](https://exafuse.de/en/article/A21/): leads Exafuse's contribution and helped develop and write the project proposal; also works with Ruhr University Bochum on new research proposals.
 - Indian Space Research Organisation (ISRO), India: recurring invited guest lectures in a personal capacity, additive-manufacturing advice and contributions to WAAM machine development for rocket-nozzle manufacturing.
 - Tata Steel and Bharat Heavy Electricals Limited (BHEL), Haridwar: additive-manufacturing advice to technical teams.
-- Outokumpu Metal Powder Event, Krefeld: invited speaker/expert in LMD and powder metallurgy applications, 25 September 2025.
-- Data Science Ruhrgebiet, Bochum: speaker on Laser Metal Deposition, 2021.
+- [Outokumpu Metal Powder Event](https://www.linkedin.com/posts/outokumpu_join-us-on-september-25th-in-krefeld-germany-activity-7369306359361736707-bLgx), Krefeld: invited speaker/expert in LMD and powder metallurgy applications, 25 September 2025.
+- [Data Science Ruhrgebiet](https://data-science.ruhr/rueckblicke/programm-2021/), online: process control in metal 3D additive manufacturing with deep learning image processing, 1 July 2021.
 - PhD at Ruhr University Bochum expected in 2027; research completed, thesis at submission stage.
 - M.Sc. Lasers and Photonics, Ruhr University Bochum, 2020; B.Tech. Electrical Engineering, Rajasthan Technical University, 2016.
 - English C1; German B1, studying toward B2 with completion targeted for December 2026; Hindi native.

@@ -142,17 +142,11 @@ const jsonLd = {
         <p>The engineering panel exposes thresholding, morphology, image geometry, the nozzle-axis corridor and the measurement strip. These settings define where the detector looks and what kind of feature it accepts.</p>
         <p>This matters when illumination, reflections or deposition geometry change. A numerical output can look plausible even when the detector is following the wrong feature. The setup makes it possible to inspect the measurement logic alongside the camera image.</p>
       </div>
-      <ControlSystemFigure image="image-processing" number="04" title="The image-processing setup" alt="Height-T engineering setup with image threshold, morphology kernel, image dimensions, nozzle-axis location and measurement-region controls.">
-        Measurement geometry is part of the sensor configuration. The displayed values are demonstration settings, not a transferable process recipe.
-      </ControlSystemFigure>
       <div class="control-story__prose">
         <h3>Preserve the reasons a sample was rejected.</h3>
         <p>Feature limits and diagnostics help distinguish an accepted measurement from an optical disturbance. The interface exposes checks for image clipping, bright regions, competing peaks and feature shape, with an optional diagnostic overlay.</p>
         <p>The software also considers freshness and abrupt changes. Raw observations remain useful for investigation even when they are unsuitable for automatic correction. Keeping both the value and its validity state is essential for understanding a run afterwards.</p>
       </div>
-      <ControlSystemFigure image="measurement-diagnostics" number="05" title="Feature checks and diagnostic output" alt="Height-T setup showing feature-shape limits, clipping and bright-region checks, peak-ratio limits and the diagnostic-overlay option.">
-        The setup separates a visible feature from a measurement that can carry control authority. These are continued views of the calibration-and-timing tab, not screenshots of every available setup tab.
-      </ControlSystemFigure>
     </section>
 
     <section id="control" class="control-story__section">
@@ -214,7 +208,7 @@ const jsonLd = {
     </section>
 
     <footer class="control-story__footer">
-      <div><p class="control-story__eyebrow">Continue exploring</p><h2>From the system to the engineering work.</h2><p>This article is my account of the architecture and development work, including the three-agent experiment workflow. The four offline panel captures were prepared on 6 September 2026; the separate process-viewer image shows a read-only run view.</p></div>
+      <div><p class="control-story__eyebrow">Continue exploring</p><h2>From the system to the engineering work.</h2><p>This article is my account of the architecture and development work, including the three-agent experiment workflow. The two offline panel captures were prepared on 6 September 2026; the separate process-viewer image shows a read-only run view.</p></div>
       <ul>
         <li><a href="/about/">My experience and research <span aria-hidden="true">↗</span></a></li>
         <li><a href={bridge.href}>Exafuse: Duisburg bridge case study <span aria-hidden="true">↗</span></a></li>

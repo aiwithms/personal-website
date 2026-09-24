@@ -128,7 +128,7 @@ Core routes:
 - `/review`
 - `/site-map`
 
-The authored article **Inside the LMD control system** explains monitoring, calibration, sensor/data architecture and machine integration. It describes how melt-pool feedback guides laser-power, travel-speed and powder-feed adjustments, with heat-input and temperature management and stable melt-pool size and shape as control objectives. Four author-supplied overview/setup captures are offline examples with synthetic values; a separate read-only process-viewer screenshot shows camera panels. The three-agent guided experiment workflow connects Manager planning/chat, Operator questions with explicit approval before startup, then Analysis after stop, returning a report to the Manager. Its `LAB_NOTES` entry also feeds the lab-note index, command search, Site Map and RSS; public-work and AI-readable summaries link to the same canonical route.
+The authored article **Inside the LMD control system** explains monitoring, calibration, sensor/data architecture and machine integration. It describes how melt-pool feedback guides laser-power, travel-speed and powder-feed adjustments, with heat-input and temperature management and stable melt-pool size and shape as control objectives. Two author-supplied overview/setup captures are offline examples with synthetic values; a separate read-only process-viewer screenshot shows camera panels. The three-agent guided experiment workflow connects Manager planning/chat, Operator questions with explicit approval before startup, then Analysis after stop, returning a report to the Manager. Its `LAB_NOTES` entry also feeds the lab-note index, command search, Site Map and RSS; public-work and AI-readable summaries link to the same canonical route.
 
 Discovery and trust files:
 

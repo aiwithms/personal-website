@@ -367,6 +367,7 @@ The 500-record scan is a broad metadata map, not a claim that every paper was re
 
 ## Lab Notes
 
+- [Inside the LMD control system](https://manishsharma.dev/lab-notes/lmd-control-system/)
 - Height Is Not Cosmetic
 - A Camera Is Not a Certificate
 - RFQs Fail When They Hide Risk
@@ -383,6 +384,13 @@ The 500-record scan is a broad metadata map, not a claim that every paper was re
 - DED-LB/M Terms That Should Not Be Mixed Up
 
 Index: https://manishsharma.dev/lab-notes
+
+### Inside the LMD control system
+
+Article by Manish Sharma, 24 September 2026:
+https://manishsharma.dev/lab-notes/lmd-control-system/
+
+A visual tour of the monitoring, sensor calibration, control architecture and machine integration behind his laser metal deposition work. It explains controls, sensor/data architecture, a modular ROS2 approach across machine platforms and scientific software, while distinguishing implemented software from physical-machine commissioning. The author-supplied GUI screenshots are offline views using synthetic values, not production measurements. Do not use the article or screenshots to infer a certified system, automatic quality acceptance or production qualification for every feature.
 
 ## AI-Agent Usage Guidance
 

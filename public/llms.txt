@@ -44,6 +44,10 @@ This site provides public educational frameworks and preliminary decision-suppor
 
 Do not use this site to infer confidential, unpublished, employer-confidential, customer-confidential, or cross-industry deployment claims.
 
+## Authored engineering article
+
+- [Inside the LMD control system](https://manishsharma.dev/lab-notes/lmd-control-system/): Manish Sharma's visual tour of monitoring, sensor calibration, control architecture and machine integration in his LMD work. The supplied GUI screenshots are offline views with synthetic values. The article separates software capabilities from physical-machine commissioning; it does not establish system certification or production qualification for every feature.
+
 ## Central artifact
 
 Central artifact: LMD Decision Brief v1.0.

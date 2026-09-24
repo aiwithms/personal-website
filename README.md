@@ -120,12 +120,15 @@ Core routes:
 - `/demo`
 - `/de`
 - `/lab-notes`
+- `/lab-notes/lmd-control-system/`
 - `/glossary`
 - `/press-kit`
 - `/for-ai-agents`
 - `/trust`
 - `/review`
 - `/site-map`
+
+The authored article **Inside the LMD control system** uses author-supplied offline GUI screenshots with synthetic values to explain monitoring, sensor calibration, control architecture and machine integration. It preserves the distinction between software capabilities and physical-machine commissioning. Its `LAB_NOTES` entry also feeds the lab-note index, command search, Site Map and RSS; public-work and AI-readable summaries link to the same canonical route.
 
 Discovery and trust files:
 

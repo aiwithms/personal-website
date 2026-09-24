@@ -49,6 +49,7 @@ it cannot be completed from the public repository alone.
 - `https://manishsharma.dev/public-work`
 - `https://manishsharma.dev/about`
 - `https://manishsharma.dev/lab-notes/a-prediction-is-not-yet-an-industrial-decision`
+- `https://manishsharma.dev/lab-notes/lmd-control-system/`
 
 Then resubmit `https://manishsharma.dev/sitemap-index.xml` and record the
 inspection date and result. Do not interpret a delayed search snippet as a
@@ -95,6 +96,10 @@ https://manishsharma.dev/sitemap-index.xml
 - `https://manishsharma.dev/de`
 - `https://manishsharma.dev/for-ai-agents`
 - `https://manishsharma.dev/review`
+
+### LMD control-system article release
+
+After deployment, inspect `https://manishsharma.dev/lab-notes/lmd-control-system/` and confirm the canonical URL, title, author and article date. Verify discovery from the Lab Notes index, the integrated-system card on Public Work, command search, Site Map, RSS and both AI-readable summaries. Check that the page and summaries identify the GUI screenshots as offline views with synthetic values and retain the distinction between software capabilities and physical-machine commissioning. Neither screenshots nor article metadata establish certification or production qualification for every feature.
 
 ## Bing Webmaster Tools
 

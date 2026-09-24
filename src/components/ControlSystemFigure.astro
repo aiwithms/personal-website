@@ -1,0 +1,34 @@
+---
+interface Props {
+  image: string;
+  number: string;
+  title: string;
+  alt: string;
+  eager?: boolean;
+}
+const { image, number, title, alt, eager = false } = Astro.props;
+const src = `/images/lmd-control-system/${image}.png`;
+---
+
+<figure class="control-figure">
+  <a class="control-figure__image" href={src} target="_blank" rel="noopener" aria-label={`Open full-resolution screenshot: ${title} (new tab)`}>
+    <img src={src} alt={alt} width="1920" height="1080" loading={eager ? "eager" : "lazy"} decoding="async" />
+  </a>
+  <figcaption>
+    <div><span class="control-figure__number">Figure {number}</span><strong>{title}</strong><p><slot /></p></div>
+    <a href={src} target="_blank" rel="noopener">View full size <span aria-hidden="true">↗</span></a>
+  </figcaption>
+</figure>
+
+<style>
+  .control-figure { margin: 2rem 0 0; border: 1px solid var(--line-strong); border-radius: 12px; overflow: hidden; background: var(--bg-deep); }
+  .control-figure__image { display: block; cursor: zoom-in; }
+  .control-figure img { display: block; width: 100%; height: auto; }
+  figcaption { display: flex; justify-content: space-between; gap: 1.5rem; padding: 1.25rem 1.5rem; border-top: 1px solid var(--line); background: var(--surface-2); }
+  .control-figure__number { display: block; margin-bottom: .35rem; color: var(--accent-2); font: .72rem var(--font-mono); text-transform: uppercase; letter-spacing: .12em; }
+  strong { display: block; color: var(--text); font-size: .95rem; }
+  p { max-width: 85ch; margin: .45rem 0 0; color: var(--text-soft); font-size: .88rem; line-height: 1.7; }
+  figcaption > a { flex-shrink: 0; align-self: start; color: var(--accent-strong); font-size: .85rem; padding: .5rem 0; text-decoration: underline; text-underline-offset: 4px; }
+  a:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+  @media (max-width: 640px) { figcaption { flex-direction: column; gap: .35rem; padding: 1rem; } }
+</style>

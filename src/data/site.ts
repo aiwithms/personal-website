@@ -249,6 +249,13 @@ export const LAB_NOTES = [
     tags: ["Decision systems", "Verification", "Authored note"]
   },
   {
+    title: "Inside the LMD control system",
+    href: "/lab-notes/lmd-control-system/",
+    description: "A visual tour of the monitoring, sensor calibration, control architecture and machine integration behind my laser metal deposition work.",
+    date: "2026-09-24",
+    tags: ["Control systems", "Sensor calibration", "Authored engineering article"]
+  },
+  {
     title: "Height Is Not Cosmetic",
     href: "/lab-notes/height-is-not-cosmetic",
     description: "Bead height, build-up height, and machining allowance affect tolerance, inspection, and repair planning.",

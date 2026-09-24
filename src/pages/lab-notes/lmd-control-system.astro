@@ -1,0 +1,272 @@
+---
+import Layout from "@layouts/Layout.astro";
+import ControlSystemFigure from "@components/ControlSystemFigure.astro";
+import { PERSON, SITE } from "@data/site";
+import { resolveExafuseLink } from "../../config/externalLinks";
+
+const title = "Inside the LMD control system";
+const description = "A visual tour of the monitoring, sensor calibration, control architecture and machine integration behind my laser metal deposition work.";
+const canonical = "/lab-notes/lmd-control-system/";
+const published = "2026-09-24";
+const bridge = resolveExafuseLink("cs15");
+const breitbahn = resolveExafuseLink("breitbahnDedGuide");
+const sections = [
+  { id: "operator-view", title: "The operator view" },
+  { id: "sensors", title: "Sensors & data" },
+  { id: "calibration", title: "Measurement setup" },
+  { id: "control", title: "Control architecture" },
+  { id: "machines", title: "Across machines" },
+  { id: "records", title: "Build records" },
+  { id: "development", title: "Development & use" }
+];
+const sensors = [
+  ["Machine state", "Position, feed, laser and powder state, overrides and connection health.", "OPC UA provides the machine context needed to interpret camera measurements."],
+  ["Height-T", "A triangulation-camera measurement of nozzle-to-surface stand-off.", "Calibration, feature checks and timing determine whether a measurement can inform control."],
+  ["Height-C", "An alternative height-measurement input.", "Designed as a selected fallback source; it is not averaged with Height-T."],
+  ["Melt-pool camera", "Process presence, image features and a live view of the deposition region.", "A separate measurement path supports observation and the development of future laser regulation."],
+  ["Toolpath & pass", "A read-only copy of the planned path and the current deposition pass.", "Measurements are associated with position, path segments and layers for spatial review."],
+  ["Operator & job", "Mode, manual baselines, enabled sources, calibration and operating limits.", "The selected job provides the context and limits for interpreting data and proposing changes."]
+];
+const flow = [
+  ["Acquire", "Machine, cameras and operator inputs"],
+  ["Align", "Time, position and deposition pass"],
+  ["Qualify", "Freshness, calibration and validity"],
+  ["Propose", "Bounded process adjustments"],
+  ["Apply & record", "Permitted commands, readback and history"]
+];
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "@id": `${SITE.canonicalUrl}${canonical}#article`,
+  url: `${SITE.canonicalUrl}${canonical}`,
+  headline: title,
+  description,
+  datePublished: published,
+  dateModified: published,
+  author: { "@id": `${SITE.canonicalUrl}/identity#manish-sharma`, name: PERSON.name },
+  image: `${SITE.canonicalUrl}/images/lmd-control-system/control-overview.png`,
+  inLanguage: "en",
+  about: ["Laser Metal Deposition", "Process control", "Machine vision", "Manufacturing data"]
+};
+---
+
+<Layout title={`${title} — Manish Sharma`} description={description} canonical={canonical} jsonLd={jsonLd} lastUpdated={published} ogType="article" image="/images/lmd-control-system/control-overview.png">
+  <article class="control-story site-shell">
+    <header class="control-story__hero">
+      <p class="control-story__eyebrow">Engineering case study <span aria-hidden="true">/</span> Laser metal deposition</p>
+      <h1>Inside the LMD <br /><span>control system.</span></h1>
+      <p class="control-story__lead">From camera measurements to machine decisions: the software, operator panels and data architecture behind my process-control work.</p>
+      <div class="control-story__byline"><a href="/about/">Manish Sharma</a><span>System development &amp; doctoral research</span><time datetime={published}>24 September 2026</time></div>
+    </header>
+
+    <p class="control-story__image-note"><strong>About the images.</strong> These are captures of the actual GUI widgets in an offline demonstration. The readings, health indicators and operating states are synthetic examples. Click any screenshot to inspect the controls at full resolution.</p>
+    <ControlSystemFigure image="control-overview" number="01" title="The supervisory control panel" eager alt="Offline CASPAR/TICON control-panel demonstration: authority and health at left, machine and stand-off overview in the centre, manual controls at right.">
+      The interface keeps machine context, measurement status and control authority visible together. The recording-fault indicator belongs to the non-running demo recorder; it is not a production fault report.
+    </ControlSystemFigure>
+
+    <div class="control-story__opening">
+      <p>I built this system to connect the parts of laser metal deposition that an operator has to understand together: the machine, the deposited material, the sensor measurements and the next process decision.</p>
+      <p>Laser metal deposition (LMD) is a directed energy deposition process. A laser creates a melt pool while material is added along a programmed path. As the build grows, the distance to the surface, local geometry and process response change. The control software needs to interpret those changes in the context of the actual machine movement.</p>
+      <p>My work brings modelling, monitoring, simulation, toolpath development and control into one engineering workflow. This article opens up the supervisory interface and explains how the wider system is intended to work across different machines.</p>
+    </div>
+
+    <nav class="control-story__contents" aria-label="In this article">
+      <span>Explore the system</span>
+      <ol>{sections.map((section, i) => <li><a href={`#${section.id}`}><small>{String(i + 1).padStart(2, "0")}</small>{section.title}</a></li>)}</ol>
+    </nav>
+
+    <section id="operator-view" class="control-story__section">
+      <header><span class="control-story__number">01 / Interface</span><h2>Give the operator a coherent view of the process.</h2></header>
+      <div class="control-story__prose">
+        <p>The panel has three working areas. The left column shows operating authority and system health. The centre explains the current process state. The right rail keeps manual baselines and the selected automatic sources in view.</p>
+        <p>This arrangement answers practical questions: Is deposition happening? Which height measurement is being used? Is the data current? Is the software only observing, or is an adjustment allowed to reach the machine?</p>
+      </div>
+      <div class="control-story__triptych">
+        <div><span>Left / Authority</span><h3>Know what is enabled.</h3><p>Observe, Assist and Active describe different levels of control. Health indicators expose missing sources and recording problems. A requested change must be applied explicitly.</p></div>
+        <div><span>Centre / Process</span><h3>Read measurements in context.</h3><p>Machine position, pass identity, stand-off, operating limits and source timing sit alongside each other. Raw values and accepted measurements have distinct roles.</p></div>
+        <div><span>Right / Action</span><h3>See how a command is formed.</h3><p>Manual baselines, automatic contributions, final factors and machine readback are shown separately. Source selection is visible rather than hidden inside an algorithm.</p></div>
+      </div>
+      <div class="control-story__prose"><p>The stop request in the GUI is a supervisory action. Machine interlocks, motion authority and the safety-rated stopping function remain with the machine controller.</p></div>
+    </section>
+
+    <section id="sensors" class="control-story__section">
+      <header><span class="control-story__number">02 / Inputs</span><h2>Different sensors. A shared process context.</h2></header>
+      <div class="control-story__prose">
+        <p>I chose Robot Operating System 2 (ROS 2) as the integration layer so that people could develop sensors, algorithms and machine interfaces independently. Each component publishes a defined message. The rest of the system can consume that message without taking over the component's internal implementation.</p>
+        <p>The central engineering problem is alignment. Cameras and machine interfaces update at different times. The backend uses timestamped machine history to associate an optical measurement with the relevant position and pass. It also tracks uncertainty, so a delayed or ambiguous sample does not silently become a precise point on a process map.</p>
+      </div>
+      <div class="control-story__table-wrap" tabindex="0" role="region" aria-label="Sensor and input capabilities, scroll horizontally on small screens">
+        <table><caption>Inputs in the supervisory architecture</caption><thead><tr><th scope="col">Input</th><th scope="col">What it contributes</th><th scope="col">How it is used</th></tr></thead><tbody>{sensors.map(([name, data, use]) => <tr><th scope="row">{name}</th><td>{data}</td><td>{use}</td></tr>)}</tbody></table>
+      </div>
+      <div class="control-story__prose"><p>A connected sensor still needs calibration, units, timing information and a valid operating range. This is what makes modular integration useful in practice: every module has an explicit responsibility, including how it reports missing or unreliable data.</p></div>
+    </section>
+
+    <section id="calibration" class="control-story__section">
+      <header><span class="control-story__number">03 / Measurement</span><h2>Make the measurement explainable before using it for control.</h2></header>
+      <div class="control-story__prose">
+        <p>Height-T estimates stand-off from a camera view. The setup workflow connects image coordinates to physical references and makes the assumptions visible to the person commissioning the sensor.</p>
+        <p>The operator establishes the physical reference, waits for the measurement to settle, then captures a short numeric window. Approved reference windows can be reviewed and saved in a calibration receipt. The software does not choose or verify the physical reference on the operator's behalf.</p>
+      </div>
+      <ControlSystemFigure image="calibration-reference" number="02" title="Reference capture and calibration receipts" alt="Offline Height-T setup showing reference capture, approval controls, calibration-fit preview and a missing-receipt warning.">
+        A guided sequence makes the physical reference, captured values and operator approval explicit. The example has no approved receipt and is not ready for Active operation.
+      </ControlSystemFigure>
+      <div class="control-story__prose">
+        <h3>Keep image-processing choices visible.</h3>
+        <p>The engineering panel exposes thresholding, morphology, image geometry, the nozzle-axis corridor and the measurement strip. These settings define where the detector looks and what kind of feature it accepts.</p>
+        <p>This matters when illumination, reflections or deposition geometry change. A numerical output can look plausible even when the detector is following the wrong feature. The setup makes it possible to inspect the measurement logic alongside the camera image.</p>
+      </div>
+      <ControlSystemFigure image="image-processing" number="03" title="The image-processing setup" alt="Height-T engineering setup with image threshold, morphology kernel, image dimensions, nozzle-axis location and measurement-region controls.">
+        Measurement geometry is part of the sensor configuration. The displayed values are demonstration settings, not a transferable process recipe.
+      </ControlSystemFigure>
+      <div class="control-story__prose">
+        <h3>Preserve the reasons a sample was rejected.</h3>
+        <p>Feature limits and diagnostics help distinguish an accepted measurement from an optical disturbance. The interface exposes checks for image clipping, bright regions, competing peaks and feature shape, with an optional diagnostic overlay.</p>
+        <p>The software also considers freshness and abrupt changes. Raw observations remain useful for investigation even when they are unsuitable for automatic correction. Keeping both the value and its validity state is essential for understanding a run afterwards.</p>
+      </div>
+      <ControlSystemFigure image="measurement-diagnostics" number="04" title="Feature checks and diagnostic output" alt="Height-T setup showing feature-shape limits, clipping and bright-region checks, peak-ratio limits and the diagnostic-overlay option.">
+        The setup separates a visible feature from a measurement that can carry control authority. These are continued views of the calibration-and-timing tab, not screenshots of every available setup tab.
+      </ControlSystemFigure>
+    </section>
+
+    <section id="control" class="control-story__section">
+      <header><span class="control-story__number">04 / Decisions</span><h2>A control architecture with explicit authority.</h2></header>
+      <div class="control-story__prose"><p>The architecture separates measurement, interpretation, proposed action and the final machine-facing command. That separation lets an engineer inspect a new algorithm in observation or shadow operation before authorising physical actuation.</p></div>
+      <ol class="control-story__flow" aria-label="Supervisory data and control flow">{flow.map(([heading, text], i) => <li><span>{String(i + 1).padStart(2, "0")}</span><h3>{heading}</h3><p>{text}</p></li>)}</ol>
+      <div class="control-story__prose">
+        <h3>Three timescales for three different problems.</h3>
+        <p><strong>Immediate stand-off correction.</strong> The fast control path calculates a bounded speed adjustment from accepted height data and a configured operating envelope. Hysteresis and rate limits constrain its response. Stale or rejected measurements remove automatic authority rather than leaving an old correction in charge.</p>
+        <p><strong>Memory of the previous pass.</strong> The spatial path associates measurements with regions of the build. Its purpose is to prepare a correction when the nozzle revisits a region on a later pass. Uncertain pass identity or alignment prevents that map from silently influencing control.</p>
+        <p><strong>Slower powder adaptation.</strong> Powder transport has a delay. The supervisory design therefore separates the requested setting, machine readback and estimated material arrival. Its decisions use longer evidence windows instead of reacting to every camera sample.</p>
+        <p>Melt-pool observation is a further input to process understanding and future laser regulation. In the reviewed implementation, automatic laser regulation remains disabled; spatial and powder adaptation remain shadow paths.</p>
+      </div>
+      <div class="control-story__modes">
+        <div><h3>Observe</h3><p>Acquire, interpret and record. No machine writes. Use it to inspect signals, timing and proposed responses.</p></div>
+        <div><h3>Assist</h3><p>The intended next stage permits deliberate operator baseline adjustments through the guarded command path, once commissioned.</p></div>
+        <div><h3>Active</h3><p>Selected automatic contributions can influence permitted actuators only after their measurement and machine interface have been qualified.</p></div>
+      </div>
+      <div class="control-story__prose"><p>A single regulation layer combines the allowed contributions. Commands carry identity, expiry and bounds, and the interface checks readback. ROS 2 coordinates this supervisory layer; the CNC or robot controller continues to execute motion and enforce the machine's own interlocks.</p></div>
+    </section>
+
+    <section id="machines" class="control-story__section">
+      <header><span class="control-story__number">05 / Transfer</span><h2>Reuse the architecture. Engineer the machine connection.</h2></header>
+      <div class="control-story__prose">
+        <p>My control-system work began on a three-axis CNC LMD machine and was then adapted for a KUKA robot and the wide-track BreitbahnDED machine. That work spans Exafuse and the ZESS research environment at Ruhr University Bochum.</p>
+        <p>The transferable part is the structure: sensor messages, measurement interpretation, control proposals, operator views and build records. Machine adapters translate equipment-specific signals into that common structure. Job profiles supply the relevant calibration, timing and operating limits.</p>
+        <p>A new machine still needs its own engineering work. I need to establish which interfaces are available, what the signals actually mean, how quickly they update and how a permitted command changes the process. Different sensors can then be introduced through the same message contracts, with their own calibration and validity checks.</p>
+        <p>The earlier machine deployments informed this design. The current TICON supervisory version has its own commissioning state; historical deployment does not qualify every new controller or software revision.</p>
+      </div>
+      <div class="control-story__transfer">
+        <div><h3>Shared across the system</h3><p>Sensor contracts · timestamps · validity states · control structure · operator workflow · run identity</p></div>
+        <div><h3>Established for each machine</h3><p>Interfaces · coordinate conventions · timing · calibration · actuator response · process limits · commissioning</p></div>
+      </div>
+    </section>
+
+    <section id="records" class="control-story__section">
+      <header><span class="control-story__number">06 / Traceability</span><h2>Keep the data that explains the decision.</h2></header>
+      <div class="control-story__prose">
+        <p>A live dashboard answers what is happening now. An engineering record must also explain what happened, which configuration was in use and why a particular action was proposed or rejected.</p>
+        <p>The data architecture separates the live control path from operator views and storage. Local history and ROS recording retain measurements, state and decisions. A run package brings these together with the relevant toolpath, effective settings and logs. A saved hash inventory lets the recorded files be checked for later changes.</p>
+        <p>In parallel, asynchronous telemetry passes through RabbitMQ into InfluxDB for Grafana dashboards and comparison. Storage and dashboard updates are kept outside the control callback path. Simulation and production records carry distinct identifiers.</p>
+        <p>At company level, the operations software I developed connects quotations, costing, scheduling and manufacturing records. Each order has a print ID linking planning, production monitoring and quality documentation. That wider workflow gives the control-system record a place in the history of the part.</p>
+        <p>Monitoring supports process investigation and quality review. Final part acceptance still depends on the required inspection, testing and engineering judgement.</p>
+      </div>
+    </section>
+
+    <section id="development" class="control-story__section">
+      <header><span class="control-story__number">07 / Research into use</span><h2>Build, test and extend the system in stages.</h2></header>
+      <div class="control-story__prose">
+        <p>The wider research includes heat-transfer and deposition simulation, physics-informed bead models, parameter studies and experimental comparison. These tools help me investigate process behaviour before machine trials. Integrating the fitted models and operating-envelope research into this supervisory runtime remains a separate development step.</p>
+        <p>The runtime simulator serves a different purpose: exercising interfaces, sensor faults, delays and controller behaviour in a controlled environment. It is not a validated prediction of the physical process. Likewise, the supervisory system reads an existing toolpath for context; toolpath development is a separate part of my engineering work.</p>
+        <p>This distinction is useful during development. A software interface test, a successful monitoring run and a physical closed-loop trial answer different questions. Each provides evidence for the next stage.</p>
+      </div>
+      <div class="control-story__status">
+        <h3>What the current evidence supports</h3>
+        <dl>
+          <div><dt>Observed on real equipment</dt><dd>Machine telemetry, independent camera acquisition, online features, process visualisation and recorded experimental runs in Observe mode.</dd></div>
+          <div><dt>Tested with simulated equipment</dt><dd>Typed speed commands through the actual OPC interface, including readback, neutral return and shutdown, against an isolated simulated endpoint.</dd></div>
+          <div><dt>Still subject to commissioning</dt><dd>Automatic control authority on the physical machine. Spatial and powder adaptation remain shadow-only; automatic laser regulation is disabled in the reviewed version.</dd></div>
+        </dl>
+      </div>
+      <div class="control-story__prose">
+        <h3>My contribution</h3>
+        <p>I led the system architecture and development, the selection and interpretation of sensor data, and the integration of machine interfaces, software and manufacturing workflows. I also coordinated contributors working on sensors and algorithms. This work forms part of my doctoral research and my R&amp;D role at Exafuse.</p>
+        <p>For the 2024 Duisburg bridge components, my responsibility covered process monitoring and control that enabled unattended builds, together with the project schedule. The planning, monitoring and control methods from that work informed later projects. The broader goal is an operator workflow that carries the process knowledge in the system, while keeping its measurements and decisions open to inspection.</p>
+      </div>
+    </section>
+
+    <footer class="control-story__footer">
+      <div><p class="control-story__eyebrow">Continue exploring</p><h2>From the system to the engineering work.</h2><p>This article is my account of the architecture and development work. The GUI captures were prepared on 6 September 2026; capability status reflects the implementation and run records reviewed for this article.</p></div>
+      <ul>
+        <li><a href="/about/">My experience and research <span aria-hidden="true">↗</span></a></li>
+        <li><a href={bridge.href}>Exafuse: Duisburg bridge case study <span aria-hidden="true">↗</span></a></li>
+        <li><a href={breitbahn.href}>Exafuse: BreitbahnDED project <span aria-hidden="true">↗</span></a></li>
+        <li><a href="/lab-notes/camera-is-not-a-certificate/">How monitoring relates to quality evidence <span aria-hidden="true">↗</span></a></li>
+      </ul>
+    </footer>
+  </article>
+</Layout>
+
+<style>
+  .control-story { padding-block: 2.5rem 4rem; }
+  .control-story__hero { max-width: 1000px; padding-block: 1rem 2rem; }
+  .control-story__eyebrow, .control-story__number { color: var(--accent-2); font: .75rem/1.6 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }
+  .control-story__eyebrow > span { color: var(--muted); padding-inline: .6rem; }
+  h1 { margin: 1.25rem 0; font-size: clamp(2.7rem, 5.8vw, 5rem); font-weight: 800; letter-spacing: -.055em; line-height: 1.07; }
+  h1 > span { color: var(--accent-2); }
+  .control-story__lead { max-width: 760px; font-size: clamp(1.1rem, 2vw, 1.35rem); line-height: 1.65; color: var(--text-soft); }
+  .control-story__byline { display: flex; gap: .65rem 1.5rem; flex-wrap: wrap; margin-top: 1.7rem; font-size: .82rem; color: var(--muted); }
+  .control-story__byline a { color: var(--text); text-decoration: underline; text-underline-offset: 4px; }
+  .control-story__opening, .control-story__prose { max-width: 78ch; font-size: 1.03rem; line-height: 1.85; color: var(--text-soft); }
+  .control-story__opening { margin-block: 2rem; }
+  .control-story p + p { margin-top: 1rem; }
+  .control-story__image-note { max-width: 98ch; border-left: 2px solid var(--accent-2); padding: .25rem 0 .25rem 1.1rem; color: var(--muted); font-size: .87rem; line-height: 1.75; }
+  .control-story__image-note strong { color: var(--text-soft); }
+  .control-story__contents { margin-top: 2.5rem; padding-block: 1.5rem; border-block: 1px solid var(--line); }
+  .control-story__contents > span { color: var(--muted); font: .73rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }
+  .control-story__contents ol { display: flex; flex-wrap: wrap; gap: .5rem 1.6rem; list-style: none; padding: .75rem 0 0; margin: 0; }
+  .control-story__contents a { display: flex; gap: .5rem; align-items: center; padding: .55rem 0; font-size: .9rem; }
+  .control-story__contents small { color: var(--accent-2); font: .7rem var(--font-mono); }
+  .control-story a:hover { color: var(--accent-strong); }
+  .control-story a:focus-visible, .control-story__table-wrap:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+  .control-story__section { padding-top: clamp(3rem, 6vw, 5.5rem); scroll-margin-top: 6rem; }
+  .control-story__section > header { max-width: 900px; margin-bottom: 1.5rem; }
+  h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); line-height: 1.2; letter-spacing: -.035em; font-weight: 750; margin-top: .8rem; color: var(--text); }
+  h3 { font-size: 1.12rem; font-weight: 700; line-height: 1.45; color: var(--text); }
+  .control-story__prose h3 { margin: 2.3rem 0 .75rem; }
+  .control-story__prose strong { color: var(--text); font-weight: 650; }
+  .control-story__prose:has(+ .control-story__prose), .control-story__section > :not(header) + .control-story__prose { margin-top: 1.8rem; }
+  .control-story__triptych, .control-story__modes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+  .control-story__triptych > div { padding: 1.5rem 0; border-top: 2px solid var(--line-strong); }
+  .control-story__triptych span { display: block; margin-bottom: .75rem; color: var(--accent-2); font: .72rem var(--font-mono); }
+  .control-story__triptych p, .control-story__modes p { margin-top: .75rem; font-size: .94rem; color: var(--text-soft); line-height: 1.8; }
+  .control-story__table-wrap { margin-block: 2rem; overflow-x: auto; border: 1px solid var(--line-strong); border-radius: 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: .92rem; line-height: 1.7; }
+  caption { padding: 1rem 1.2rem; text-align: left; color: var(--accent-2); background: var(--surface-2); font-size: .85rem; }
+  th, td { padding: 1rem 1.2rem; vertical-align: top; text-align: left; border-top: 1px solid var(--line); }
+  th { color: var(--text); font-weight: 650; }
+  thead th { color: var(--muted); font-size: .8rem; }
+  tbody th { width: 19%; min-width: 9rem; }
+  td { color: var(--text-soft); width: 40%; min-width: 14rem; }
+  .control-story__flow { list-style: none; padding: 0; margin: 2rem 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border: 1px solid var(--line-strong); border-radius: 12px; background: var(--surface-2); overflow: hidden; }
+  .control-story__flow li { padding: 1.4rem; border-right: 1px solid var(--line); }
+  .control-story__flow li:last-child { border-right: 0; }
+  .control-story__flow span { color: var(--accent-2); font: .75rem var(--font-mono); }
+  .control-story__flow h3 { margin-top: 1rem; font-size: 1rem; }
+  .control-story__flow p { margin-top: .5rem; color: var(--text-soft); font-size: .85rem; line-height: 1.7; }
+  .control-story__modes > div { padding: 1.4rem; border-left: 2px solid var(--accent-2); background: var(--surface); }
+  .control-story__transfer { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; padding-block: 1.8rem; border-block: 1px solid var(--line); }
+  .control-story__transfer p { margin-top: .7rem; color: var(--text-soft); line-height: 1.9; font-size: .94rem; }
+  .control-story__status { margin-top: 2rem; padding: clamp(1.25rem, 3vw, 2rem); border: 1px solid var(--line-strong); border-radius: 12px; background: var(--surface-2); }
+  .control-story__status dl { margin-top: 1.4rem; }
+  .control-story__status dl > div { display: grid; grid-template-columns: minmax(12rem, 1fr) 3fr; gap: 1rem; padding-block: 1.1rem; border-top: 1px solid var(--line); }
+  .control-story__status dt { color: var(--accent-2); font-weight: 600; font-size: .9rem; }
+  .control-story__status dd { color: var(--text-soft); font-size: .94rem; line-height: 1.8; }
+  .control-story__footer { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid var(--line-strong); }
+  .control-story__footer h2 { font-size: 1.65rem; }
+  .control-story__footer p:not(.control-story__eyebrow) { margin-top: 1rem; color: var(--muted); font-size: .9rem; line-height: 1.8; }
+  .control-story__footer ul { list-style: none; padding: 0; }
+  .control-story__footer a { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); font-size: .95rem; color: var(--text-soft); }
+  @media (max-width: 900px) { .control-story__flow { grid-template-columns: 1fr; } .control-story__flow li { display: grid; grid-template-columns: 2rem 8rem 1fr; gap: .5rem; padding: 1rem; border-right: 0; border-bottom: 1px solid var(--line); } .control-story__flow li:last-child { border-bottom: 0; } .control-story__flow h3, .control-story__flow p { margin: 0; } }
+  @media (max-width: 700px) { .control-story { padding-top: 1rem; } .control-story__triptych, .control-story__modes, .control-story__transfer, .control-story__footer { grid-template-columns: 1fr; gap: 1.25rem; } .control-story__status dl > div { grid-template-columns: 1fr; gap: .4rem; } .control-story__contents ol { column-gap: 1.1rem; } .control-story__flow li { grid-template-columns: 1.5rem 1fr; } .control-story__flow p { grid-column: 2; } }
+  @media (prefers-reduced-motion: reduce) { .control-story { scroll-behavior: auto; } }
+</style>

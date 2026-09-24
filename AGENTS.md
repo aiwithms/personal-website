@@ -76,7 +76,7 @@ On Windows PowerShell, use `npm.cmd` if execution policy blocks `npm`.
 - Email drafts must stay client-side/manual. Do not add automatic sending, backend endpoints, input analytics, or input storage.
 - Missing information should stay grouped as critical gaps, useful gaps, and optional context wherever the shared brief is rendered or exported.
 - Cockpit presets must be public-safe dummy examples only and must not use backend storage, analytics, or confidential data.
-- Public identity, links, profile, and press-kit pages must show only verified public profile URLs. Track planned profiles in `docs/profile-roadmap.md`.
+- LinkedIn and Exafuse are the active external personal-profile destinations. At Manish's request, unfinished profiles and the website repository appear as plain "Work in progress" text without links or keyboard focus. Exclude those destinations from JSON-LD `sameAs` and active AI-readable links; track readiness in `docs/profile-roadmap.md`. Keep genuine external citations and internal navigation active.
 
 ## Working Tree Rules
 

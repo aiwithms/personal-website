@@ -24,7 +24,13 @@ Public identity facts for Manish Sharma and Manish Sharma Lab.
 | Location | Germany |
 | Website | https://manishsharma.dev |
 | LinkedIn | https://www.linkedin.com/in/manishsharma5/ |
-| GitHub profile | aiwithms - https://github.com/aiwithms |
+| GitHub profile | Work in progress |
+| Website repository | Work in progress |
+| ORCID | Work in progress |
+| Zenodo | Work in progress |
+| Hugging Face | Work in progress |
+| Google Scholar | Work in progress |
+| ResearchGate | Work in progress |
 | Exafuse | https://exafuse.de/ |
 | Central public artifact | LMD Decision Brief v1.0 Standard - https://manishsharma.dev/brief-standard |
 | Named framework | The LMD-AI Maturity Model by Manish Sharma - https://manishsharma.dev/frameworks/lmd-ai-maturity-model |

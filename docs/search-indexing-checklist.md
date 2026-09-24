@@ -99,7 +99,7 @@ https://manishsharma.dev/sitemap-index.xml
 
 ### LMD control-system article release
 
-After deployment, inspect `https://manishsharma.dev/lab-notes/lmd-control-system/` and confirm the canonical URL, title, author and article date. Verify discovery from the Lab Notes index, the integrated-system card on Public Work, command search, Site Map, RSS and both AI-readable summaries. Check that the page and summaries identify the GUI screenshots as offline views with synthetic values and retain the distinction between software capabilities and physical-machine commissioning. Neither screenshots nor article metadata establish certification or production qualification for every feature.
+After deployment, inspect `https://manishsharma.dev/lab-notes/lmd-control-system/` and confirm the canonical URL, title, author and article date. Verify discovery from the Lab Notes index, the integrated-system card on Public Work, command search, Site Map, RSS and both AI-readable summaries. Check that the page and summaries identify the four overview/setup captures as offline examples with synthetic values, distinguish the separate process-viewer screenshot with camera panels, and describe the three-agent workflow (Manager planning/chat; Operator questions and explicit approval before startup; Analysis after stop, returning a report to the Manager). Retain the distinction between software capabilities and physical-machine commissioning. Neither screenshots nor article metadata establish certification or production qualification for every feature.
 
 ## Bing Webmaster Tools
 

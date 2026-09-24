@@ -6,7 +6,7 @@ import ProfileImage from "@components/ProfileImage.astro";
 import SectionHeading from "@components/SectionHeading.astro";
 import SourceLinks from "@components/SourceLinks.astro";
 import { CORE_TOPICS, LINKS, METHOD_LOOP, PERSON, SAME_AS, SITE } from "@data/site";
-import { ACTIVE_PROFILE_LINKS } from "@data/profiles";
+import { PROFILE_LINKS } from "@data/profiles";
 import { absoluteUrl } from "@utils/urls";
 import { PROFESSIONAL_PROFILE as profile } from "@data/professionalProfile";
 
@@ -64,8 +64,8 @@ const fields = [
   ["Named framework", "The LMD-AI Maturity Model by Manish Sharma"],
   ["Decision map", `${SITE.canonicalUrl}/decision-map`],
   ["Core public topics", CORE_TOPICS.join(", ")],
-  ["GitHub profile", LINKS.github],
-  ["Verified public profiles", "Website, LinkedIn, GitHub profile, Exafuse"]
+  ["GitHub profile", "Work in progress"],
+  ["Verified public profiles", "Website, LinkedIn, Exafuse"]
 ];
 ---
 
@@ -147,9 +147,9 @@ const fields = [
   </section>
 
   <section class="site-shell section-y">
-    <SectionHeading eyebrow="sameAs" title="Verified public profile links" description="Only real profile URLs are used in JSON-LD sameAs and public identity surfaces." />
+    <SectionHeading eyebrow="sameAs" title="Profiles and repositories" description="LinkedIn and Exafuse are active. Other destinations are work in progress." />
     <div class="mt-8">
-      <SourceLinks links={ACTIVE_PROFILE_LINKS} />
+      <SourceLinks links={PROFILE_LINKS} />
     </div>
   </section>
   </div>

@@ -21,7 +21,7 @@ Last reviewed: 2026-07-12
 - No penetration test, independent security audit, security certification, uninterrupted availability, or absence of vulnerabilities is claimed.
 - Reporting policy: https://manishsharma.dev/trust#security
 - Contact route: https://manishsharma.dev/contact
-- Public repository issues are appropriate only for non-sensitive reproducible problems. Do not publish credentials, personal data, confidential material, or live exploit details.
+- Use the contact route for non-sensitive reproducible problems. Do not publish credentials, personal data, confidential material, or live exploit details.
 
 ## Accessibility intent
 
@@ -59,7 +59,7 @@ Exafuse owns commercial services, RFQs, production capability, delivery claims, 
 
 - Route selector: https://manishsharma.dev/contact
 - Professional and non-confidential discussion: LinkedIn through the route selector
-- Public code and non-sensitive repository issues: GitHub through the route selector
+- GitHub profile and website repository: Work in progress. Use the contact route for non-sensitive questions.
 - Industrial services, RFQs, production, delivery, and company claims: Exafuse through the route selector
 
 ## Related public files

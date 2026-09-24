@@ -37,20 +37,19 @@ This site avoids confidential customer, employer, and private project data.
 | Languages | English C1; German B1, B2 completion targeted for December 2026; Hindi native |
 | Location | Germany |
 | Core topics | industrial AI, decision support systems, process monitoring, machine vision, robotics, engineering evidence, LMD, DED, DED-LB/M, laser cladding, melt-pool monitoring, industrial repair, RFQ intelligence, metal additive manufacturing |
-| Verified public profiles | Website, Exafuse, LinkedIn, GitHub profile |
-| GitHub profile | aiwithms - https://github.com/aiwithms |
+| Verified public profiles | Website, Exafuse, LinkedIn |
+| GitHub profile | Work in progress |
 
 ## sameAs
 
 Professional facts reviewed with Manish on 23 September 2026. Current duties and external activities are self-reported; they do not imply endorsement by the named organizations or qualified rocket-hardware deployment.
 
-Only real URLs should be used in JSON-LD sameAs.
+Only active LinkedIn and Exafuse profile URLs are used in JSON-LD sameAs.
 
 - LinkedIn: https://www.linkedin.com/in/manishsharma5/
-- GitHub profile: https://github.com/aiwithms
 - Exafuse: https://exafuse.de/
 
-GitHub identity note: `aiwithms` is Manish Sharma's verified public GitHub profile.
+GitHub profile, website repository, ORCID, Zenodo, Hugging Face, Google Scholar and ResearchGate: Work in progress. These destinations are not linked or included in sameAs.
 
 ## Canonical URLs
 

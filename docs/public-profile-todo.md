@@ -1,6 +1,6 @@
 # Public Profile TODO
 
-Date: 2026-07-06
+Date: 2026-09-24
 
 This file tracks profile facts and public identity items that need human review or future URLs. Do not fill these with guessed links.
 
@@ -8,11 +8,12 @@ This file tracks profile facts and public identity items that need human review 
 
 - Website: `https://manishsharma.dev`
 - LinkedIn: `https://www.linkedin.com/in/manishsharma5/`
-- GitHub: `https://github.com/aiwithms`
 - Exafuse: `https://exafuse.de/`
-- Repository: `https://github.com/aiwithms/personal-website`
 
-## Planned Profiles With No Public URL Yet
+## Work in Progress
+
+- GitHub profile
+- Website repository
 
 - ORCID
 - Zenodo
@@ -25,7 +26,7 @@ Rules:
 - Do not show planned profiles as clickable links.
 - Do not add planned profiles to JSON-LD `sameAs`.
 - Add a URL only after Manish confirms the real public profile.
-- Keep planned profile UI disabled or marked planned.
+- Show unfinished destinations as plain Work in progress text with no href, tabindex or link/button role. Existing source ownership/deployment URLs remain maintenance metadata only.
 
 ## Working-Draft Sources To Resolve
 

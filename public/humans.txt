@@ -9,7 +9,8 @@ Canonical: https://manishsharma.dev
 /* Team */
 
 Creator, author, and maintainer: Manish Sharma
-Public profile: https://github.com/aiwithms
+Public profile: https://manishsharma.dev/profile/public-profile/
+GitHub profile: Work in progress
 
 /* Technology */
 

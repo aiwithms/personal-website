@@ -797,27 +797,44 @@ function auditPublicProfiles() {
     "dist/profile/public-profile/index.html",
     "dist/press-kit/index.html",
     "dist/links/index.html",
-    "dist/identity.md",
-    "dist/profile/public-profile.md"
+    "dist/public-work/index.html"
   ];
-  const plannedLabels = ["ORCID", "Zenodo", "Hugging Face", "Google Scholar", "ResearchGate", "Planned profiles", "planned profiles", "planned profile"];
+  const unfinishedLabels = ["GitHub profile", "Website repository", "ORCID", "Zenodo", "Hugging Face", "Google Scholar", "ResearchGate"];
   for (const file of publicProfileFiles) {
     if (!existsSync(join(root, file))) continue;
     const text = read(file);
-    const visibleText = file.endsWith(".html") ? visibleTextFromHtml(text) : text;
-    for (const label of plannedLabels) {
-      if (visibleText.includes(label)) findings.push(`${file}: public profile surface contains planned-profile text "${label}"`);
+    const cards = text.match(/<div\b[^>]*data-profile-status="work-in-progress"[^>]*>[\s\S]*?<\/div>/gi) ?? [];
+    for (const label of unfinishedLabels) {
+      const card = cards.find((candidate) => visibleTextFromHtml(candidate).includes(label));
+      if (!card || !visibleTextFromHtml(card).includes("Work in progress")) {
+        findings.push(`${file}: missing plain Work in progress state for ${label}`);
+      }
+    }
+    for (const card of cards) {
+      if (/<(?:a|button)\b|\bhref\s*=|\btabindex\s*=|\brole\s*=\s*["'](?:link|button)["']/i.test(card)) {
+        findings.push(`${file}: work-in-progress profile must not be interactive`);
+      }
     }
   }
-  const sameAsBad = ["orcid.org", "zenodo.org", "huggingface.co", "scholar.google", "researchgate.net", "#"];
-  for (const file of ["dist/identity/index.html", "dist/press-kit/index.html"]) {
-    if (!existsSync(join(root, file))) continue;
-    const text = read(file);
-    const sameAsBlocks = text.match(/"sameAs":\[[^\]]*\]/g) ?? [];
+  const unfinishedPersonalGitHub = /^https:\/\/github\.com\/(?:aiwithms|manish-sharma-ai)(?:\/|$)/i;
+  const sameAsBad = ["github.com", "orcid.org", "zenodo.org", "huggingface.co", "scholar.google", "researchgate.net", "#"];
+  for (const { file, text } of scanFiles(distRoot, [".html"])) {
+    for (const match of text.matchAll(/<a\b[^>]*\bhref\s*=\s*["']([^"']+)["']/gi)) {
+      if (unfinishedPersonalGitHub.test(match[1])) findings.push(`${file}: unfinished personal GitHub destination is clickable`);
+    }
+    const sameAsBlocks = text.match(/"sameAs"\s*:\s*\[[^\]]*\]/g) ?? [];
     for (const block of sameAsBlocks) {
       for (const bad of sameAsBad) {
         if (block.includes(bad)) findings.push(`${file}: JSON-LD sameAs contains unsafe profile value "${bad}"`);
       }
+    }
+  }
+  for (const file of ["dist/identity.md", "dist/profile/public-profile.md", "dist/about.md", "dist/llms.txt", "dist/llms-full.txt", "dist/humans.txt"]) {
+    if (!existsSync(join(root, file))) continue;
+    const text = read(file);
+    if (!text.includes("Work in progress")) findings.push(`${file}: missing profile availability state`);
+    if (/https:\/\/github\.com\/(?:aiwithms|manish-sharma-ai)(?:\/|\b)/i.test(text)) {
+      findings.push(`${file}: unfinished personal GitHub destination remains in AI-readable links`);
     }
   }
   fail("Public profile audit failed", findings);

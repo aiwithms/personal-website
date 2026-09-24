@@ -128,7 +128,7 @@ Core routes:
 - `/review`
 - `/site-map`
 
-The authored article **Inside the LMD control system** uses author-supplied offline GUI screenshots with synthetic values to explain monitoring, sensor calibration, control architecture and machine integration. It preserves the distinction between software capabilities and physical-machine commissioning. Its `LAB_NOTES` entry also feeds the lab-note index, command search, Site Map and RSS; public-work and AI-readable summaries link to the same canonical route.
+The authored article **Inside the LMD control system** uses four author-supplied offline overview/setup captures with synthetic values and a separate process-viewer screenshot with camera panels. It explains monitoring, calibration, machine integration and a three-agent guided experiment workflow: Manager planning/chat, Operator questions with explicit approval before startup, then Analysis after stop, returning a report to the Manager. It preserves the distinction between software capabilities and physical-machine commissioning. Its `LAB_NOTES` entry also feeds the lab-note index, command search, Site Map and RSS; public-work and AI-readable summaries link to the same canonical route.
 
 Discovery and trust files:
 
@@ -343,7 +343,7 @@ Active:
 - Legacy Pages deployment/rollback repository: https://github.com/manish-sharma-ai/manish-sharma-ai.github.io
 - Website repository: https://github.com/aiwithms/personal-website
 
-Only real URLs should appear in JSON-LD `sameAs`.
+Only active LinkedIn and Exafuse URLs appear in JSON-LD `sameAs`. GitHub profile/repository, ORCID, Zenodo, Hugging Face, Google Scholar and ResearchGate render as plain **Work in progress** states, without links or keyboard focus. Repository URLs in this README document source ownership and deployment; they are not active personal-profile destinations on the site.
 
 ## Disclaimer
 
@@ -399,7 +399,7 @@ These steps require account access and can be completed in GitHub, Google Search
 
 ## Next Roadmap
 
-- Add real ORCID, Zenodo, Hugging Face, Google Scholar, and ResearchGate URLs only after they are created and verified. Track future profile work in `docs/profile-roadmap.md`.
+- Keep unfinished profiles and the website repository as nonclickable **Work in progress** entries. Activate destinations only after explicit readiness confirmation and URL verification; update JSON-LD and AI-readable text together. See `docs/profile-roadmap.md`.
 - Switch Exafuse link mode only after following `docs/exafuse-migration-switch.md`.
 - Run `npm run smoke:live` after deployment before distribution.
 - Keep the curated research map limited to verified sources with explicit source types and evidence boundaries.

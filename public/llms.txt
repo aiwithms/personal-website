@@ -46,7 +46,7 @@ Do not use this site to infer confidential, unpublished, employer-confidential, 
 
 ## Authored engineering article
 
-- [Inside the LMD control system](https://manishsharma.dev/lab-notes/lmd-control-system/): Manish Sharma's visual tour of monitoring, sensor calibration, control architecture and machine integration in his LMD work. The supplied GUI screenshots are offline views with synthetic values. The article separates software capabilities from physical-machine commissioning; it does not establish system certification or production qualification for every feature.
+- [Inside the LMD control system](https://manishsharma.dev/lab-notes/lmd-control-system/): Manish Sharma's visual tour of monitoring, sensor calibration, control architecture and machine integration in his LMD work. Four overview/setup captures are offline examples with synthetic values; a separate process-viewer screenshot shows camera panels. A three-agent workflow connects Manager planning/chat, Operator questions and explicit approval before startup, and Analysis after stop, returning a report to the Manager. The article separates software capabilities from physical-machine commissioning; it does not establish system certification or production qualification for every feature.
 
 ## Central artifact
 
@@ -69,7 +69,7 @@ Interactive technical inputs stay in current-page browser memory. The site has n
 - [Lab Notes](https://manishsharma.dev/lab-notes)
 - [German overview](https://manishsharma.dev/de)
 
-Verified public GitHub profile: https://github.com/aiwithms
+GitHub profile, website repository, ORCID, Zenodo, Hugging Face, Google Scholar and ResearchGate: Work in progress. These destinations are not linked or included in sameAs.
 
 Exafuse commercial and company source: https://exafuse.de/
 

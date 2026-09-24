@@ -39,10 +39,10 @@ const routes = [
   },
   {
     eyebrow: "Public technical artifacts",
-    title: "Read the public technical context",
-    description: "Use the public GitHub profile for non-confidential technical context and shared artifacts before starting a discussion.",
-    href: LINKS.github,
-    cta: "Open GitHub profile"
+    title: "GitHub profile and website repository",
+    description: "Work in progress",
+    href: undefined,
+    cta: ""
   }
 ];
 ---
@@ -81,7 +81,7 @@ const routes = [
       />
       <div class="mt-10 grid gap-5 lg:grid-cols-3">
         {routes.map((route) => (
-          <BentoCard href={route.href} eyebrow={route.eyebrow} title={route.title} description={route.description} cta={route.cta} external strong />
+          <BentoCard href={route.href} eyebrow={route.eyebrow} title={route.title} description={route.description} cta={route.cta} external={Boolean(route.href)} strong />
         ))}
       </div>
     </div>

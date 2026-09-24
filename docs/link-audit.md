@@ -55,9 +55,11 @@ Active public URLs:
 - Site: `https://manishsharma.dev`
 - Exafuse: `https://exafuse.de/`
 - LinkedIn: `https://www.linkedin.com/in/manishsharma5/`
-- GitHub: `https://github.com/aiwithms`
 
-Planned profiles with no active URL:
+Nonclickable Work in progress destinations:
+
+- GitHub profile
+- Website repository
 
 - ORCID
 - Zenodo

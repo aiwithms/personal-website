@@ -9,7 +9,8 @@ interface Props {
 }
 
 const { href, label, description, status } = Astro.props;
-const normalizedHref = href ? internalHref(href) : undefined;
+const isWorkInProgress = status === "work_in_progress";
+const normalizedHref = href && !isWorkInProgress ? internalHref(href) : undefined;
 ---
 
 {
@@ -27,12 +28,24 @@ const normalizedHref = href ? internalHref(href) : undefined;
       <span class="mt-5 font-mono text-xs font-black uppercase text-cyan-100">Open</span>
     </a>
   ) : (
-    <div class="link-card disabled-card content-between" aria-disabled="true">
+    <div class="link-card content-between" data-profile-status={isWorkInProgress ? "work-in-progress" : undefined}>
       <span>
         <span class="block text-sm font-black text-slate-400">{label}</span>
-        <span class="mt-2 block text-xs leading-5 text-slate-400">{description ?? "Planned profile."}</span>
+        {!isWorkInProgress && description && <span class="mt-2 block text-xs leading-5 text-slate-400">{description}</span>}
       </span>
-      <span class="chip chip--steel mt-5 w-fit">{status ?? "Planned"}</span>
+      <span class="mt-5 text-xs text-slate-400">{isWorkInProgress ? "Work in progress" : (status ?? "Unavailable")}</span>
     </div>
   )
 }
+
+<style>
+  .link-card[data-profile-status="work-in-progress"],
+  .link-card[data-profile-status="work-in-progress"]:hover {
+    cursor: default;
+    transform: none;
+    transition: none;
+    box-shadow: none;
+    border-color: var(--line-strong);
+    background: var(--surface);
+  }
+</style>

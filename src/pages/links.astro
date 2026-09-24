@@ -2,18 +2,18 @@
 import Layout from "@layouts/Layout.astro";
 import SectionHeading from "@components/SectionHeading.astro";
 import SourceLinks from "@components/SourceLinks.astro";
-import { ACTIVE_PROFILE_LINKS } from "@data/profiles";
+import { PROFILE_LINKS } from "@data/profiles";
 
-const title = "Verified Links - Manish Sharma Lab";
-const description = "Verified public links for Manish Sharma, Exafuse, GitHub, LinkedIn, and the canonical Manish Sharma Lab website.";
+const title = "Profiles and Links - Manish Sharma Lab";
+const description = "Manish Sharma's active website, LinkedIn and Exafuse links, with work-in-progress profile destinations.";
 ---
 
 <Layout title={title} description={description} canonical="/links">
   <div class="info-page info-page--compact">
   <section class="site-shell info-page__masthead py-16 md:py-20">
-    <SectionHeading as="h1" eyebrow="Links" title="Verified public profiles and references" description="Only real, verified public URLs are shown on public-facing link pages." />
+    <SectionHeading as="h1" eyebrow="Links" title="Profiles and repositories" description="LinkedIn and Exafuse are active. Other destinations are work in progress." />
     <div class="mt-10">
-      <SourceLinks links={ACTIVE_PROFILE_LINKS} />
+      <SourceLinks links={PROFILE_LINKS} />
     </div>
   </section>
   </div>

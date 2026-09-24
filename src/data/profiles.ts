@@ -1,6 +1,6 @@
 import { SITE_CONFIG } from "./siteConfig";
 
-export type ProfileStatus = "active" | "planned";
+export type ProfileStatus = "active" | "work_in_progress";
 
 export interface ProfileLink {
   key: string;
@@ -19,9 +19,9 @@ export const PROFILE_URLS = {
   site: SITE_CONFIG.site.baseUrl,
   exafuse: SITE_CONFIG.exafuse.canonicalLinks.homepage,
   linkedin: SITE_CONFIG.person.links.linkedin,
-  github: SITE_CONFIG.person.links.github,
-  repositoryOwner: "https://github.com/aiwithms",
-  repository: SITE_CONFIG.site.repository,
+  github: null,
+  repositoryOwner: null,
+  repository: null,
   orcid: SITE_CONFIG.person.links.orcid,
   zenodo: SITE_CONFIG.person.links.zenodo,
   huggingFace: SITE_CONFIG.person.links.huggingFace,
@@ -77,43 +77,43 @@ export const PROFILE_LINKS: ProfileLink[] = [
     key: "github",
     label: "GitHub profile",
     href: PROFILE_URLS.github,
-    status: "active",
-    description: "Personal GitHub profile."
+    status: "work_in_progress"
+  },
+  {
+    key: "repository",
+    label: "Website repository",
+    href: null,
+    status: "work_in_progress"
   },
   {
     key: "orcid",
     label: "ORCID",
     href: PROFILE_URLS.orcid,
-    status: "planned",
-    description: "Planned research profile."
+    status: "work_in_progress"
   },
   {
     key: "zenodo",
     label: "Zenodo",
     href: PROFILE_URLS.zenodo,
-    status: "planned",
-    description: "Planned public archive profile."
+    status: "work_in_progress"
   },
   {
     key: "huggingFace",
     label: "Hugging Face",
     href: PROFILE_URLS.huggingFace,
-    status: "planned",
-    description: "Planned model or dataset profile."
+    status: "work_in_progress"
   },
   {
     key: "googleScholar",
     label: "Google Scholar",
     href: PROFILE_URLS.googleScholar,
-    status: "planned",
-    description: "Planned research profile."
+    status: "work_in_progress"
   },
   {
     key: "researchGate",
     label: "ResearchGate",
     href: PROFILE_URLS.researchGate,
-    status: "planned",
-    description: "Planned research profile."
+    status: "work_in_progress"
   }
 ];
 
@@ -121,8 +121,8 @@ export const ACTIVE_PROFILE_LINKS = PROFILE_LINKS.filter(
   (profile): profile is ActiveProfileLink => profile.status === "active" && Boolean(profile.href)
 );
 
-export const PLANNED_PROFILE_LINKS = PROFILE_LINKS.filter((profile) => profile.status === "planned");
+export const WORK_IN_PROGRESS_PROFILE_LINKS = PROFILE_LINKS.filter((profile) => profile.status === "work_in_progress");
 
 export const JSON_LD_SAME_AS = ACTIVE_PROFILE_LINKS
-  .filter((profile) => ["linkedin", "github", "exafuse"].includes(profile.key))
+  .filter((profile) => ["linkedin", "exafuse"].includes(profile.key))
   .map((profile) => profile.href as string);

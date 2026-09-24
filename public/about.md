@@ -68,7 +68,7 @@ Public Exafuse pages provide industrial context around the themes used on this s
 
 ## Selected Public Work
 
-Selected public work may include published technical work, event talks, public professional profiles, public site resources, GitHub artifacts, and public Exafuse context where available. Strong profile claims should be verified against LinkedIn, a current CV, or the original public source before reuse in a formal setting.
+Selected public work may include published technical work, event talks, public professional profiles, public site resources and public Exafuse context where available. Strong profile claims should be verified against LinkedIn, a current CV, or the original public source before reuse in a formal setting.
 
 ## Public Links
 
@@ -78,7 +78,8 @@ Selected public work may include published technical work, event talks, public p
 - LMD/DED technical hub: https://manishsharma.dev/domains/lmd-ded
 - Public profile facts: https://manishsharma.dev/profile/public-profile
 - LinkedIn: https://www.linkedin.com/in/manishsharma5/
-- GitHub: https://github.com/aiwithms
+- GitHub profile and website repository: Work in progress
+- ORCID, Zenodo, Hugging Face, Google Scholar and ResearchGate: Work in progress
 - Exafuse: https://exafuse.de/
 
 ## Limitation

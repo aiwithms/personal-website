@@ -3,7 +3,7 @@ import Layout from "@layouts/Layout.astro";
 import PageHeroVisual from "@components/PageHeroVisual.astro";
 import SectionHeading from "@components/SectionHeading.astro";
 import SourceLinks from "@components/SourceLinks.astro";
-import { ACTIVE_PROFILE_LINKS } from "@data/profiles";
+import { PROFILE_LINKS } from "@data/profiles";
 import { CORE_TOPICS, LINKS, PERSON, SITE } from "@data/site";
 import { PROFESSIONAL_PROFILE as profile } from "@data/professionalProfile";
 
@@ -31,7 +31,7 @@ const facts = [
   ["Decision map", `${SITE.canonicalUrl}/decision-map`],
   ["Website", SITE.canonicalUrl],
   ["LinkedIn", LINKS.linkedin],
-  ["GitHub profile", LINKS.github],
+  ["GitHub profile", "Work in progress"],
   ["Exafuse", LINKS.exafuse]
 ];
 
@@ -104,10 +104,10 @@ const jsonLd = {
     <div class="site-shell grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
       <SectionHeading
         eyebrow="Profiles"
-        title="Verified public profile links"
-        description="Only active, verified public URLs are shown here. Planned research profiles are tracked in private/docs-facing roadmap notes until real URLs exist."
+        title="Profiles and repositories"
+        description="LinkedIn and Exafuse are active. Other destinations are work in progress."
       />
-      <SourceLinks links={ACTIVE_PROFILE_LINKS} />
+      <SourceLinks links={PROFILE_LINKS} />
     </div>
   </section>
 

@@ -512,7 +512,7 @@ export const SITE_MAP_GROUPS = [
     label: "Public Channels",
     description: "External and supporting public links.",
     links: [
-      { label: "Links", href: "/links", description: "LinkedIn, GitHub, Exafuse, and research-profile links." },
+      { label: "Links", href: "/links", description: "Active LinkedIn and Exafuse links, with profile availability states." },
       { label: "Contact", href: "/contact", description: "Professional contact routes." },
       { label: "Trust Center", href: "/trust", description: "Privacy, security, accessibility, evidence, and boundary posture." },
       { label: "Review the Site", href: "/review", description: "Non-confidential task review and browser-local manual feedback note." },

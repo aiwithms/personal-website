@@ -4,7 +4,7 @@ import ExafuseProofMedia from "@components/ExafuseProofMedia.astro";
 import PageHeroVisual from "@components/PageHeroVisual.astro";
 import SectionHeading from "@components/SectionHeading.astro";
 import SourceLinks from "@components/SourceLinks.astro";
-import { ACTIVE_PROFILE_LINKS } from "@data/profiles";
+import { PROFILE_LINKS } from "@data/profiles";
 import { EXAFUSE_PUBLIC_PROOF } from "@data/exafusePublicProof";
 import { FRAMEWORKS, LINKS, PERSON, SITE } from "@data/site";
 import { EXAFUSE_SOURCE_LINKS } from "@data/exafuse";
@@ -107,7 +107,7 @@ const jsonLd = {
         <p class="metric-label">Public work</p>
         <h1 class="mt-4 text-5xl font-black leading-tight text-white md:text-6xl">{title}</h1>
         <p class="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-          A public map of my current work that can be referenced safely: professional context, LMD/DED work, public frameworks, tools, research maps, GitHub artifacts, and profile links.
+          A public map of my current work that can be referenced safely: professional context, LMD/DED work, public frameworks, tools, research maps, and profile availability.
         </p>
         <div class="public-work-index__masthead-actions mt-8 flex flex-wrap gap-3">
           <a href="/about" class="btn btn-primary">About Manish</a>
@@ -243,9 +243,9 @@ const jsonLd = {
   <section class="site-shell section-y public-work-index__sources">
     <div class="public-work-index__source-sequence">
       <div class="public-work-index__source-group public-work-index__source-group--profiles">
-        <SectionHeading eyebrow="Public profile links" title="Verified public profiles" />
+        <SectionHeading eyebrow="Public profile links" title="Profiles and repositories" />
         <div>
-          <SourceLinks links={ACTIVE_PROFILE_LINKS} />
+          <SourceLinks links={PROFILE_LINKS} />
         </div>
       </div>
       <details class="public-work-index__source-group public-work-index__source-group--industrial public-work-index__source-group--collapsible">

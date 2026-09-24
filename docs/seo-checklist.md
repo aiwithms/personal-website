@@ -37,8 +37,8 @@ Date: 2026-07-07
 - WebSite JSON-LD uses `https://manishsharma.dev/#website`.
 - ProfilePage main entity points to the Person ID.
 - Article or TechArticle author points to the Person ID.
-- `sameAs` uses only real URLs: LinkedIn, GitHub, and Exafuse.
-- Do not include ORCID, Zenodo, Hugging Face, Google Scholar, or ResearchGate until real URLs exist.
+- `sameAs` uses only active URLs: LinkedIn and Exafuse.
+- GitHub profile/repository, ORCID, Zenodo, Hugging Face, Google Scholar and ResearchGate stay out of `sameAs` while their public state is Work in progress.
 
 ## Metadata
 

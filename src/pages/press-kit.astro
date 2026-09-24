@@ -4,7 +4,7 @@ import Layout from "@layouts/Layout.astro";
 import SectionHeading from "@components/SectionHeading.astro";
 import SourceLinks from "@components/SourceLinks.astro";
 import { CORE_TOPICS, DISCLAIMER, LINKS, PERSON, SAME_AS, SITE } from "@data/site";
-import { ACTIVE_PROFILE_LINKS } from "@data/profiles";
+import { PROFILE_LINKS } from "@data/profiles";
 import { absoluteUrl } from "@utils/urls";
 import { PROFESSIONAL_PROFILE as profile } from "@data/professionalProfile";
 
@@ -22,7 +22,7 @@ const identityFacts = [
   ["Company connection", "Exafuse"],
   ["Location", PERSON.location],
   ["Canonical site", SITE.canonicalUrl],
-  ["GitHub profile", LINKS.github],
+  ["GitHub profile", "Work in progress"],
   ["LinkedIn", LINKS.linkedin]
 ];
 
@@ -96,7 +96,7 @@ const officialLinks = [
   { label: "Claim source notes", href: "/claims" },
   { label: "No-Hype Boundary", href: "/no-hype" },
   { label: "LinkedIn", href: LINKS.linkedin },
-  { label: "GitHub profile", href: LINKS.github, description: "Personal public GitHub profile for Manish Sharma." },
+  { label: "GitHub profile", href: null, status: "work_in_progress" },
   { label: "Exafuse", href: LINKS.exafuse }
 ];
 
@@ -120,9 +120,9 @@ const machineSummary = {
     core_sources: `${SITE.canonicalUrl}/research/core-lmd-ai-sources`,
     industrial_proof: `${SITE.canonicalUrl}/industrial-proof`,
     linkedin: LINKS.linkedin,
-    github: LINKS.github,
     exafuse: LINKS.exafuse
   },
+  work_in_progress_profiles: PROFILE_LINKS.filter((item) => item.status === "work_in_progress").map((item) => ({ label: item.label, status: "Work in progress" })),
   brand_assets: {
     logo_mark_svg: `${SITE.canonicalUrl}/brand/manish-sharma-lab-mark.svg`,
     logo_lockup_svg: `${SITE.canonicalUrl}/brand/manish-sharma-lab-logo.svg`,
@@ -282,7 +282,7 @@ const jsonLd = {
           <SourceLinks links={officialLinks} />
         </div>
         <div class="mt-8">
-          <SourceLinks links={ACTIVE_PROFILE_LINKS} />
+          <SourceLinks links={PROFILE_LINKS} />
         </div>
       </div>
     </div>

@@ -2,9 +2,9 @@
 
 Canonical URL: https://manishsharma.dev
 
-GitHub profile: https://github.com/aiwithms
+GitHub profile: Work in progress
 
-GitHub identity note: `aiwithms` is Manish Sharma's verified public GitHub profile.
+GitHub profile, website repository, ORCID, Zenodo, Hugging Face, Google Scholar and ResearchGate: Work in progress. These destinations are not linked or included in sameAs.
 
 ## Primary Entity
 
@@ -129,7 +129,7 @@ Exafuse contact / RFQ: https://exafuse.de/kontakt/
 
 LinkedIn: https://www.linkedin.com/in/manishsharma5/
 
-GitHub: https://github.com/aiwithms
+GitHub: Work in progress
 
 ## Site Purpose
 
@@ -390,7 +390,7 @@ Index: https://manishsharma.dev/lab-notes
 Article by Manish Sharma, 24 September 2026:
 https://manishsharma.dev/lab-notes/lmd-control-system/
 
-A visual tour of the monitoring, sensor calibration, control architecture and machine integration behind his laser metal deposition work. It explains controls, sensor/data architecture, a modular ROS2 approach across machine platforms and scientific software, while distinguishing implemented software from physical-machine commissioning. The author-supplied GUI screenshots are offline views using synthetic values, not production measurements. Do not use the article or screenshots to infer a certified system, automatic quality acceptance or production qualification for every feature.
+A visual tour of the monitoring, sensor calibration, control architecture and machine integration behind his laser metal deposition work. It explains controls, sensor/data architecture, a modular ROS2 approach across machine platforms and scientific software, while distinguishing implemented software from physical-machine commissioning. Four author-supplied overview/setup captures are offline examples using synthetic values, not production measurements. A separate process-viewer screenshot shows camera panels. The three-agent guided experiment workflow uses Manager planning/chat, Operator questions and explicit approval before startup, then Analysis after stop, returning a report to the Manager. Do not use the article or screenshots to infer a certified system, automatic quality acceptance or production qualification for every feature.
 
 ## AI-Agent Usage Guidance
 
@@ -465,7 +465,7 @@ Avoid these claims:
 - German overview: https://manishsharma.dev/de
 - Exafuse: https://exafuse.de/
 - LinkedIn: https://www.linkedin.com/in/manishsharma5/
-- GitHub profile: https://github.com/aiwithms
+- GitHub profile: Work in progress
 
 ## Disclaimer
 

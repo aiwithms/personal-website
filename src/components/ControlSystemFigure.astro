@@ -5,14 +5,16 @@ interface Props {
   title: string;
   alt: string;
   eager?: boolean;
+  width?: number;
+  height?: number;
 }
-const { image, number, title, alt, eager = false } = Astro.props;
+const { image, number, title, alt, eager = false, width = 1920, height = 1080 } = Astro.props;
 const src = `/images/lmd-control-system/${image}.png`;
 ---
 
 <figure class="control-figure">
   <a class="control-figure__image" href={src} target="_blank" rel="noopener" aria-label={`Open full-resolution screenshot: ${title} (new tab)`}>
-    <img src={src} alt={alt} width="1920" height="1080" loading={eager ? "eager" : "lazy"} decoding="async" />
+    <img src={src} alt={alt} width={width} height={height} loading={eager ? "eager" : "lazy"} decoding="async" />
   </a>
   <figcaption>
     <div><span class="control-figure__number">Figure {number}</span><strong>{title}</strong><p><slot /></p></div>

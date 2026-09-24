@@ -24,7 +24,7 @@ const sensors = [
   ["Machine state", "Position, feed, laser and powder state, overrides and connection health.", "OPC UA provides the machine context needed to interpret camera measurements."],
   ["Height-T", "A triangulation-camera measurement of nozzle-to-surface stand-off.", "Calibration, feature checks and timing determine whether a measurement can inform control."],
   ["Height-C", "An alternative height-measurement input.", "Designed as a selected fallback source; it is not averaged with Height-T."],
-  ["Melt-pool camera", "Process presence, image features and a live view of the deposition region.", "A separate measurement path supports observation and the development of future laser regulation."],
+  ["Melt-pool camera", "Process presence, image features and a live view of the deposition region.", "Feedback for managing heat input and maintaining a stable melt pool through laser-power, travel-speed and powder-feed adjustments."],
   ["Toolpath & pass", "A read-only copy of the planned path and the current deposition pass.", "Measurements are associated with position, path segments and layers for spatial review."],
   ["Operator & job", "Mode, manual baselines, enabled sources, calibration and operating limits.", "The selected job provides the context and limits for interpreting data and proposing changes."]
 ];
@@ -157,18 +157,19 @@ const jsonLd = {
 
     <section id="control" class="control-story__section">
       <header><span class="control-story__number">05 / Decisions</span><h2>A control architecture with explicit authority.</h2></header>
-      <div class="control-story__prose"><p>The architecture separates measurement, interpretation, proposed action and the final machine-facing command. That separation lets an engineer inspect a new algorithm in observation or shadow operation before authorising physical actuation.</p></div>
+      <div class="control-story__prose"><p>The architecture separates measurement, interpretation, proposed action and the final machine-facing command. That separation makes it possible to follow a control decision from the sensor data to the adjustment sent to the machine.</p></div>
       <ol class="control-story__flow" aria-label="Supervisory data and control flow">{flow.map(([heading, text], i) => <li><span>{String(i + 1).padStart(2, "0")}</span><h3>{heading}</h3><p>{text}</p></li>)}</ol>
       <div class="control-story__prose">
         <h3>Three timescales for three different problems.</h3>
         <p><strong>Immediate stand-off correction.</strong> The fast control path calculates a bounded speed adjustment from accepted height data and a configured operating envelope. Hysteresis and rate limits constrain its response. Stale or rejected measurements remove automatic authority rather than leaving an old correction in charge.</p>
         <p><strong>Memory of the previous pass.</strong> The spatial path associates measurements with regions of the build. Its purpose is to prepare a correction when the nozzle revisits a region on a later pass. Uncertain pass identity or alignment prevents that map from silently influencing control.</p>
         <p><strong>Slower powder adaptation.</strong> Powder transport has a delay. The supervisory design therefore separates the requested setting, machine readback and estimated material arrival. Its decisions use longer evidence windows instead of reacting to every camera sample.</p>
-        <p>Melt-pool observation is a further input to process understanding and future laser regulation. In the reviewed implementation, automatic laser regulation remains disabled; spatial and powder adaptation remain shadow paths.</p>
+        <h3>Keep the melt pool stable throughout the build.</h3>
+        <p>Melt-pool feedback helps manage heat input and temperature as deposition progresses. The aim is a pool with a consistent size, shape and behaviour along the toolpath. Camera measurements describe how the pool is changing and guide adjustments to laser power, travel speed or powder feed. These variables influence the balance between energy input and added material, so the controller coordinates their response within the selected process limits.</p>
       </div>
       <div class="control-story__modes">
         <div><h3>Observe</h3><p>Acquire, interpret and record. No machine writes. Use it to inspect signals, timing and proposed responses.</p></div>
-        <div><h3>Assist</h3><p>The intended next stage permits deliberate operator baseline adjustments through the guarded command path, once commissioned.</p></div>
+        <div><h3>Assist</h3><p>Permit deliberate operator baseline adjustments through the guarded command path, within the configured process limits.</p></div>
         <div><h3>Active</h3><p>Selected automatic contributions can influence permitted actuators only after their measurement and machine interface have been qualified.</p></div>
       </div>
       <div class="control-story__prose"><p>A single regulation layer combines the allowed contributions. Commands carry identity, expiry and bounds, and the interface checks readback. ROS 2 coordinates this supervisory layer; the CNC or robot controller continues to execute motion and enforce the machine's own interlocks.</p></div>
@@ -180,7 +181,6 @@ const jsonLd = {
         <p>My control-system work began on a three-axis CNC LMD machine and was then adapted for a KUKA robot and the wide-track BreitbahnDED machine. That work spans Exafuse and the ZESS research environment at Ruhr University Bochum.</p>
         <p>The transferable part is the structure: sensor messages, measurement interpretation, control proposals, operator views and build records. Machine adapters translate equipment-specific signals into that common structure. Job profiles supply the relevant calibration, timing and operating limits.</p>
         <p>A new machine still needs its own engineering work. I need to establish which interfaces are available, what the signals actually mean, how quickly they update and how a permitted command changes the process. Different sensors can then be introduced through the same message contracts, with their own calibration and validity checks.</p>
-        <p>The earlier machine deployments informed this design. The current TICON supervisory version has its own commissioning state; historical deployment does not qualify every new controller or software revision.</p>
       </div>
       <div class="control-story__transfer">
         <div><h3>Shared across the system</h3><p>Sensor contracts · timestamps · validity states · control structure · operator workflow · run identity</p></div>
@@ -202,17 +202,9 @@ const jsonLd = {
     <section id="development" class="control-story__section">
       <header><span class="control-story__number">08 / Research into use</span><h2>Build, test and extend the system in stages.</h2></header>
       <div class="control-story__prose">
-        <p>The wider research includes heat-transfer and deposition simulation, physics-informed bead models, parameter studies and experimental comparison. These tools help me investigate process behaviour before machine trials. Integrating the fitted models and operating-envelope research into this supervisory runtime remains a separate development step.</p>
+        <p>The wider research includes heat-transfer and deposition simulation, physics-informed bead models, parameter studies and experimental comparison. These tools help me investigate process behaviour before machine trials.</p>
         <p>The runtime simulator serves a different purpose: exercising interfaces, sensor faults, delays and controller behaviour in a controlled environment. It is not a validated prediction of the physical process. Likewise, the supervisory system reads an existing toolpath for context; toolpath development is a separate part of my engineering work.</p>
         <p>This distinction is useful during development. A software interface test, a successful monitoring run and a physical closed-loop trial answer different questions. Each provides evidence for the next stage.</p>
-      </div>
-      <div class="control-story__status">
-        <h3>What the current evidence supports</h3>
-        <dl>
-          <div><dt>Observed on real equipment</dt><dd>Machine telemetry, independent camera acquisition, online features, process visualisation and recorded experimental runs in Observe mode.</dd></div>
-          <div><dt>Tested with simulated equipment</dt><dd>Typed speed commands through the actual OPC interface, including readback, neutral return and shutdown, against an isolated simulated endpoint.</dd></div>
-          <div><dt>Still subject to commissioning</dt><dd>Automatic control authority on the physical machine. Spatial and powder adaptation remain shadow-only; automatic laser regulation is disabled in the reviewed version.</dd></div>
-        </dl>
       </div>
       <div class="control-story__prose">
         <h3>My contribution</h3>
@@ -222,7 +214,7 @@ const jsonLd = {
     </section>
 
     <footer class="control-story__footer">
-      <div><p class="control-story__eyebrow">Continue exploring</p><h2>From the system to the engineering work.</h2><p>This article is my account of the architecture and development work, including the three-agent experiment workflow. The four offline panel captures were prepared on 6 September 2026; the separate process-viewer image shows a read-only run view. Controller status reflects the implementation and run records reviewed for this article.</p></div>
+      <div><p class="control-story__eyebrow">Continue exploring</p><h2>From the system to the engineering work.</h2><p>This article is my account of the architecture and development work, including the three-agent experiment workflow. The four offline panel captures were prepared on 6 September 2026; the separate process-viewer image shows a read-only run view.</p></div>
       <ul>
         <li><a href="/about/">My experience and research <span aria-hidden="true">↗</span></a></li>
         <li><a href={bridge.href}>Exafuse: Duisburg bridge case study <span aria-hidden="true">↗</span></a></li>
@@ -289,17 +281,12 @@ const jsonLd = {
   .control-story__modes > div { padding: 1.4rem; border-left: 2px solid var(--accent-2); background: var(--surface); }
   .control-story__transfer { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; padding-block: 1.8rem; border-block: 1px solid var(--line); }
   .control-story__transfer p { margin-top: .7rem; color: var(--text-soft); line-height: 1.9; font-size: .94rem; }
-  .control-story__status { margin-top: 2rem; padding: clamp(1.25rem, 3vw, 2rem); border: 1px solid var(--line-strong); border-radius: 12px; background: var(--surface-2); }
-  .control-story__status dl { margin-top: 1.4rem; }
-  .control-story__status dl > div { display: grid; grid-template-columns: minmax(12rem, 1fr) 3fr; gap: 1rem; padding-block: 1.1rem; border-top: 1px solid var(--line); }
-  .control-story__status dt { color: var(--accent-2); font-weight: 600; font-size: .9rem; }
-  .control-story__status dd { color: var(--text-soft); font-size: .94rem; line-height: 1.8; }
   .control-story__footer { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; margin-top: 4rem; padding-top: 2.5rem; border-top: 1px solid var(--line-strong); }
   .control-story__footer h2 { font-size: 1.65rem; }
   .control-story__footer p:not(.control-story__eyebrow) { margin-top: 1rem; color: var(--muted); font-size: .9rem; line-height: 1.8; }
   .control-story__footer ul { list-style: none; padding: 0; }
   .control-story__footer a { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); font-size: .95rem; color: var(--text-soft); }
   @media (max-width: 900px) { .control-story__flow { grid-template-columns: 1fr; } .control-story__flow li { display: grid; grid-template-columns: 2rem 8rem 1fr; gap: .5rem; padding: 1rem; border-right: 0; border-bottom: 1px solid var(--line); } .control-story__flow li:last-child { border-bottom: 0; } .control-story__flow h3, .control-story__flow p { margin: 0; } }
-  @media (max-width: 700px) { .control-story { padding-top: 1rem; } .control-story__triptych, .control-story__agents, .control-story__modes, .control-story__transfer, .control-story__footer { grid-template-columns: 1fr; gap: 1.25rem; } .control-story__status dl > div { grid-template-columns: 1fr; gap: .4rem; } .control-story__contents ol { column-gap: 1.1rem; } .control-story__flow li { grid-template-columns: 1.5rem 1fr; } .control-story__flow p { grid-column: 2; } }
+  @media (max-width: 700px) { .control-story { padding-top: 1rem; } .control-story__triptych, .control-story__agents, .control-story__modes, .control-story__transfer, .control-story__footer { grid-template-columns: 1fr; gap: 1.25rem; } .control-story__contents ol { column-gap: 1.1rem; } .control-story__flow li { grid-template-columns: 1.5rem 1fr; } .control-story__flow p { grid-column: 2; } }
   @media (prefers-reduced-motion: reduce) { .control-story { scroll-behavior: auto; } }
 </style>

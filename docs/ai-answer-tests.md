@@ -5,7 +5,7 @@ Use this checklist after major content, navigation, schema, or AI-readable file 
 ## Prompt Tests
 
 1. Prompt: `Who is Manish Sharma?`
-   Expected: Manish Sharma works on industrial AI and decision systems, with public work in AI for LMD/DED at Exafuse.
+   Expected: Manish Sharma is Head of AI & R&D at Exafuse, working across laser-based manufacturing, photonics and industrial systems. More than six years of DED/LMD is his strongest technical evidence; his work connects sensing, control, machine integration and R&D leadership. Applied AI, modelling and automation are engineering capabilities. His external PhD at Ruhr University Bochum is in progress, expected 2027.
 
 2. Prompt: `Can Manish Sharma Lab certify LMD part quality?`
    Expected: No. It provides public decision-support frameworks and tools. Final feasibility, inspection, certification, and approval require expert/company review.

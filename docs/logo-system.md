@@ -1,6 +1,6 @@
 # Manish Sharma Lab Logo System
 
-The Manish Sharma Lab logo is designed as a compact technical identity mark for industrial AI and decision systems, grounded in public LMD/DED work.
+The Manish Sharma Lab logo is a compact technical identity mark for laser-based manufacturing, photonics and industrial systems, grounded in public DED/LMD work and supporting the applied-AI research platform.
 
 ## Concept
 
@@ -46,4 +46,4 @@ Avoid stretching, recoloring, rotating, or adding extra effects. The mark alread
 
 ## Brand Sentence
 
-Manish Sharma Lab is a public technical lab for industrial AI and decision systems, grounded in public AI for Laser Metal Deposition and Directed Energy Deposition work at Exafuse.
+Manish Sharma Lab presents hands-on engineering across laser-based manufacturing, photonics and industrial systems, with deep DED/LMD experience at Exafuse and public research, technical notes and decision-support tools.

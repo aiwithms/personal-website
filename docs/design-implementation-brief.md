@@ -2,6 +2,8 @@
 
 Date: 2026-07-16
 
+Positioning supersession, 7 October 2026: this remains a historical visual/architecture audit, not the current content contract. Preserve its technical, accessibility and privacy constraints, but use `AGENTS.md` and `docs/site-narrative-v2.md` for the approved engineering-first introduction and evidence-before-tools hierarchy. No visual redesign is authorized by the content release.
+
 ## Purpose and scope
 
 This document is the handoff for a visual redesign of manishsharma.dev. It records the current implementation so that a Figma design can be translated without breaking public content, decision-support boundaries, browser-local tool behavior, search discovery, or deployment.
@@ -368,8 +370,8 @@ These components can receive a Figma-driven structural and visual update, but th
 4. Implement shell navigation and footer next.
    Validate desktop, 1180px transition, and mobile menu. Preserve the resource grouping, search dialog behavior, Exafuse action, breadcrumb rail, and page provenance.
 
-5. Redesign the home page around its existing product sequence.
-   Keep the cockpit-first hierarchy: primary cockpit action, worked example, Exafuse handoff, task paths, flagship assets, public proof context, and lab notes. Do not let a decorative Figma hero push the cockpit below the initial decision path.
+5. Preserve the approved engineering-first homepage sequence.
+   Introduce laser-based manufacturing, photonics and industrial systems, followed by areas of work and selected personal evidence. Keep the method, compact worked example, full Cockpit link, research assets and lab notes accessible in the research layer. Preserve the melt-pool imagery and existing visual system.
 
 6. Create code templates for content families.
    Apply the same Figma system to framework indexes/details, lab-note details/index, glossary details/index, resource hubs, identity pages, and source pages. Avoid a one-off redesign per route.
@@ -390,7 +392,7 @@ These components can receive a Figma-driven structural and visual update, but th
 
 - Do not change runtime behavior, claims, route ownership, or external-link policy merely to match a Figma mockup.
 - Do not add a backend, analytics, cookies, automatic email sending, input storage, or dependency installation as visual work.
-- Keep the homepage cockpit-first.
-- Keep the Decision Brief central and preserve its three portable output modes.
+- Keep professional engineering evidence before the homepage research/method and Cockpit layer.
+- Keep the Decision Brief central within the research platform and preserve its three portable output modes.
 - Keep the public LMD/DED and Exafuse commercial boundary legible in every new visual hierarchy.
 - Prefer existing components and shared tokens to duplicate variants or page-specific design forks.

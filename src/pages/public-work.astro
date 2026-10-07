@@ -13,21 +13,23 @@ import { resolveExafuseLink } from "../config/externalLinks";
 
 const breitbahnLink = resolveExafuseLink("breitbahnDedGuide");
 
-const title = "Current Work and Public Evidence";
+const title = "Selected work";
 const description =
-  "Manish Sharma's current public work in Industrial AI & Decision Systems, grounded in LMD/DED, process monitoring, robotics, and evidence-aware engineering decisions at Exafuse.";
+  "Manish Sharma's engineering work: DED/LMD manufacturing, monitoring and control, optical height sensing, MES/ERP adoption and technical R&D project leadership.";
 
 const currentContext = [
-  ["Public category", SITE.publicCategory],
-  ["Core thesis", SITE.primaryPromise],
-  ["Current proving ground", "LMD/DED at Exafuse"],
-  ["Boundary", "Public technical material only"]
+  ["Technical foundation", "Lasers, photonics and electrical engineering"],
+  ["Deepest process experience", "More than six years in DED/LMD"],
+  ["Responsibility", "Hands-on engineering and R&D leadership"],
+  ["Evidence scope", "Personal accounts and attributed public sources"]
 ];
 
 const establishedWork = [
-  ["Process monitoring", "Public work around monitoring signals, anomaly review, and inspection-aware evidence boundaries."],
-  ["Machine vision", "Vision and signal interpretation for LMD/DED process understanding."],
-  ["Robotic workflows", "Public profile context around robotic DED/LMD systems and toolpath workflows."],
+  ["Process development", "DED/LMD deposition strategy, process parameters, documentation and quality workflows."],
+  ["Optical monitoring", "Cameras, illumination, calibration and image-based measurement in a laser-processing environment."],
+  ["Robotic workflows", "Robotic DED/LMD systems, toolpath development and machine integration."],
+  ["Manufacturing data", "Print-ID traceability, in-house MES/ERP, operator procedures and process records."],
+  ["LPBF preparation", "Practical build preparation and troubleshooting, distinct from the six-plus years of DED/LMD experience."],
   ["Industrial repair", "Repairability screening, RFQ structure, cladding, machining allowance, and inspection planning."],
   ["RFQ intelligence", "Schemas, prompts, decision rules, and missing-information checks for LMD requests."]
 ];
@@ -104,17 +106,15 @@ const jsonLd = {
   <section class="site-shell section-y public-work-index__masthead">
     <div class="public-work-index__masthead-grid grid gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(24rem,0.62fr)] lg:items-center">
       <div>
-        <p class="metric-label">Public work</p>
+        <p class="metric-label">Engineering, R&amp;D and manufacturing delivery</p>
         <h1 class="mt-4 text-5xl font-black leading-tight text-white md:text-6xl">{title}</h1>
         <p class="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-          A public map of my current work that can be referenced safely: professional context, LMD/DED work, public frameworks, tools, research maps, and profile availability.
+          My strongest technical proof is more than six years in DED/LMD: developing the process, measuring what happens and connecting the machine to a usable manufacturing workflow. These examples show my responsibility across sensing, control, optical measurement and project delivery.
         </p>
         <div class="public-work-index__masthead-actions mt-8 flex flex-wrap gap-3">
-          <a href="/about" class="btn btn-primary">About Manish</a>
+          <a href="#professional-work-title" class="btn btn-primary">Explore the engineering cases</a>
           <a href="/thesis" class="btn btn-secondary">Read the method</a>
-          <a href="/domains/lmd-ded" class="btn btn-secondary">Current LMD/DED work</a>
-          <a href="/claims" class="btn btn-secondary">Claim source notes</a>
-          <a href={LINKS.exafuse} class="btn btn-laser" target="_blank" rel="noreferrer">Exafuse</a>
+          <a href="/about" class="btn btn-secondary">About Manish</a>
         </div>
       </div>
       <PageHeroVisual variant="profile" class="hidden lg:block" />
@@ -136,13 +136,29 @@ const jsonLd = {
   <div class="public-work-chapter public-work-chapter--proof" data-page-chapter="proof">
   <section class="band section-y" aria-labelledby="professional-work-title">
     <div class="site-shell">
-      <p class="metric-label">Professional experience</p>
-      <h2 id="professional-work-title" class="mt-3 text-3xl font-black text-white">Manufacturing leadership, research and collaboration</h2>
-      <p class="mt-5 max-w-4xl text-lg leading-8 text-slate-300">{profile.shortBio}</p>
-      <div class="mt-8 grid gap-6 md:grid-cols-3">
-        <article class="ordered-card p-6"><h3 class="text-xl font-bold text-white">Duisburg bridge components · 2024</h3><p class="mt-4 text-base leading-7 text-slate-300">{profile.selectedDelivery}</p><a href="/public-work/exafuse/duisburg-bridge-components" class="mt-5 inline-block font-bold text-cyan-100 underline underline-offset-4">Read the project and my role</a></article>
-        <article class="ordered-card p-6"><h3 class="text-xl font-bold text-white">Integrated LMD control system</h3><p class="mt-4 text-base leading-7 text-slate-300">{profile.integratedSystem}</p><a href="/lab-notes/lmd-control-system/" class="mt-5 inline-block font-bold text-cyan-100 underline underline-offset-4">Inside the LMD control system</a></article>
-        <article class="ordered-card p-6"><h3 class="text-xl font-bold text-white">BreitbahnDED</h3><p class="mt-4 text-base leading-7 text-slate-300">Company-side project leadership and proposal development, connecting manufacturing requirements with university research.</p><a href={breitbahnLink.href} class="mt-5 inline-block font-bold text-cyan-100 underline underline-offset-4">Read the Exafuse project article</a></article>
+      <p class="metric-label">Selected engineering cases</p>
+      <h2 id="professional-work-title" class="mt-3 text-3xl font-black text-white">What I built, integrated and coordinated.</h2>
+      <p class="mt-5 max-w-4xl text-lg leading-8 text-slate-300">These are my professional accounts of the work. The detailed pages retain the measurement limits, demonstration labels and company attribution that define what each example supports.</p>
+      <div class="mt-8 grid gap-6 md:grid-cols-2">
+        {profile.selectedCases.map((project) => (
+          <article id={project.id} class="ordered-card p-6">
+            <h3 class="text-2xl font-bold text-white">{project.title}</h3>
+            <p class="mt-4 text-base leading-7 text-slate-300">{project.context}</p>
+            <p class="mt-4 text-base leading-7 text-slate-200"><strong>My responsibility.</strong> {project.responsibility}</p>
+            <p class="mt-4 text-base leading-7 text-slate-300">{project.delivery}</p>
+            <p class="mt-4 text-base leading-7 text-slate-300"><strong class="text-white">Result and scope.</strong> {project.result}</p>
+            <a href={project.href} class="mt-5 inline-block font-bold text-cyan-100 underline underline-offset-4">{project.link}</a>
+          </article>
+        ))}
+      </div>
+      <div id="breitbahnded" class="mt-10 border-t border-white/15 pt-7">
+        <p class="metric-label">Technical project &amp; R&amp;D leadership</p>
+        <h3 class="mt-3 text-2xl font-bold text-white">Exafuse's contribution to BreitbahnDED</h3>
+        <p class="mt-4 max-w-4xl text-base leading-7 text-slate-300">I led Exafuse's contribution, including technical coordination, milestones, costs and reporting, and helped develop and write the proposal. My responsibility connected manufacturing requirements, monitoring and software with university research; it does not represent leadership of the whole consortium.</p>
+        <p class="mt-4 max-w-4xl text-base leading-7 text-slate-300">Alongside project delivery, I have managed five employees with hiring responsibility.</p>
+        <a href={breitbahnLink.href} class="mt-5 inline-block font-bold text-cyan-100 underline underline-offset-4">Read the Exafuse project article</a>
+      </div>
+      <div class="mt-10 grid gap-6 md:grid-cols-2">
         <article class="ordered-card p-6"><h3 class="text-xl font-bold text-white">Indian Space Research Organisation (ISRO)</h3><p class="mt-4 text-base leading-7 text-slate-300">Personally invited guest lectures, additive-manufacturing advice and contributions to WAAM machine development for rocket-nozzle manufacturing.</p></article>
         <article class="ordered-card p-6"><h3 class="text-xl font-bold text-white">Industry knowledge exchange</h3><p class="mt-4 text-base leading-7 text-slate-300">Additive-manufacturing advice to Tata Steel and Bharat Heavy Electricals Limited (BHEL), Haridwar, and technical talks at Outokumpu and Data Science Ruhrgebiet.</p></article>
       </div>
@@ -159,13 +175,13 @@ const jsonLd = {
       <SectionHeading
         eyebrow="Established work"
         title="Current professional context: LMD/DED"
-        description="This is the deepest current public proof for my broader Industrial AI & Decision Systems work: AI for Laser Metal Deposition and Directed Energy Deposition at Exafuse."
+        description="Deep DED/LMD experience shows how I connect physical processes, sensing, automation and manufacturing systems. Applied AI and modelling support the engineering work, alongside practical process development and measurement."
       />
       <div class="grid gap-4 md:grid-cols-2">
         {establishedWork.map(([heading, text]) => (
           <article class="ordered-card-strong public-work-index__work-card p-5">
             <p class="metric-label">Established work</p>
-            <h2 class="mt-3 text-xl font-black text-white">{heading}</h2>
+            <h3 class="mt-3 text-xl font-black text-white">{heading}</h3>
             <p class="mt-3 text-sm leading-6 text-slate-300">{text}</p>
           </article>
         ))}
@@ -178,7 +194,7 @@ const jsonLd = {
       <SectionHeading
         eyebrow="Documented examples"
         title="Company-owned cases used as source-bound industrial context"
-        description="Each story keeps the industrial problem, public source and scope together. The Duisburg page also includes my personal account of monitoring, control and timeline responsibility. Company project results remain attributed to Exafuse."
+        description="Each story keeps the industrial problem, public source and scope together. The Duisburg page also includes my personal account of monitoring, control and delivery scheduling. Company project results remain attributed to Exafuse."
       />
       <div class="public-work-index__case-grid public-work-index__case-grid--proof-led mt-10">
         {EXAFUSE_PUBLIC_PROOF.map((item, index) => {
@@ -188,7 +204,7 @@ const jsonLd = {
             <div class="public-work-index__case-overview">
               <div class="public-work-index__case-summary">
                 <p class="metric-label">Exafuse public case</p>
-                <h2 class="mt-3 text-2xl font-black text-white">{item.title}</h2>
+                <h3 class="mt-3 text-2xl font-black text-white">{item.title}</h3>
                 <p class="public-work-index__case-context">{item.industrialContext}</p>
                 {item.publicMetrics.length > 0 && (
                   <div class="mt-5 flex flex-wrap gap-2">
@@ -209,8 +225,8 @@ const jsonLd = {
                 </div>
                 <p class="public-work-index__case-limit">{item.whatItDoesNotProve[0]}</p>
                 <div class="public-work-index__case-actions mt-6 flex flex-wrap gap-3">
-                  <a href={pattern.href} class="btn btn-primary">{pattern.label}</a>
-                  <a href={`/public-work/exafuse/${item.slug}`} class="btn btn-secondary">Read the proof story</a>
+                  <a href={`/public-work/exafuse/${item.slug}`} class="btn btn-primary">Read the proof story</a>
+                  <a href={pattern.href} class="btn btn-secondary">{pattern.label}</a>
                 </div>
               </div>
             </div>

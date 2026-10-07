@@ -1,20 +1,22 @@
 ---
 import BrandMark from "@components/BrandMark.astro";
-import { LINKS } from "@data/site";
+import PageProvenance from "@components/PageProvenance.astro";
+import { LINKS, SITE } from "@data/site";
 import { internalHref } from "@utils/urls";
 
 interface Props {
   lang?: "en" | "de";
+  lastUpdated?: string;
 }
 
-const { lang = "en" } = Astro.props;
+const { lang = "en", lastUpdated = SITE.lastUpdated } = Astro.props;
 
 const footerColumnsEn = [
   {
     label: "Explore",
     links: [
       { label: "Method", href: "/thesis" },
-      { label: "Public Work", href: "/public-work" },
+      { label: "Selected work", href: "/public-work" },
       { label: "LMD / DED", href: "/domains/lmd-ded" },
       { label: "Frameworks", href: "/frameworks" }
     ]
@@ -54,7 +56,7 @@ const footerColumnsDe = [
     label: "Entdecken",
     links: [
       { label: "Methode", href: "/thesis" },
-      { label: "Öffentliche Arbeit", href: "/public-work" },
+      { label: "Ausgewählte Projekte", href: "/public-work" },
       { label: "LMD / DED", href: "/domains/lmd-ded" },
       { label: "Frameworks", href: "/frameworks" }
     ]
@@ -93,10 +95,10 @@ const footerColumns = lang === "de" ? footerColumnsDe : footerColumnsEn;
 const copy =
   lang === "de"
     ? {
-        subtitle: "LMD, Prozessüberwachung und industrielle KI",
-        promise: "Industrielle KI für Entscheidungen mit belastbaren Nachweisen.",
+        subtitle: "Laser · Photonik · Industrielle Systeme",
+        promise: "Prozessentwicklung, Sensorik und Regelung mit praktischer DED/LMD-Erfahrung.",
         description:
-          "Öffentliche Methoden, Frameworks, Quellenkarten, Werkzeuge und Fachnotizen. Kommerzielle LMD/DED-Leistungen, Angebotsanfragen, Lieferzusagen und firmeneigene Fallstudien gehören zu Exafuse.",
+          "Engineering-Projekte, Forschung, Werkzeuge und Fachnotizen. Kommerzielle LMD/DED-Leistungen, Angebotsanfragen, Lieferzusagen und firmeneigene Fallstudien gehören zu Exafuse.",
         contact: "Kontakt",
         search: "Suche",
         exafuse: "Exafuse öffnen",
@@ -107,10 +109,10 @@ const copy =
         trust: "Vertrauen & Datenschutz",
       }
     : {
-        subtitle: "Industrial AI / Decision Systems",
-        promise: "AI for industrial decisions that need evidence, not just predictions.",
+        subtitle: "Lasers · Photonics · Industrial systems",
+        promise: "Hands-on DED/LMD engineering, from process development to sensing and control.",
         description:
-          "Public frameworks, source maps, tools, lab notes, and AI guidance. Commercial services, RFQs, delivery claims, and company case studies belong to Exafuse.",
+          "Engineering projects, research, tools and technical notes. Commercial services, RFQs, delivery claims, and company case studies belong to Exafuse.",
         contact: "Contact",
         search: "Search",
         exafuse: "Visit Exafuse",
@@ -188,5 +190,6 @@ const copy =
       </div>
       <span class="site-footer__boundary">{copy.boundary}</span>
     </div>
+    <PageProvenance lastUpdated={lastUpdated} lang={lang} variant="footer" />
   </div>
 </footer>

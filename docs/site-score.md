@@ -2,6 +2,8 @@
 
 > Historical 10-area rubric. The current 50-criterion baseline, evidence gates, and path to 100 live in `docs/world-class-website-scorecard.md`.
 
+> Superseded positioning, 7 October 2026: the AI-first hero, old navigation and GitHub contact suggestions below are historical, not implementation requirements. Use `AGENTS.md`, `docs/site-narrative-v2.md` and `docs/final-100-checklist.md` for the approved engineering-first story, Selected work/Research actions and mobile Contact route. No score or historical review result has been recalculated in this content release.
+
 Date: 2026-07-07
 
 Current target: 100/100

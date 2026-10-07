@@ -1,5 +1,4 @@
 ---
-import Badge from "@components/Badge.astro";
 import CTAButton from "@components/CTAButton.astro";
 import GermanBriefCopy from "@components/GermanBriefCopy";
 import Layout from "@layouts/Layout.astro";
@@ -8,18 +7,18 @@ import {
   GERMAN_BRIEF_BOUNDARY,
   formatGermanDecisionBriefTemplateMarkdown
 } from "../lib/decisionBrief";
-import { PERSON, SITE } from "@data/site";
+import { LINKS, PERSON, SITE } from "@data/site";
 import { PROFESSIONAL_PROFILE as profile } from "@data/professionalProfile";
 
-const title = "Deutsch: Manish Sharma — Industrielle KI und Entscheidungssysteme";
+const title = "Deutsch: Manish Sharma — Laserbasierte Fertigung und industrielle Systeme";
 const description =
-  "Deutsche Übersicht von Manish Sharma zu industrieller KI und Entscheidungssystemen, mit aktuellem öffentlichem Schwerpunkt auf LMD/DED bei Exafuse und nachweisgestützter Entscheidungshilfe.";
+  "Manish Sharma: Head of AI & R&D bei Exafuse. Mehr als sechs Jahre DED/LMD, Laser und Photonik, optische Sensorik, Regelung, industrielle Systeme und F&E-Projektleitung.";
 const exafuseContactLink = resolveExafuseLink("contact");
 const breitbahnLink = resolveExafuseLink("breitbahnDedGuide");
 const germanTemplate = formatGermanDecisionBriefTemplateMarkdown();
 
 const bullets = [
-  "Manish Sharma: Industrielle KI und Entscheidungssysteme",
+  "Forschung und Methode: KI als Werkzeug für technische Entscheidungen",
   "Arbeitsansatz: Signale → Modell → Entscheiden → Verifizieren",
   "Vorläufige Entscheidungshilfe, keine technische Freigabe",
   "Für technische Machbarkeitsprüfungen und Angebotsanfragen ist Exafuse der richtige Ansprechpartner."
@@ -67,31 +66,19 @@ const jsonLd = {
   <div class="info-page info-page--german">
   <section class="site-shell info-page__masthead section-y">
     <div class="max-w-4xl">
-      <div class="flex flex-wrap gap-2">
-        <Badge>Deutsch</Badge>
-        <Badge tone="steel">Industrielle KI</Badge>
-        <Badge tone="laser">Aktueller LMD/DED-Nachweis</Badge>
-      </div>
+      <p class="metric-label">Head of AI &amp; R&amp;D bei Exafuse · Externer Doktorand an der Ruhr-Universität Bochum</p>
       <h1 class="mt-6 text-5xl font-black leading-tight text-white md:text-6xl">
-        Industrielle KI für Entscheidungen mit belastbaren Nachweisen.
+        Laserbasierte Fertigung und industrielle Systeme.
       </h1>
       <p class="mt-6 text-lg leading-8 text-slate-300 md:text-xl">
-        Als Head of AI &amp; R&amp;D bei Exafuse leite ich Forschungs- und Entwicklungsprojekte in der additiven Fertigung. Meine Arbeit reicht von Beschaffung und CAD über Prozessentwicklung, Überwachung und Qualitätsprüfung bis zum Versand. Der technische Schwerpunkt liegt auf Laser Metal Deposition (LMD), Directed Energy Deposition (DED), Bildverarbeitung und Prozessdaten.
+        Ich bin Ingenieur mit mehr als sechs Jahren praktischer Erfahrung in Directed Energy Deposition / Laser Metal Deposition (DED/LMD) und einem Hintergrund in Lasern und Photonik. Meine Arbeit reicht von Aufbaustrategien und Robotik bis zu optischer Prozessüberwachung, Regelung, Dokumentation und Qualität: vom ersten funktionierenden Versuch zu wiederholbaren, skalierbaren Fertigungsabläufen.
       </p>
       <p class="mt-4 text-base leading-7 text-slate-400">
-        Für mich ist eine Modellvorhersage nur ein Teil der Aufgabe. Sie muss in eine klare nächste Handlung, offene Unsicherheiten und einen nachvollziehbaren Prüfpfad eingeordnet werden. Das LMD-Entscheidungswerkzeug hilft, diese Punkte vor einer technischen Prüfung zu strukturieren; Ihre Eingaben bleiben dabei im Browser dieses Geräts.
+        Ich verbinde Prozessentwicklung, Sensorik, Maschinenintegration und Fertigungsdaten mit technischer Projekt- und F&amp;E-Leitung. Angewandte KI, maschinelles Lernen, numerische Modellierung und Automatisierung sind dabei Werkzeuge, um physische Prozesse robuster, messbarer und skalierbarer zu machen.
       </p>
-      <div class="mt-6 rounded-lg border border-amber-300/25 bg-amber-400/10 p-4 text-sm font-bold leading-6 text-amber-50">
-        <ul class="grid gap-2">
-          {statusLines.map((line) => <li>{line}</li>)}
-        </ul>
-        <p class="mt-3">{GERMAN_BRIEF_BOUNDARY}</p>
-      </div>
       <div class="mt-8 flex flex-wrap gap-3">
-        <CTAButton href="/tools/#preset=worn-shaft" variant="primary">LMD-Entscheidungswerkzeug öffnen</CTAButton>
-        <CTAButton href="/thesis" variant="secondary">Methode auf Englisch lesen</CTAButton>
-        <GermanBriefCopy client:load />
-        <CTAButton href={exafuseContactLink.href} variant="laser" external>Exafuse kontaktieren</CTAButton>
+        <CTAButton href="/public-work" variant="primary">Ausgewählte Projekte (Englisch)</CTAButton>
+        <CTAButton href="#forschung" variant="secondary">Forschung und Methode erkunden</CTAButton>
       </div>
     </div>
   </section>
@@ -99,20 +86,33 @@ const jsonLd = {
   <section class="band section-y" aria-labelledby="profil-heading">
     <div class="site-shell">
       <p class="metric-label">Berufliches Profil</p>
-      <h2 id="profil-heading" class="mt-3 text-3xl font-black text-white md:text-4xl">Fertigung, Forschung und Wissenstransfer.</h2>
-      <div class="mt-8 border-y border-white/15 py-7">
-        <h3 class="text-2xl font-bold text-white">Duisburger Brückenkomponenten · 2024</h3>
-        <p class="mt-4 max-w-4xl text-lg leading-8 text-slate-200">2024 leitete ich die Arbeiten zur Prozessüberwachung und -regelung für Exafuses Duisburger Brückenkomponenten. Diese ermöglichten den Aufbau ohne ständige menschliche Überwachung. Ich koordinierte außerdem den gesamten Projektzeitplan. An den Prüfungen war ich nicht beteiligt.</p>
-        <p class="mt-4 max-w-4xl text-base leading-8 text-slate-300">Darüber hinaus entwickelte ich ein integriertes LMD-Regelungssystem mit Modellierung, Simulation, Bahnplanung, Kamera- und Sensorüberwachung, Softwareentwicklung, Datenverarbeitung und Live-Regelung. Dieses System fließt in meine Dissertation ein.</p>
-        <p class="mt-4 max-w-4xl text-base leading-8 text-slate-300">Ich habe auch die Exafuse-Website entwickelt, die technische Leistungen, Fallstudien und Werkzeuge zur Vorbereitung von Anfragen zugänglich macht.</p>
-        <a href="/about#duisburg" class="mt-5 inline-block font-bold text-cyan-100 underline underline-offset-4">Projektbeispiel und veröffentlichte Ergebnisse</a>
-      </div>
+      <h2 id="profil-heading" class="mt-3 text-3xl font-black text-white md:text-4xl">Praktische Entwicklung und technische Verantwortung.</h2>
+      <p class="mt-5 max-w-4xl text-lg leading-8 text-slate-300">Ich bin seit Januar 2024 Head of AI &amp; R&amp;D bei Exafuse / ThinkIng – Additive Technology GmbH; zuvor war ich dort von Januar 2020 bis Dezember 2023 Machine Learning and Systems Engineer.</p>
       <div class="mt-8 grid gap-5 lg:grid-cols-3">
         <article class="ordered-card p-6">
-          <h3 class="text-xl font-bold text-white">Projektverantwortung</h3>
-          <p class="mt-4 text-base leading-7 text-slate-300">Ich leite den Beitrag von Exafuse zum Forschungsprojekt BreitbahnDED und habe an der Entwicklung und Erstellung des Projektantrags mitgewirkt. Mit der Ruhr-Universität Bochum arbeite ich außerdem an neuen Forschungsanträgen.</p>
+          <h3 class="text-xl font-bold text-white">Technische Projekt- und F&amp;E-Leitung</h3>
+          <p class="mt-4 text-base leading-7 text-slate-300">Ich habe fünf Mitarbeitende geführt und hatte Einstellungsverantwortung. Für Exafuses Beitrag zu BreitbahnDED leitete ich die technische Koordination und war für Meilensteine, Kosten und Berichterstattung verantwortlich. Ich wirkte auch an der Entwicklung und Erstellung des Projektantrags mit.</p>
           <a href={breitbahnLink.href} class="mt-5 inline-block font-bold text-cyan-100 underline underline-offset-4">Projektbericht bei Exafuse (Englisch)</a>
         </article>
+        <article class="ordered-card p-6">
+          <h3 class="text-xl font-bold text-white">Laser, Photonik und Sensorik</h3>
+          <p class="mt-4 text-base leading-7 text-slate-300">M.Sc. Lasers and Photonics an der Ruhr-Universität Bochum, ausgezeichnet mit dem Fakultätspreis als bester Student, nach einem B.Tech. in Elektrotechnik. Praktische Arbeit mit Kameras, Beleuchtung, Kalibrierung und optischer Prozessüberwachung; kamerabasierte Höhenmessung vom Konzept bis zum getesteten Prototyp.</p>
+          <a href="/lab-notes/lmd-control-system/#calibration" class="mt-5 inline-block font-bold text-cyan-100 underline underline-offset-4">Optische Messung (Englisch)</a>
+        </article>
+        <article class="ordered-card p-6">
+          <h3 class="text-xl font-bold text-white">Fertigung und industrielle Systeme</h3>
+          <p class="mt-4 text-base leading-7 text-slate-300">Überwachung und Regelung auf drei Maschinen an zwei Standorten. Ich entwickelte ein internes MES/ERP mit Print-ID-Rückverfolgbarkeit und Arbeitsanweisungen, das von allen Bedienern genutzt wird. Hinzu kommen praktische LPBF-Bauvorbereitung und Fehlerbehebung; die mehr als sechs Jahre Erfahrung beziehen sich auf DED/LMD.</p>
+          <a href="/lab-notes/lmd-control-system/#records" class="mt-5 inline-block font-bold text-cyan-100 underline underline-offset-4">Fertigungsdaten und Abläufe (Englisch)</a>
+        </article>
+      </div>
+      <div class="mt-8 border-y border-white/15 py-7">
+        <h3 class="text-2xl font-bold text-white">Duisburger Brückenkomponenten · 2024</h3>
+        <p class="mt-4 max-w-4xl text-lg leading-8 text-slate-200">2024 leitete ich die Arbeiten zur Prozessüberwachung und -regelung für Exafuses Duisburger Brückenkomponenten. Diese ermöglichten den Aufbau ohne ständige menschliche Überwachung. Ich koordinierte außerdem die Lieferterminplanung innerhalb meines Verantwortungsbereichs. An den Prüfungen war ich nicht beteiligt; Unternehmens- und Partnerleistungen bleiben getrennt ausgewiesen.</p>
+        <p class="mt-4 max-w-4xl text-base leading-8 text-slate-300">Darüber hinaus entwickelte ich ein integriertes LMD-Regelungssystem mit Modellierung, Simulation, Bahnplanung, Kamera- und Sensorüberwachung, Softwareentwicklung, Datenverarbeitung und Live-Regelung. Dieses System fließt in meine Dissertation ein.</p>
+        <p class="mt-4 max-w-4xl text-base leading-8 text-slate-300">Ich habe auch die Exafuse-Website entwickelt, die technische Leistungen, Fallstudien und Werkzeuge zur Vorbereitung von Anfragen zugänglich macht.</p>
+        <a href="/public-work/exafuse/duisburg-bridge-components" class="mt-5 inline-block font-bold text-cyan-100 underline underline-offset-4">Projektbeispiel und meine Verantwortung (Englisch)</a>
+      </div>
+      <div class="mt-8 grid gap-5 lg:grid-cols-2">
         <article class="ordered-card p-6">
           <h3 class="text-xl font-bold text-white">Lehre und technische Beratung</h3>
           <p class="mt-4 text-base leading-7 text-slate-300">Auf persönliche Einladung halte ich regelmäßig Gastvorträge bei der Indian Space Research Organisation (ISRO) in Indien. Ich wirke an der Entwicklung von WAAM-Anlagen für Raketendüsen mit und berate Teams bei ISRO, Tata Steel und Bharat Heavy Electricals Limited (BHEL), Haridwar zur additiven Fertigung.</p>
@@ -120,21 +120,36 @@ const jsonLd = {
         </article>
         <article class="ordered-card p-6">
           <h3 class="text-xl font-bold text-white">Promotion und Sprachen</h3>
-          <p class="mt-4 text-base leading-7 text-slate-300">Die Forschungsarbeiten für meine Promotion an der Ruhr-Universität Bochum sind abgeschlossen; die Dissertation befindet sich in der Einreichungsphase. Der Abschluss wird für 2027 erwartet.</p>
-          <p class="mt-4 text-base leading-7 text-slate-300">Englisch C1 · Deutsch B1, B2 in Vorbereitung mit angestrebtem Abschluss bis Dezember 2026 · Hindi Muttersprache.</p>
+          <p class="mt-4 text-base leading-7 text-slate-300">Ich promoviere extern an der Ruhr-Universität Bochum im Bereich Angewandte Lasertechnik. Die Promotion läuft; der Abschluss wird für 2027 erwartet. Mit der Universität arbeite ich außerdem an neuen Forschungsanträgen.</p>
+          <p class="mt-4 text-base leading-7 text-slate-300">Englisch C1 · Deutsch B1, auf dem Weg zu B2 · Hindi Muttersprache.</p>
         </article>
       </div>
       <a href="/about" class="btn btn-secondary mt-8">Vollständiges Profil auf Englisch</a>
+      <div class="mt-10 border-t border-white/15 pt-7">
+        <h3 class="text-2xl font-bold text-white">Beruflicher Kontakt</h3>
+        <p class="mt-4 max-w-4xl text-base leading-7 text-slate-300">Für Gespräche über technische Projekte, F&amp;E, laserbasierte Fertigung, Photonik, Sensorik oder industrielle Systeme erreichen Sie mich auf LinkedIn. Kommerzielle LMD/DED-Anfragen und Angebotsanfragen richten Sie bitte an Exafuse.</p>
+        <div class="mt-6 flex flex-wrap gap-3"><CTAButton href={LINKS.linkedin} variant="primary" external>Kontakt über LinkedIn</CTAButton><CTAButton href={exafuseContactLink.href} variant="secondary" external>Exafuse kontaktieren</CTAButton></div>
+      </div>
     </div>
   </section>
 
-  <section class="band section-y">
-    <div class="site-shell grid gap-4 md:grid-cols-2">
+  <section id="forschung" class="band section-y" aria-labelledby="forschung-title">
+    <div class="site-shell">
+      <p class="metric-label">Forschung und Methode</p>
+      <h2 id="forschung-title" class="mt-3 text-3xl font-black text-white">Technische Entscheidungen nachvollziehbar vorbereiten.</h2>
+      <p class="mt-5 max-w-4xl text-base leading-8 text-slate-300">Eine Modellvorhersage muss in eine nächste Handlung, offene Unsicherheiten und einen nachvollziehbaren Prüfpfad eingeordnet werden. Das LMD-Entscheidungswerkzeug hilft, diese Punkte vor einer technischen Prüfung zu strukturieren; Ihre Eingaben bleiben im Browser dieses Geräts.</p>
+      <div class="mt-6 rounded-lg border border-amber-300/25 bg-amber-400/10 p-4 text-sm font-bold leading-6 text-amber-50">
+        <ul class="grid gap-2">{statusLines.map((line) => <li>{line}</li>)}</ul>
+        <p class="mt-3">{GERMAN_BRIEF_BOUNDARY}</p>
+      </div>
+      <div class="mt-8 flex flex-wrap gap-3"><CTAButton href="/tools/#preset=worn-shaft" variant="primary">LMD-Entscheidungswerkzeug öffnen</CTAButton><CTAButton href="/thesis" variant="secondary">Methode auf Englisch lesen</CTAButton><GermanBriefCopy client:load /></div>
+      <div class="mt-8 grid gap-4 md:grid-cols-2">
       {bullets.map((item) => (
         <div class="ordered-card-strong p-6">
           <p class="text-xl font-black leading-tight text-white">{item}</p>
         </div>
       ))}
+      </div>
     </div>
   </section>
 

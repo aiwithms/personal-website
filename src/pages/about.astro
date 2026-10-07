@@ -9,11 +9,11 @@ import { LINKS, PERSON, SITE } from "@data/site";
 import { PROFESSIONAL_PROFILE as profile } from "@data/professionalProfile";
 import { absoluteUrl } from "@utils/urls";
 
-const title = "Manish Sharma — Additive Manufacturing and Industrial AI";
+const title = "Manish Sharma — Laser-based Manufacturing and Industrial Systems";
 const bridge = EXAFUSE_PUBLIC_PROOF.find((proof) => proof.id === "cs15-duisburg-bridge")!;
 const bridgeSource = getExafuseProofSource(bridge);
 const bridgeFacts = [getClaim("cs15-bridge-components-750kg"), getClaim("cs15-six-structural-nodes")];
-const description = "Head of AI & R&D at Exafuse. Manufacturing project leadership, LMD/DED monitoring, WAAM collaboration, invited teaching and research at Ruhr University Bochum.";
+const description = "Head of AI & R&D at Exafuse: more than six years in DED/LMD, a lasers and photonics foundation, sensing, control, industrial systems and technical project leadership.";
 const jsonLd = {
   "@context": "https://schema.org", "@type": "AboutPage",
   "@id": `${SITE.canonicalUrl}/about#page`, url: `${SITE.canonicalUrl}/about`,
@@ -25,24 +25,35 @@ const jsonLd = {
   <div class="professional-page">
     <section class="site-shell section-y grid items-center gap-10 lg:grid-cols-[1.35fr_.65fr]" aria-labelledby="profile-title">
       <div>
-        <p class="metric-label">Manish Sharma · Industrial AI &amp; Decision Systems</p>
+        <p class="metric-label">Manish Sharma · Lasers, photonics and industrial systems</p>
         <h1 id="profile-title" class="mt-5 text-4xl font-black leading-[1.07] tracking-tight text-white md:text-6xl">From process development<br /><span class="text-cyan-100">to manufacturing delivery.</span></h1>
         <p class="mt-6 text-xl font-bold text-white">{profile.role}</p>
-        <p class="mt-4 max-w-2xl text-lg leading-8 text-slate-300">I build integrated LMD control systems and lead additive-manufacturing projects. My work connects models, simulations and path planning with cameras, sensors, process data and live control.</p>
-        <p class="mt-4 max-w-2xl text-base leading-7 text-slate-300">For Exafuse's Duisburg bridge-component project in 2024, I led monitoring and process-control work that enabled unattended builds and coordinated the overall project timeline.</p>
-        <p class="mt-4 text-base leading-7 text-slate-300">LMD/DED process development · Machine vision and robotics · WAAM collaboration</p>
+        <p class="mt-4 max-w-2xl text-lg leading-8 text-slate-300">I work across laser-based manufacturing and industrial systems, combining hands-on process development with sensing, automation, control and R&amp;D leadership. More than six years in DED/LMD and a background in lasers and photonics ground that work in physical processes.</p>
+        <p class="mt-4 max-w-2xl text-base leading-7 text-slate-300">I build systems end-to-end: turning shop-floor constraints into robust workflows, clean data and practical tools. That means connecting deposition strategy and robotics with optical monitoring, machine integration, documentation and quality. Applied AI, machine learning and numerical modelling are engineering tools within that work.</p>
+        <p class="mt-4 max-w-2xl text-base leading-7 text-slate-300">My M.Sc. in Lasers and Photonics at Ruhr University Bochum, recognised with the Faculty Prize for best student, builds on a B.Tech. in Electrical Engineering. I am also an external PhD researcher in Applied Laser Technology at Ruhr University Bochum; the PhD is in progress, expected 2027.</p>
         <div class="mt-8 flex flex-wrap gap-3">
-          <a href="#duisburg" class="btn btn-primary">View the Duisburg project</a>
+          <a href="/public-work" class="btn btn-primary">View selected work</a>
           <a href={LINKS.linkedin} class="btn btn-secondary" target="_blank" rel="noreferrer">LinkedIn</a>
           <a href="/contact" class="btn btn-secondary">Contact</a>
         </div>
         <nav class="mt-6 flex flex-wrap gap-x-6 gap-y-3 text-base text-cyan-100" aria-label="Professional profile sections">
-          <a href="#collaborations">Teaching and advice</a><a href="#experience">Experience</a><a href="#education">Education</a>
+          <a href="#engineering-evidence">Engineering evidence</a><a href="#duisburg">Duisburg project</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#collaborations">Teaching and advice</a>
         </nav>
       </div>
       <div class="profile-image-panel max-w-sm overflow-hidden rounded-lg border border-white/15 p-3 lg:max-w-none">
         <ProfileImage eager withCaption />
         <p class="px-2 pb-1 pt-4 text-base leading-7 text-slate-300">Engineering, research and delivery<br /><strong class="text-slate-100">Exafuse · Ruhr University Bochum</strong></p>
+      </div>
+    </section>
+
+    <section id="engineering-evidence" class="site-shell section-y" aria-labelledby="engineering-evidence-title">
+      <p class="metric-label">Engineering responsibility</p>
+      <h2 id="engineering-evidence-title" class="mt-3 text-3xl font-black text-white">From measurement to manufacturing use.</h2>
+      <div class="mt-8 grid gap-6 md:grid-cols-2">
+        <article class="border-t border-white/15 pt-5"><h3 class="text-xl font-bold text-white">Team and R&amp;D leadership</h3><p class="mt-3 text-base leading-7 text-slate-300">{profile.leadership}</p></article>
+        <article class="border-t border-white/15 pt-5"><h3 class="text-xl font-bold text-white">Monitoring and control</h3><p class="mt-3 text-base leading-7 text-slate-300">{profile.deployment}</p><a href="/lab-notes/lmd-control-system/" class="mt-4 inline-block text-cyan-100 underline underline-offset-4">Read the system case</a></article>
+        <article class="border-t border-white/15 pt-5"><h3 class="text-xl font-bold text-white">Optical measurement</h3><p class="mt-3 text-base leading-7 text-slate-300">{profile.opticalSensing}</p><a href="/lab-notes/lmd-control-system/#calibration" class="mt-4 inline-block text-cyan-100 underline underline-offset-4">Explore height sensing</a></article>
+        <article class="border-t border-white/15 pt-5"><h3 class="text-xl font-bold text-white">Manufacturing workflows</h3><p class="mt-3 text-base leading-7 text-slate-300">{profile.manufacturingSystems}</p><a href="/lab-notes/lmd-control-system/#records" class="mt-4 inline-block text-cyan-100 underline underline-offset-4">Read about traceability</a></article>
       </div>
     </section>
 
@@ -108,7 +119,7 @@ const jsonLd = {
 
     <section id="education" class="band section-y">
       <div class="site-shell">
-        <SectionHeading eyebrow="Research and education" title="A foundation in photonics, control and AI" />
+        <SectionHeading eyebrow="Research and education" title="Lasers, photonics and electrical engineering" />
         <div class="mt-10 grid gap-8 lg:grid-cols-3">
           {profile.education.map((item) => (
             <article class="border-t border-cyan-100/25 pt-5"><h3 class="text-xl font-bold text-white">{item.title}</h3><p class="mt-3 text-base text-cyan-100">{item.org}</p><p class="mt-4 text-base leading-8 text-slate-300">{item.text}</p></article>
@@ -129,9 +140,9 @@ const jsonLd = {
       </div>
       <div class="border-l-2 border-cyan-200/50 pl-7">
         <h2 class="text-3xl font-black leading-tight text-white">Discuss an engineering challenge</h2>
-        <p class="my-6 text-base leading-8 text-slate-300">Manufacturing digitalization, process monitoring, research collaboration or a guest lecture.</p>
+        <p class="my-6 text-base leading-8 text-slate-300">Technical projects, R&amp;D, laser-based manufacturing, photonics, sensing or industrial systems.</p>
         <a href="/contact" class="btn btn-primary">Start a conversation</a>
-        <p class="mt-6 text-sm text-slate-400">Profile updated September 2026</p>
+        <p class="mt-6 text-sm text-slate-400">Profile updated October 2026</p>
       </div>
     </section>
   </div>

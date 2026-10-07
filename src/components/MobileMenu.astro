@@ -29,7 +29,7 @@ const workSectionActive = workSectionPaths.some((href) => isActive(href));
 
 const primaryLabelsDe: Record<string, string> = {
   "/": "Startseite",
-  "/public-work": "Arbeit",
+  "/public-work": "Projekte",
   "/thesis": "Methode",
   "/lab-notes": "Notizen",
   "/about": "Über mich"
@@ -72,7 +72,7 @@ const referenceItems = [
 const groups = [
   {
     label: lang === "de" ? "Hauptseiten" : "Primary",
-    items: primaryItems
+    items: [...primaryItems, { href: "/contact", label: lang === "de" ? "Kontakt" : "Contact" }]
   },
   {
     label: lang === "de" ? "Referenz" : "Reference",
@@ -85,7 +85,7 @@ const groups = [
   <summary class="utility-button list-none px-4 py-2 text-white">{lang === "de" ? "Menü" : "Menu"}</summary>
   <div class="nav-panel mobile-nav-panel">
     <nav class="mobile-nav" aria-label={lang === "de" ? "Mobile Navigation" : "Mobile navigation"}>
-      <div class="mobile-nav__brand" aria-hidden="true">Manish Sharma <span>Lab / Industrial AI & decisions</span></div>
+      <div class="mobile-nav__brand" aria-hidden="true">Manish Sharma <span>{lang === "de" ? "Laser · Photonik · Industrielle Systeme" : "Lasers · Photonics · Industrial systems"}</span></div>
       {groups.map((group) => (
         <section class="mobile-nav__group">
           <p class="mobile-nav__label">{group.label}</p>

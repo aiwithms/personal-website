@@ -1,9 +1,10 @@
 /* Manish Sharma Lab */
 
 Owner: Manish Sharma
-Focus: Industrial AI & Decision Systems
-Promise: AI for industrial decisions that need evidence, not just predictions.
-Public LMD/DED context: AI for LMD/DED at Exafuse, Germany
+Focus: Laser-based manufacturing, photonics and industrial systems
+Promise: Engineering from shop-floor constraints to repeatable processes and practical systems.
+Role: Head of AI & R&D at Exafuse
+Public LMD/DED context: DED/LMD process development, sensing/control and manufacturing systems at Exafuse, Germany
 Canonical: https://manishsharma.dev
 
 /* Team */
@@ -27,4 +28,4 @@ Security policy: https://manishsharma.dev/trust#security
 Security contact: https://manishsharma.dev/contact
 AI-readable trust summary: https://manishsharma.dev/trust.md
 
-Last reviewed: 2026-07-12
+Last reviewed: 2026-10-07

@@ -2,10 +2,11 @@
 import Layout from "@layouts/Layout.astro";
 import ControlSystemFigure from "@components/ControlSystemFigure.astro";
 import { PERSON, SITE } from "@data/site";
+import { PROFESSIONAL_PROFILE as profile } from "@data/professionalProfile";
 import { resolveExafuseLink } from "../../config/externalLinks";
 
 const title = "Inside the LMD control system";
-const description = "Inside my LMD control system: process-viewer images, three AI agents for guided experiments, sensor calibration and modular machine integration.";
+const description = "My LMD/DED engineering work: monitoring and control across three machines at two sites, optical height sensing, calibration, machine integration and manufacturing records.";
 const canonical = "/lab-notes/lmd-control-system/";
 const published = "2026-09-24";
 const bridge = resolveExafuseLink("cs15");
@@ -43,20 +44,21 @@ const jsonLd = {
   headline: title,
   description,
   datePublished: published,
-  dateModified: published,
+  dateModified: profile.reviewed,
   author: { "@id": `${SITE.canonicalUrl}/identity#manish-sharma`, name: PERSON.name },
   image: `${SITE.canonicalUrl}/images/lmd-control-system/control-overview.png`,
   inLanguage: "en",
-  about: ["Laser Metal Deposition", "Process control", "Machine vision", "Manufacturing data"]
+  about: ["Laser Metal Deposition", "Directed Energy Deposition", "Process control", "Optical sensing", "Machine vision", "Manufacturing data"]
 };
 ---
 
-<Layout title={`${title} — Manish Sharma`} description={description} canonical={canonical} jsonLd={jsonLd} lastUpdated={published} ogType="article" image="/images/lmd-control-system/control-overview.png">
+<Layout title={`${title} — Manish Sharma`} description={description} canonical={canonical} jsonLd={jsonLd} lastUpdated={profile.reviewed} ogType="article" image="/images/lmd-control-system/control-overview.png">
   <article class="control-story site-shell">
     <header class="control-story__hero">
       <p class="control-story__eyebrow">Engineering case study <span aria-hidden="true">/</span> Laser metal deposition</p>
       <h1>Inside the LMD <br /><span>control system.</span></h1>
-      <p class="control-story__lead">An experiment starts with a question. This system connects that question to the machine, the sensors and the results—with three AI agents guiding the workflow and a modular control layer handling the process.</p>
+      <p class="control-story__lead">I built this system to connect the physical LMD process with its cameras, sensors, machine interfaces and control decisions. I led the architecture, development and integration, coordinating contributors working on sensors and algorithms.</p>
+      <p class="control-story__lead mt-4">{profile.deployment} The work includes camera-based height sensing, practical optical calibration and manufacturing records. AI and modelling support measurement, experiment planning and process control within this engineering workflow.</p>
       <div class="control-story__byline"><a href="/about/">Manish Sharma</a><span>System development &amp; doctoral research</span><time datetime={published}>24 September 2026</time></div>
     </header>
 
@@ -131,7 +133,8 @@ const jsonLd = {
     <section id="calibration" class="control-story__section">
       <header><span class="control-story__number">04 / Measurement</span><h2>Make the measurement explainable before using it for control.</h2></header>
       <div class="control-story__prose">
-        <p>Height-T estimates stand-off from a camera view. The setup workflow connects image coordinates to physical references and makes the assumptions visible to the person commissioning the sensor.</p>
+        <p>I developed camera-based height sensing from concept to tested prototype, working with the optical setup, illumination, image processing and calibration. This is a practical extension of my lasers and photonics background in a laser-material processing environment.</p>
+        <p>Height-T estimates stand-off from a camera view. The setup workflow connects image coordinates to physical references and makes the assumptions visible to the person commissioning the sensor. The tested-prototype result does not establish a certified accuracy or a universal operating range.</p>
         <p>The operator establishes the physical reference, waits for the measurement to settle, then captures a short numeric window. Approved reference windows can be reviewed and saved in a calibration receipt. The software does not choose or verify the physical reference on the operator's behalf.</p>
       </div>
       <ControlSystemFigure image="calibration-reference" number="03" title="Reference capture and calibration receipts" alt="Offline Height-T setup showing reference capture, approval controls, calibration-fit preview and a missing-receipt warning.">
@@ -172,7 +175,7 @@ const jsonLd = {
     <section id="machines" class="control-story__section">
       <header><span class="control-story__number">06 / Transfer</span><h2>Reuse the architecture. Engineer the machine connection.</h2></header>
       <div class="control-story__prose">
-        <p>My control-system work began on a three-axis CNC LMD machine and was then adapted for a KUKA robot and the wide-track BreitbahnDED machine. That work spans Exafuse and the ZESS research environment at Ruhr University Bochum.</p>
+        <p>My monitoring and control work has been deployed across three machines at two sites. It began on a three-axis CNC LMD machine and was then adapted for a KUKA robot and the wide-track BreitbahnDED machine, spanning Exafuse and the ZESS research environment at Ruhr University Bochum.</p>
         <p>The transferable part is the structure: sensor messages, measurement interpretation, control proposals, operator views and build records. Machine adapters translate equipment-specific signals into that common structure. Job profiles supply the relevant calibration, timing and operating limits.</p>
         <p>A new machine still needs its own engineering work. I need to establish which interfaces are available, what the signals actually mean, how quickly they update and how a permitted command changes the process. Different sensors can then be introduced through the same message contracts, with their own calibration and validity checks.</p>
       </div>
@@ -188,7 +191,8 @@ const jsonLd = {
         <p>A live dashboard answers what is happening now. An engineering record must also explain what happened, which configuration was in use and why a particular action was proposed or rejected.</p>
         <p>The data architecture separates the live control path from operator views and storage. Local history and ROS recording retain measurements, state and decisions. A run package brings these together with the relevant toolpath, effective settings and logs. A saved hash inventory lets the recorded files be checked for later changes.</p>
         <p>In parallel, asynchronous telemetry passes through RabbitMQ into InfluxDB for Grafana dashboards and comparison. Storage and dashboard updates are kept outside the control callback path. Simulation and production records carry distinct identifiers.</p>
-        <p>At company level, the operations software I developed connects quotations, costing, scheduling and manufacturing records. Each order has a print ID linking planning, production monitoring and quality documentation. That wider workflow gives the control-system record a place in the history of the part.</p>
+        <p>At company level, I built the in-house MES/ERP and the operator procedures around it. The system connects quotations, costing, scheduling and manufacturing records. Print-ID traceability links planning, production monitoring and quality documentation.</p>
+        <p>The workflow is used by every operator. That adoption gives the control-system record a place in the history of the part, with procedures that connect shop-floor activity to usable data and documentation.</p>
         <p>Monitoring supports process investigation and quality review. Final part acceptance still depends on the required inspection, testing and engineering judgement.</p>
       </div>
     </section>
@@ -203,7 +207,8 @@ const jsonLd = {
       <div class="control-story__prose">
         <h3>My contribution</h3>
         <p>I led the system architecture and development, the selection and interpretation of sensor data, and the integration of machine interfaces, software and manufacturing workflows. I also coordinated contributors working on sensors and algorithms. This work forms part of my doctoral research and my R&amp;D role at Exafuse.</p>
-        <p>For the 2024 Duisburg bridge components, my responsibility covered process monitoring and control that enabled unattended builds, together with the project schedule. The planning, monitoring and control methods from that work informed later projects. The broader goal is an operator workflow that carries the process knowledge in the system, while keeping its measurements and decisions open to inspection.</p>
+        <p>For the 2024 Duisburg bridge components, my responsibility covered process monitoring and control that enabled unattended builds, together with delivery scheduling within my scope. Testing was outside my role; the wider company and partner results remain separately attributed. The planning, monitoring and control methods from that work informed later projects.</p>
+        <p>I also led Exafuse's contribution to BreitbahnDED, including technical coordination, milestones, costs and reporting. The broader engineering goal is an operator workflow that carries process knowledge in the system, while keeping its measurements and decisions open to inspection.</p>
       </div>
     </section>
 

@@ -4,7 +4,7 @@ Date: 2026-07-19
 
 ## Direction
 
-Manish Sharma should feel like a premium personal platform for industrial AI and decision systems: dark, ordered, evidence-aware, personal where authorship matters, and technical where a tool or source system requires it. It should not feel like a generic portfolio, a service-agency landing page, a plain documentation wiki, or a single-purpose LMD portal.
+Manish Sharma should feel like a premium engineering platform for laser-based manufacturing, photonics and industrial systems, with DED/LMD as the strongest technical evidence and an applied-AI research layer: dark, ordered, evidence-aware, personal where authorship matters, and technical where a tool or source system requires it. It should not feel like a generic portfolio, a service-agency landing page, a plain documentation wiki, or a single-purpose LMD portal.
 
 The public split stays clear:
 

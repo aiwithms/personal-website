@@ -11,10 +11,12 @@ Every AI coding agent working in this repository must read this file before edit
 - Legacy Pages organization: `manish-sharma-ai`
 - Legacy Pages deployment repository: `manish-sharma-ai/manish-sharma-ai.github.io` (deployment and rollback provenance only)
 - GitHub profile for Manish: `https://github.com/aiwithms`
-- Public category: Manish Sharma - Industrial AI & Decision Systems
-- Primary promise: AI for Laser Metal Deposition decisions you can verify.
-- Central artifact: LMD Decision Brief v1.0
-- Established public proof domain: AI for Laser Metal Deposition and Directed Energy Deposition at Exafuse, Germany
+- Professional description: laser-based manufacturing, photonics and industrial systems
+- Homepage headline: Laser-based manufacturing and industrial systems.
+- Actual employment title: Head of AI & R&D at Exafuse / ThinkIng – Additive Technology GmbH
+- Research role: external PhD researcher at Ruhr University Bochum, Applied Laser Technology; PhD in progress, expected 2027
+- Strongest technical evidence: more than six years of Directed Energy Deposition / Laser Metal Deposition (DED/LMD), with process development, robotics, sensing, control, machine integration, manufacturing data, documentation and quality
+- Research-platform artifact: LMD Decision Brief v1.0
 - Company connection: Exafuse, Germany
 
 Never replace the canonical site with any GitHub Pages URL. The `aiwithms` account owns the canonical source repository; `manish-sharma-ai/manish-sharma-ai.github.io` remains only as legacy Pages deployment and rollback provenance.
@@ -67,8 +69,13 @@ On Windows PowerShell, use `npm.cmd` if execution policy blocks `npm`.
 - Render public proof metrics from `src/data/publicClaims.ts`; do not hard-code CS15 or other proof metrics in page components.
 - Do not render image-generation prompts, diagram helper text, or long SVG descriptions as visible page text. Decorative visuals should keep internals out of rendered text and use concise accessibility labels.
 - Keep identity facts unambiguous: `aiwithms` owns the canonical `aiwithms/personal-website` source repository; `manish-sharma-ai/manish-sharma-ai.github.io` is retained only as the legacy Pages deployment and rollback repository.
-- Keep the homepage cockpit-first. A first-time visitor should be able to start the LMD Decision Cockpit before proof maps or long reference sections.
-- Keep LMD Decision Brief v1.0 as the central product artifact across cockpit, tools, demo, template, playbooks, and AI-readable files.
+- Keep the homepage engineering-led: professional introduction, areas of work and selected personal evidence precede the research/method and Decision Cockpit layer. Primary actions are Selected work and Research/method; preserve `/public-work` and `#lmd-decision-cockpit`.
+- Keep three professional dimensions visible: technical project and R&D leadership; lasers, photonics and sensing; advanced manufacturing and industrial systems. Present these as actual work, never as desired jobs.
+- Keep DED/LMD prominent as the strongest technical evidence, while making practical optics, illumination, calibration and camera-based measurement visible beyond Education. AI, machine learning, modelling and automation are engineering tools within physical systems, not an umbrella personal identity.
+- Use hands-on, concrete engineering language. Do not add job-search announcements, recruiter appeals, invented metrics, specialist photonics skills or credentials. Do not attach the six-plus DED/LMD years to LPBF work.
+- Use the actual title `Head of AI & R&D` in structured employment identity. Broader positioning belongs in headlines/descriptions, not invented job titles. Preserve the in-progress PhD and German B1 progressing toward B2 qualifications.
+- Preserve the unresolved master's end-date discrepancy (site: January 2020; approved-CV context: December 2019) in factual documentation. Omit the unnecessary month from public copy until confirmed; never guess.
+- Keep LMD Decision Brief v1.0 as the central research-platform artifact across cockpit, tools, demo, template, playbooks, and AI-readable files.
 - Treat `/brief-standard/` as the public, portable LMD Decision Brief v1.0 standard. Keep its schema, examples, adoption package, AI-readable files, and docs synchronized.
 - Keep the three portable output modes synchronized: Technical Decision Brief, Exafuse-ready email draft, and AI-agent-safe summary.
 - Treat brief completeness as a context-quality label, not feasibility. Treat evidence burden as a planning label, not approval.
@@ -85,10 +92,9 @@ Before starting:
 ```bash
 git status --short
 git branch --show-current
-git pull --ff-only
 ```
 
-If there are uncommitted changes, inspect them before editing. Do not revert user work unless the user explicitly asks.
+Inspect all uncommitted changes before editing and reconcile them with the task. Do not reset, overwrite, stash or discard user work. Do not assume the deployed site matches the working tree. Run `git pull --ff-only` only when remote synchronization is authorized and safe for the current workspace; local-only work must stay local.
 
 During work:
 
@@ -222,8 +228,8 @@ When updating SEO-sensitive content:
 - Keep canonical URLs on `https://manishsharma.dev`.
 - Keep JSON-LD IDs stable where possible.
 - Keep the `Person` identity centered on Manish Sharma.
-- Use the broad public category "Industrial AI & Decision Systems" on top-level identity surfaces.
-- Treat LMD/DED at Exafuse as the established public proof domain, not the only possible industrial AI theme.
+- Use laser-based manufacturing, photonics and industrial systems on top-level identity surfaces. Keep the actual Head of AI & R&D title and applied-AI evidence accurate.
+- Treat LMD/DED at Exafuse as the strongest technical evidence, not the boundary of the professional profile. Retain topic-specific industrial-AI research wording where it describes the subject accurately.
 - Keep AI-readable files concise, source-aware, and non-hype.
 
 ## Design Rules
@@ -231,8 +237,8 @@ When updating SEO-sensitive content:
 - Premium, ordered, dark graphite/black-metal design.
 - Clear hierarchy, symmetric layouts, readable menus, accessible contrast.
 - Avoid generic portfolio feel.
-- Keep navigation understandable: thesis, proof, LMD/DED domain, tools, about, resources, and Exafuse.
-- Keep primary navigation compressed. Current primary route labels are Start, Thesis, LMD / DED, Tools, Proof, and About; secondary routes belong in Resources, footer, search, or Site Map.
+- Keep navigation understandable: selected work, method, notes, about, contact, and the existing research resources.
+- Keep primary navigation compressed: Home, Selected work (`/public-work`), Method, Notes and About, with Contact accessible on desktop and mobile. Tools, frameworks, sources and Brief Standard remain under Reference, footer, search or Site Map.
 - Do not make dropdowns or important text too transparent to read.
 - Optimize large images with WebP/responsive sources when practical.
 

@@ -9,11 +9,15 @@ import { PROFESSIONAL_PROFILE as profile } from "@data/professionalProfile";
 
 const title = "Manish Sharma Public Profile";
 const description =
-  "Public profile facts for Manish Sharma, focused on Industrial AI & Decision Systems with public LMD/DED work at Exafuse.";
+  "Public facts for Manish Sharma: Head of AI & R&D at Exafuse, DED/LMD engineering, lasers and photonics, sensing/control and industrial systems.";
 
 const facts = [
   ["Name", PERSON.name],
   ["Current role", profile.role],
+  ["Team leadership", profile.leadership],
+  ["Monitoring/control deployment", profile.deployment],
+  ["Optical sensing", profile.opticalSensing],
+  ["Manufacturing systems", profile.manufacturingSystems],
   ["Selected delivery", profile.selectedDelivery],
   ["Integrated system development", profile.integratedSystem],
   ["Public software delivery", profile.websiteDelivery],
@@ -23,7 +27,7 @@ const facts = [
   ["Languages", profile.languages],
   ["Focus", SITE.publicCategory],
   ["Primary promise", SITE.primaryPromise],
-  ["Public technical context", "AI for LMD/DED, process monitoring, robotics, industrial repair, and RFQ intelligence at Exafuse."],
+  ["Public technical context", "More than six years of DED/LMD experience; lasers and photonics, optical sensing, robotics, process monitoring/control and machine integration at Exafuse."],
   ["Company connection", PERSON.company],
   ["Location", PERSON.location],
   ["Operating method", "Sense -> Model -> Decide -> Verify"],
@@ -55,7 +59,7 @@ const jsonLd = {
       <p class="metric-label">Public profile</p>
       <h1 class="mt-5 text-5xl font-black leading-tight text-white md:text-6xl">{title}</h1>
       <p class="mt-6 text-xl leading-9 text-slate-200">
-        A public profile reference for identity facts used across this website. It avoids confidential employer, customer, project, or commercially sensitive information.
+        {profile.shortBio} This page records the public identity facts used across the website.
       </p>
       <div class="mt-8 flex flex-wrap gap-3">
         <a href="/about" class="btn btn-primary">Professional background</a>

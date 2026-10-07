@@ -394,7 +394,13 @@ function auditHomepageProduct() {
   const text = read(file);
   const visibleText = visibleTextFromHtml(text);
   const required = [
-    "I build AI systems for industrial decisions that need evidence, not just predictions.",
+    "Laser-based manufacturing and industrial systems.",
+    "Head of AI & R&D",
+    "External PhD",
+    "DED/LMD",
+    "photonics",
+    "View selected work",
+    "Explore research and method",
     "LMD Decision Cockpit",
     "Example scenario: worn steel shaft near bearing seat.",
     "Compact brief preview",
@@ -409,12 +415,10 @@ function auditHomepageProduct() {
     "Start your own brief",
     "Evidence-aware by design",
     "Run the Decision Cockpit",
-    "View public proof",
     "Read the method",
     "Duisburg bridge components",
     "Exafuse",
     "The broader question behind the current work",
-    "One public industrial story, supported by a working product and an authored note",
     "One idea behind the broader platform",
     "A Prediction Is Not Yet an Industrial Decision"
   ];
@@ -424,12 +428,13 @@ function auditHomepageProduct() {
   for (const phrase of ["Default example text:", "audit marker", "test marker", "placeholder for audit", "debug", "TODO", "FIXME"]) {
     if (visibleText.includes(phrase)) findings.push(`${file}: visible text contains "${phrase}"`);
   }
-  const proofIndex = text.indexOf('data-page-chapter="public-proof"');
-  const cockpitIndex = text.indexOf('data-page-chapter="product"');
-  const methodIndex = text.indexOf('data-page-chapter="method"');
-  const selectedWorkIndex = text.indexOf('data-page-chapter="knowledge"');
-  if (proofIndex < 0 || cockpitIndex < 0 || methodIndex < 0 || selectedWorkIndex < 0 || !(proofIndex < cockpitIndex && cockpitIndex < methodIndex && methodIndex < selectedWorkIndex)) {
-    findings.push(`${file}: expected proof strip -> Cockpit -> method -> selected work sequence`);
+  const hero = text.match(/<section[^>]*data-page-chapter="position"[\s\S]*?(?=<section[^>]*data-page-chapter=)/)?.[0] ?? "";
+  const heroText = visibleTextFromHtml(hero);
+  for (const phrase of ["Laser-based manufacturing and industrial systems.", "DED/LMD", "photonics", "View selected work", "Explore research and method"]) {
+    if (!heroText.includes(phrase)) findings.push(`${file}: professional introduction is missing "${phrase}" before later chapters`);
+  }
+  for (const phrase of ["AI systems for industrial decisions", "I build AI systems for industrial decisions"]) {
+    if (heroText.includes(phrase)) findings.push(`${file}: old AI-first personal introduction restored: "${phrase}"`);
   }
   for (const duplicatedHomepageModule of [
     "Current LMD/DED work: choose the question you need to structure",
@@ -637,12 +642,14 @@ function auditGermanBrief() {
   if (!html.includes('rel="alternate" hreflang="de"')) findings.push(`${file}: missing German hreflang`);
   for (const phrase of [
     "LMD-Entscheidungsbrief v1.0",
-    "Industrielle KI für Entscheidungen mit belastbaren Nachweisen.",
-    "Für mich ist eine Modellvorhersage nur ein Teil der Aufgabe.",
+    "Laserbasierte Fertigung und industrielle Systeme.",
+    "DED/LMD",
+    "Photonik",
+    "Ausgewählte Projekte (Englisch)",
+    "Forschung und Methode erkunden",
     "Status: vorläufige technische Einordnung",
     "Geeignet für: Vorbereitung einer Machbarkeitsbewertung oder technischen Anfrage",
     "LMD-Entscheidungswerkzeug öffnen",
-    "Methode auf Englisch lesen",
     "Seiteninformationen",
     "Startseite",
     "Vertrauen & Datenschutz",
@@ -787,6 +794,19 @@ function auditMobileStatic() {
     }
   }
 
+  for (const file of ["dist/index.html", "dist/de/index.html"]) {
+    if (!existsSync(join(root, file))) {
+      findings.push(`${file}: missing built page for mobile navigation check`);
+      continue;
+    }
+    const mobileMenu = read(file).match(/<details\b[^>]*data-mobile-menu[\s\S]*?<\/details>/i)?.[0] ?? "";
+    const contactLink = mobileMenu.match(/<a\b[^>]*href="\/contact\/?"[^>]*>[\s\S]*?<\/a>/i)?.[0] ?? "";
+    const label = file === "dist/de/index.html" ? "Kontakt" : "Contact";
+    if (!contactLink || !visibleTextFromHtml(contactLink).includes(label)) {
+      findings.push(`${file}: mobile navigation must contain a labelled ${label} link to /contact/`);
+    }
+  }
+
   fail("Mobile static audit failed", findings);
 }
 
@@ -818,7 +838,23 @@ function auditPublicProfiles() {
   }
   const unfinishedPersonalGitHub = /^https:\/\/github\.com\/(?:aiwithms|manish-sharma-ai)(?:\/|$)/i;
   const sameAsBad = ["github.com", "orcid.org", "zenodo.org", "huggingface.co", "scholar.google", "researchgate.net", "#"];
+  const inspectEmployment = (value, file) => {
+    if (Array.isArray(value)) return value.forEach((item) => inspectEmployment(item, file));
+    if (!value || typeof value !== "object") return;
+    const types = Array.isArray(value["@type"]) ? value["@type"] : [value["@type"]];
+    if (types.includes("Person") && value.name === "Manish Sharma" && "jobTitle" in value && value.jobTitle !== "Head of AI & R&D") {
+      findings.push(`${file}: Person.jobTitle must use the actual employment title Head of AI & R&D`);
+    }
+    Object.values(value).forEach((item) => inspectEmployment(item, file));
+  };
   for (const { file, text } of scanFiles(distRoot, [".html"])) {
+    for (const script of text.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/gi)) {
+      try {
+        inspectEmployment(JSON.parse(script[1]), file);
+      } catch {
+        findings.push(`${file}: invalid JSON-LD in professional identity check`);
+      }
+    }
     for (const match of text.matchAll(/<a\b[^>]*\bhref\s*=\s*["']([^"']+)["']/gi)) {
       if (unfinishedPersonalGitHub.test(match[1])) findings.push(`${file}: unfinished personal GitHub destination is clickable`);
     }
@@ -1535,11 +1571,11 @@ function auditExperience() {
     const html = read(homeFile);
     const visibleText = visibleTextFromHtml(html);
     for (const phrase of [
+      "View selected work",
+      "Explore research and method",
       "Run the Decision Cockpit",
-      "View public proof",
       "Read the method",
       "The broader question behind the current work",
-      "One public industrial story, supported by a working product and an authored note",
       "One idea behind the broader platform",
       "A Prediction Is Not Yet an Industrial Decision"
     ]) {
@@ -1547,7 +1583,8 @@ function auditExperience() {
     }
     if (!html.includes('rel="alternate" hreflang="de"')) findings.push(`${homeFile}: missing German alternate link`);
     if (!html.includes('rel="stylesheet"')) findings.push(`${homeFile}: missing cacheable external stylesheet`);
-    if (!html.includes('name="last-modified" content="2026-07-17"')) findings.push(`${homeFile}: release date is not current`);
+    const releaseDate = read("src/data/site.ts").match(/lastUpdated:\s*"(\d{4}-\d{2}-\d{2})"/)?.[1];
+    if (!releaseDate || !html.includes(`name="last-modified" content="${releaseDate}"`)) findings.push(`${homeFile}: release date does not match SITE.lastUpdated`);
   }
 
   const toolsFile = "dist/tools/index.html";
@@ -1811,7 +1848,7 @@ function auditVisualSystem() {
         return total + (existsSync(file) ? statSync(file).size : 0);
       }, 0);
     if (visualBytes > 350_000) findings.push(`${homeFile}: homepage visual asset budget exceeds 350 KB (${visualBytes} bytes)`);
-    if (!home.includes("Illustrative LMD process schematic")) findings.push(`${homeFile}: missing labelled LMD process schematic`);
+    if (!home.includes('data-audit-context="LMD melt-pool photograph"') || !home.includes('alt="Melt pool created during the laser metal deposition process."')) findings.push(`${homeFile}: missing labelled LMD melt-pool photograph`);
   }
 
   for (const { file, text } of scanFiles(distRoot, [".html"])) {
@@ -1934,12 +1971,26 @@ function auditHomepageSequence() {
   }
   const text = read(file);
   const visible = visibleTextFromHtml(text);
-  const order = ["public-proof", "product", "method", "knowledge"].map((chapter) => text.indexOf(`data-page-chapter="${chapter}"`));
-  if (order.some((index) => index < 0) || !(order[0] < order[1] && order[1] < order[2] && order[2] < order[3])) {
-    findings.push(`${file}: expected public proof -> product -> method -> selected-work chapter order`);
+  const chapters = ["position", "expertise", "selected-work", "public-proof", "method", "product", "knowledge", "boundary"];
+  const order = chapters.map((chapter) => text.indexOf(`data-page-chapter="${chapter}"`));
+  if (order.some((index, i) => index < 0 || (i > 0 && index <= order[i - 1]))) {
+    findings.push(`${file}: expected professional introduction -> expertise -> selected work -> public proof -> method -> Cockpit -> research resources -> boundary`);
   }
-  for (const phrase of ["Run the Decision Cockpit", "Duisburg bridge components", "Exafuse", "Personal mission"]) {
+  for (const phrase of ["View selected work", "Run the Decision Cockpit", "Duisburg bridge components", "Exafuse"]) {
     if (!visible.includes(phrase)) findings.push(`${file}: missing homepage proof narrative marker "${phrase}"`);
+  }
+  const earlyEvidence = visibleTextFromHtml(text.slice(order[0], order[4])).toLowerCase();
+  for (const [label, pattern] of [
+    ["DED/LMD", /ded\/lmd|lmd\/ded/],
+    ["deployment across three machines at two sites", /three machines at two sites/],
+    ["camera-based sensing", /camera-based height sensing/],
+    ["prototype scope", /tested prototype/],
+    ["practical optical calibration", /calibration/],
+    ["manufacturing system adoption", /mes\/erp/],
+    ["team responsibility", /five employees/],
+    ["R&D project contribution", /breitbahnded/]
+  ]) {
+    if (!pattern.test(earlyEvidence)) findings.push(`${file}: ${label} must remain visible before the research/method layer`);
   }
   if ((text.match(/data-operating-loop="homepage"/g) ?? []).length !== 1) findings.push(`${file}: must contain exactly one homepage operating loop`);
   fail("Homepage-sequence audit failed", findings);

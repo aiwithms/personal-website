@@ -2,17 +2,20 @@
 
 ## Headline
 
-Industrial AI & Decision Systems
+Laser-based manufacturing, photonics and industrial systems
 
 ## Bio
 
-I am Manish Sharma. I work on industrial AI, monitoring, and decision-support systems for engineering processes, grounded in public work on Laser Metal Deposition, Directed Energy Deposition, laser cladding, industrial repair, and metal additive manufacturing at Exafuse in Germany.
+I am Manish Sharma, Head of AI & R&D at Exafuse and an external PhD researcher at Ruhr University Bochum. I work across laser-based manufacturing and industrial systems, with more than six years in DED/LMD and a background in lasers and photonics. My work connects process development, robotics, optical monitoring, control, machine integration and R&D leadership. Applied AI, modelling and automation are engineering tools within that work.
 
 Public technical lab: https://manishsharma.dev
 
 ## Focus Areas
 
-- Industrial AI and decision support systems
+- Technical project and R&D leadership
+- Lasers, photonics and practical optical sensing
+- DED/LMD process development and manufacturing systems
+- Applied AI and decision support inside physical systems
 - Process monitoring and machine vision
 - Robotic industrial workflows
 - AI for Laser Metal Deposition and Directed Energy Deposition

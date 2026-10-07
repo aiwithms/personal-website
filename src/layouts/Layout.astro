@@ -4,7 +4,6 @@ import Footer from "@components/Footer.astro";
 import CommandPalette from "@components/CommandPalette.astro";
 import Breadcrumbs from "@components/Breadcrumbs.astro";
 import RelatedLinks from "@components/RelatedLinks.astro";
-import PageProvenance from "@components/PageProvenance.astro";
 import SiteShell from "@components/SiteShell.astro";
 import { COMMAND_PAGES, PERSON, SITE } from "@data/site";
 import { absoluteUrl, canonicalPath, normalizeStructuredDataUrls, routePath } from "@utils/urls";
@@ -167,7 +166,7 @@ const pageMode =
     <meta name="last-modified" content={lastUpdated} />
     {allJsonLd.map((item) => <script is:inline type="application/ld+json" set:html={JSON.stringify(item)} />)}
   </head>
-  <body>
+  <body class:list={[normalizedCanonical === "/" && "site-page--home"]}>
     <a class="skip-link" href="#main-content">{skipLabel}</a>
     <SiteShell>
       <Header lang={lang} />
@@ -177,11 +176,10 @@ const pageMode =
           <div class="page-flow__content"><slot /></div>
           <div class="page-flow__ending">
             <RelatedLinks path={route} lang={lang} />
-            <PageProvenance lastUpdated={lastUpdated} lang={lang} />
           </div>
         </div>
       </main>
-      <Footer lang={lang} />
+      <Footer lang={lang} lastUpdated={lastUpdated} />
       <CommandPalette pages={COMMAND_PAGES} lang={lang} />
     </SiteShell>
   </body>

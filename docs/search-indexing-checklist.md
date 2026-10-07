@@ -1,19 +1,22 @@
 # Search Indexing Checklist
 
-Use this after each meaningful content release.
+Use this after each meaningful content release. Local implementation and build validation do not authorize deployment, live browsing or indexing submissions; perform external steps only after an authorized public release.
 
 ## GitHub Repository Metadata
 
 Paste this into GitHub repository settings before or immediately after the site update is deployed.
 
 Description:
-Manish Sharma Lab - Industrial AI & Decision Systems, grounded in public AI for Laser Metal Deposition, DED, process monitoring, RFQ intelligence, and metal additive manufacturing work.
+Manish Sharma Lab - laser-based manufacturing, photonics and industrial systems; DED/LMD, sensing, control and R&D leadership, with applied-AI research and decision tools.
 
 Website:
 https://manishsharma.dev
 
 Topics:
 
+- lasers-and-photonics
+- industrial-systems
+- research-and-development
 - industrial-ai
 - decision-systems
 - ai-for-manufacturing
@@ -48,12 +51,17 @@ it cannot be completed from the public repository alone.
 - `https://manishsharma.dev/profile/public-profile`
 - `https://manishsharma.dev/public-work`
 - `https://manishsharma.dev/about`
+- `https://manishsharma.dev/contact`
+- `https://manishsharma.dev/de`
+- `https://manishsharma.dev/public-work/exafuse/duisburg-bridge-components/`
 - `https://manishsharma.dev/lab-notes/a-prediction-is-not-yet-an-industrial-decision`
 - `https://manishsharma.dev/lab-notes/lmd-control-system/`
 
 Then resubmit `https://manishsharma.dev/sitemap-index.xml` and record the
 inspection date and result. Do not interpret a delayed search snippet as a
 source or deployment failure until the inspected URL and live HTML disagree.
+
+Check that titles, descriptions, social previews, identity pages and AI-readable summaries communicate the same engineering story. JSON-LD employment uses the actual title `Head of AI & R&D`. DED/LMD remains prominent; AI remains a real capability and research subject. Keep the external PhD in progress, expected 2027, and avoid guessing the unresolved master's end month. Check the English and German professional introductions together.
 
 1. Add property: `https://manishsharma.dev`
 2. Verify ownership using the method Google offers for GitHub Pages.
@@ -152,7 +160,9 @@ https://manishsharma.dev/sitemap-index.xml
 
 Run these prompts in ChatGPT, Gemini, Perplexity, Copilot, and Bing:
 
-- Who is Manish Sharma in industrial AI?
+- What does Manish Sharma do in laser-based manufacturing and industrial systems?
+- How does Manish Sharma's lasers and photonics background connect to his practical sensing work?
+- What technical and R&D project responsibilities does Manish Sharma describe?
 - Who works on AI for Laser Metal Deposition in Germany?
 - What is Manish Sharma's public proof domain?
 - What is the LMD Quality Evidence Ladder?

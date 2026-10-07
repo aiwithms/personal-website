@@ -22,8 +22,10 @@ const source = getExafuseProofSource(proof);
 const exafuseContact = resolveExafuseLink("contact");
 const exafuseHome = resolveExafuseLink("home");
 const canonical = `/public-work/exafuse/${proof.slug}`;
-const title = `${proof.shortTitle}: public proof story`;
-const description = `${proof.mainDecisionLesson} Public Exafuse case context interpreted by Manish Sharma Lab.`;
+const title = `${proof.shortTitle}: ${proof.personalContribution ? "monitoring, control and delivery scheduling" : "public proof story"}`;
+const description = proof.personalContribution
+  ? "Manish Sharma's monitoring/control leadership and delivery scheduling for Exafuse's Duisburg bridge components. Company results and testing remain separately attributed."
+  : `${proof.mainDecisionLesson} Public Exafuse case context interpreted by Manish Sharma Lab.`;
 
 const jsonLd = [
   {
@@ -84,8 +86,9 @@ const jsonLd = [
           <p class="metric-label">{proof.personalContribution ? "Selected project · Exafuse" : "Exafuse public case context"}</p>
           <h1>{proof.title}</h1>
           <p>{proof.problem}</p>
+          {proof.personalContribution && <p><strong>My responsibility.</strong> {proof.personalContribution}</p>}
           <div class="exafuse-proof-story__masthead-actions">
-            <CTAButton href="#proof-facts" variant="primary">Inspect the public facts</CTAButton>
+            <CTAButton href={proof.personalContribution ? "#personal-role-title" : "#proof-facts"} variant="primary">{proof.personalContribution ? "Read my role and scope" : "Inspect the public facts"}</CTAButton>
             <CTAButton href={source.href} variant="secondary" external>View the Exafuse source</CTAButton>
           </div>
         </div>
@@ -102,7 +105,7 @@ const jsonLd = [
     {proof.personalContribution && proof.personalContributionSource && (
       <section class="site-shell section-y" aria-labelledby="personal-role-title">
         <p class="metric-label">Personal contribution · 2024</p>
-        <h2 id="personal-role-title" class="mt-3 text-3xl font-black text-white">Monitoring, control and the project timeline</h2>
+        <h2 id="personal-role-title" class="mt-3 text-3xl font-black text-white">Monitoring, control and delivery scheduling</h2>
         <p class="mt-5 max-w-4xl text-lg leading-8 text-slate-200">{proof.personalContribution}</p>
         <p class="mt-4 max-w-4xl text-sm leading-7 text-slate-400">Personal professional account, reviewed {proof.personalContributionSource.reviewed}. {proof.personalContributionSource.scope}</p>
         <a href={proof.personalContributionSource.url} class="mt-5 inline-block text-base font-bold text-cyan-100 underline underline-offset-4">View my professional background</a>

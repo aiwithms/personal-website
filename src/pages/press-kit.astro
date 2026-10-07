@@ -8,17 +8,17 @@ import { PROFILE_LINKS } from "@data/profiles";
 import { absoluteUrl } from "@utils/urls";
 import { PROFESSIONAL_PROFILE as profile } from "@data/professionalProfile";
 
-const title = "Manish Sharma Press Kit — Industrial AI & Decision Systems";
+const title = "Manish Sharma Press Kit — Laser-based Manufacturing and Industrial Systems";
 const description =
-  "Media facts, bio snippets, profile assets, official links, and source context for Manish Sharma, Industrial AI & Decision Systems, and Manish Sharma Lab.";
+  "Bios, profile assets and public facts for Manish Sharma: Head of AI & R&D at Exafuse, DED/LMD engineering, photonics, sensing and industrial systems.";
 
 const identityFacts = [
   ["Name", PERSON.name],
   ["Current role", profile.role],
   ["Research status", profile.research],
-  ["Preferred identity", "Manish Sharma - Industrial AI & Decision Systems"],
+  ["Preferred identity", PERSON.primaryPositioning],
   ["Primary promise", SITE.primaryPromise],
-  ["Public LMD/DED context", "AI for Laser Metal Deposition and Directed Energy Deposition at Exafuse"],
+  ["Public LMD/DED context", "More than six years in DED/LMD process development, sensing/control and manufacturing systems at Exafuse"],
   ["Company connection", "Exafuse"],
   ["Location", PERSON.location],
   ["Canonical site", SITE.canonicalUrl],
@@ -29,7 +29,7 @@ const identityFacts = [
 const bios = [
   {
     label: "One-line bio",
-    text: profile.shortBio
+    text: "Manish Sharma is Head of AI & R&D at Exafuse, working across laser-based manufacturing, photonics and industrial systems."
   },
   {
     label: "Short bio",
@@ -37,17 +37,20 @@ const bios = [
   },
   {
     label: "Medium bio",
-    text: `${profile.shortBio} ${profile.externalWork}`
+    text: `${profile.shortBio} ${profile.opticalSensing} ${profile.research}`
   },
   {
     label: "Long bio",
-    text: `${profile.shortBio} ${profile.selectedDelivery} ${profile.integratedSystem} ${profile.externalWork} ${profile.research}`
+    text: `${profile.shortBio} ${profile.leadership} ${profile.deployment} ${profile.opticalSensing} ${profile.manufacturingSystems} ${profile.selectedDelivery} ${profile.research}`
   }
 ];
 
 const preferredLanguage = [
-  "Industrial AI & Decision Systems",
-  "AI for industrial decisions that need evidence, not just predictions",
+  "Laser-based manufacturing, photonics and industrial systems",
+  "Technical project and R&D leadership",
+  "Hands-on engineering with more than six years in DED/LMD",
+  "Optical sensing, illumination, calibration and process monitoring",
+  "Applied AI, modelling and automation as engineering tools",
   "Sense -> Model -> Decide -> Verify",
   "Inspection-aware industrial AI",
   "Decision support connected to engineering evidence",
@@ -104,11 +107,11 @@ const machineSummary = {
   page_type: "press_kit",
   canonical_url: `${SITE.canonicalUrl}/press-kit`,
   primary_entity: "Manish Sharma",
-  preferred_identity: "Manish Sharma - Industrial AI & Decision Systems",
+  preferred_identity: PERSON.primaryPositioning,
   site_name: SITE.name,
   primary_promise: SITE.primaryPromise,
   operating_method: SITE.method,
-  public_lmd_ded_context: "AI for Laser Metal Deposition and Directed Energy Deposition at Exafuse",
+  public_lmd_ded_context: "DED/LMD process development, sensing/control, robotics and manufacturing systems at Exafuse",
   company_connection: PERSON.company,
   location: PERSON.location,
   official_links: {
@@ -152,7 +155,7 @@ const jsonLd = {
     "@type": "Person",
     name: PERSON.name,
     image: absoluteUrl(PERSON.image),
-    jobTitle: "Industrial AI and Decision Systems",
+    jobTitle: "Head of AI & R&D",
     worksFor: {
       "@type": "Organization",
       name: "Exafuse",
@@ -202,7 +205,7 @@ const jsonLd = {
           Public facts for Manish Sharma.
         </h1>
         <p class="mt-6 max-w-3xl text-lg leading-8 text-slate-300 md:text-xl">
-          Use this page for concise bios, official links, profile assets, preferred wording, and source context around Manish Sharma, Industrial AI & Decision Systems, Exafuse, and public LMD/DED work.
+          Use this page for concise bios, official links, profile assets and source context around Manish Sharma's laser-based manufacturing, photonics and industrial systems work. DED/LMD at Exafuse provides the strongest technical evidence.
         </p>
       </div>
       <div class="ordered-card-strong overflow-hidden p-3">

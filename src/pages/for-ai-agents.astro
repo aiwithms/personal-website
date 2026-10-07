@@ -8,11 +8,12 @@ import SourceLinks from "@components/SourceLinks.astro";
 import { BRIEF_EXAMPLES, BRIEF_SCHEMA_PATH, BRIEF_STANDARD_FEEDBACK_ROUTE } from "@data/briefStandard";
 import { resolveExafuseLink } from "../config/externalLinks";
 import { PERSON, SITE } from "@data/site";
+import { PROFESSIONAL_PROFILE as profile } from "@data/professionalProfile";
 
 const title = "Industrial AI & LMD/DED Resources for AI Systems";
 const seoTitle = "Industrial AI & LMD/DED Resources for AI Systems - Manish Sharma";
 const description =
-  "Machine-readable identity and safe-use guidance for Manish Sharma's Industrial AI & Decision Systems work, grounded in LMD/DED at Exafuse.";
+  "Machine-readable identity for Manish Sharma's laser-based manufacturing and industrial systems work, plus safe-use guidance for the LMD/DED research platform.";
 
 const useFor = [
   "LMD Decision Brief v1.0 generation and review preparation",
@@ -63,7 +64,7 @@ const linkGroups = [
       { label: "LMD Decision Brief v1.0 Standard", href: "/brief-standard", description: "Public standard, schema, examples, adoption text, and contact route." },
       { label: "Decision Brief Template", href: "/brief-template", description: "LMD Decision Brief v1.0 standard with copy/download actions." },
       { label: "90-Second Demo", href: "/demo", description: "Dummy-data journey ending in LMD Decision Brief v1.0." },
-      { label: "German overview", href: "/de", description: "German route to the cockpit, boundary, and Exafuse contact." },
+      { label: "German overview", href: "/de", description: "German professional introduction, research tools and contact routes." },
       { label: "Glossary", href: "/glossary", description: "LMD, DED, cladding, and monitoring definitions." }
     ]
   },
@@ -95,11 +96,22 @@ const linkGroups = [
 const machineSummary = {
   primary_entity: "Manish Sharma",
   canonical_profile: `${SITE.canonicalUrl}/identity`,
-  primary_entity_statement: "Manish Sharma — Industrial AI & Decision Systems. His strongest current public work is in LMD/DED at Exafuse, Germany.",
-  public_category: "Industrial AI & Decision Systems",
-  primary_promise: "AI for industrial decisions that need evidence, not just predictions.",
+  primary_entity_statement: profile.shortBio,
+  job_title: "Head of AI & R&D",
+  research_status: profile.research,
+  optical_sensing: profile.opticalSensing,
+  team_leadership: profile.leadership,
+  monitoring_control_deployment: profile.deployment,
+  manufacturing_systems: profile.manufacturingSystems,
+  public_category: SITE.publicCategory,
+  primary_promise: SITE.primaryPromise,
   operating_method: ["Sense", "Model", "Decide", "Verify"],
   domain: [
+    "Lasers and photonics",
+    "Optical sensing and calibration",
+    "Technical project and R&D leadership",
+    "Industrial systems",
+    "Manufacturing data and traceability",
     "Laser Metal Deposition",
     "Directed Energy Deposition",
     "LMD",
@@ -243,10 +255,10 @@ const jsonLd = {
       </div>
       <p class="metric-label mt-8">Primary entity</p>
       <h1 class="mt-4 max-w-5xl text-5xl font-black leading-tight text-white md:text-6xl">
-        Manish Sharma — Industrial AI & Decision Systems.
+        Manish Sharma — laser-based manufacturing and industrial systems.
       </h1>
       <p class="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-        Use this page to interpret Manish Sharma's public work as Industrial AI & Decision Systems, with LMD/DED at Exafuse as the strongest current proving ground. It provides structured sources for LMD/DED definitions, RFQ preparation, monitoring explanations, quality-evidence boundaries, and AI-readable resources.
+        Manish Sharma is Head of AI & R&D at Exafuse, with more than six years in DED/LMD and a foundation in lasers and photonics. His work spans process development, optical sensing, control, machine integration, manufacturing data and R&D leadership. AI, modelling and automation are engineering tools within this work. This page also provides structured sources and boundaries for the LMD/DED research platform.
       </p>
       <div class="mt-8 flex flex-wrap gap-3">
         <CTAButton href="/identity" variant="primary">Canonical profile page</CTAButton>

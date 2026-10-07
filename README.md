@@ -12,32 +12,37 @@ GitHub user profile: https://github.com/aiwithms
 
 ## Purpose
 
-Manish Sharma Lab is a public technical website for industrial AI and decision systems.
+Manish Sharma Lab presents hands-on engineering, R&D leadership and research across laser-based manufacturing, photonics and industrial systems.
 
 Top-level public identity:
 
-Manish Sharma = Industrial AI & Decision Systems.
+Manish Sharma = laser-based manufacturing, photonics and industrial systems.
 
 Primary promise:
 
-AI for industrial decisions that need evidence, not just predictions.
+Taking shop-floor constraints into repeatable workflows, useful data and practical systems.
 
-Central artifact:
+Central research-platform artifact:
 
 LMD Decision Brief v1.0.
 
 Established public proof domain:
 
-AI, monitoring, RFQ intelligence, and decision-support resources for Laser Metal Deposition, Directed Energy Deposition, laser cladding, industrial repair, and metal additive manufacturing at Exafuse in Germany.
+More than six years of Directed Energy Deposition / Laser Metal Deposition (DED/LMD): process development, deposition strategy, robotics, optical/process monitoring, control, machine integration, documentation and quality at Exafuse in Germany. Applied AI, machine learning, modelling and automation are engineering capabilities within this physical work.
 
-The site is educational and decision-support oriented. It does not expose confidential Exafuse, customer, employer, or private project information.
+The site connects selected engineering work with an educational research and decision-support platform. It is neither a job-search announcement nor a generic online CV. It does not expose confidential Exafuse, customer, employer, or private project information.
 
 ## Identity Hierarchy
 
-- Broad category: Industrial AI & Decision Systems
+- Professional story: laser-based manufacturing, photonics and industrial systems
+- Actual title: Head of AI & R&D at Exafuse / ThinkIng – Additive Technology GmbH
+- Research: external PhD at Ruhr University Bochum, Applied Laser Technology; in progress, expected 2027
+- Areas of work: technical project/R&D leadership; lasers, photonics and sensing; advanced manufacturing and industrial systems
 - Public thesis: Sense -> Model -> Decide -> Verify
-- Current proving ground: AI for LMD/DED at Exafuse
+- Strongest technical evidence: DED/LMD at Exafuse, without confining the professional scope to additive manufacturing
 - Boundary: preliminary decision-support only, not final engineering approval
+
+The homepage introduces this engineering work and selected evidence before the method and Decision Cockpit. Keep `/public-work` as the selected-work hub. Keep practical optics, illumination, calibration and camera-based height sensing visible beyond the degree list. Preserve topic-specific industrial-AI research and all useful tools and URLs.
 
 ## Tech Stack
 
@@ -86,14 +91,13 @@ Pushing to `main` triggers the GitHub Actions deployment when GitHub Pages is co
 
 Primary navigation:
 
-- Start: `/`
-- Thesis: `/thesis`
-- LMD / DED: `/domains/lmd-ded`
-- Tools: `/tools`
-- Proof: `/public-work`
+- Home: `/`
+- Selected work: `/public-work`
+- Method: `/thesis`
+- Notes: `/lab-notes`
 - About: `/about`
 
-Resources remain available through the Resources menu, footer, command search, and Site Map.
+Contact (`/contact`) is accessible in desktop and mobile navigation. Tools, frameworks, sources, Brief Standard and resources remain available through Reference, footer, command search and Site Map.
 
 Core routes:
 
@@ -274,7 +278,7 @@ npm run smoke:live
 
 ## LMD Decision Brief v1.0
 
-The central artifact of the site is `LMD Decision Brief v1.0`.
+The central artifact of the research platform is `LMD Decision Brief v1.0`.
 
 It appears across the cockpit, tools, public standard, demo, template, playbooks, schema, and examples. It separates situation, component, goal, material, geometry/size, damage/build area, available data, known facts (including optional request role/phase context), grouped missing information, risk flags, evidence needed, preliminary route, review readiness, brief completeness, expert-review package status, evidence burden, next action, Exafuse review route, boundary statement, generated-from note, no-backend note, and no-automatic-sending note.
 
@@ -356,13 +360,16 @@ For services, RFQs, company case studies, quality pages, production capability, 
 ## Recommended GitHub Repository Metadata
 
 Description:
-Manish Sharma Lab - AI for Laser Metal Deposition, DED, process monitoring, RFQ intelligence, and metal additive manufacturing.
+Manish Sharma Lab - laser-based manufacturing, photonics and industrial systems; DED/LMD, sensing, control and R&D leadership, with applied-AI research and decision tools.
 
 Website:
 https://manishsharma.dev
 
 Topics:
 
+- lasers-and-photonics
+- industrial-systems
+- research-and-development
 - industrial-ai
 - decision-systems
 - ai-for-manufacturing

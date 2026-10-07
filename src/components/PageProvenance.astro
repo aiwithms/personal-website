@@ -4,9 +4,10 @@ import { internalHref } from "@utils/urls";
 interface Props {
   lastUpdated: string;
   lang?: "en" | "de";
+  variant?: "default" | "footer";
 }
 
-const { lastUpdated, lang = "en" } = Astro.props;
+const { lastUpdated, lang = "en", variant = "default" } = Astro.props;
 const formattedDate = new Intl.DateTimeFormat(lang === "de" ? "de-DE" : "en-GB", {
   day: "numeric",
   month: "long",
@@ -37,7 +38,7 @@ const copy = lang === "de"
     };
 ---
 
-<aside class="site-shell page-provenance" aria-label={copy.label}>
+<aside class:list={[variant === "default" && "site-shell", "page-provenance", variant === "footer" && "page-provenance--footer"]} aria-label={copy.label}>
   <details class="page-provenance__details">
     <summary class="page-provenance__summary">
       <span>{copy.label}</span>

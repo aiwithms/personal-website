@@ -1,6 +1,6 @@
 # SEO And AI-Search Checklist
 
-Date: 2026-07-07
+Positioning reviewed: 2026-10-07
 
 ## Canonical Rules
 
@@ -34,6 +34,7 @@ Date: 2026-07-07
 ## Structured Data
 
 - Person JSON-LD uses `https://manishsharma.dev/identity#manish-sharma`.
+- Person employment title is `Head of AI & R&D`; broader engineering positioning appears in descriptions/headlines.
 - WebSite JSON-LD uses `https://manishsharma.dev/#website`.
 - ProfilePage main entity points to the Person ID.
 - Article or TechArticle author points to the Person ID.
@@ -54,8 +55,10 @@ Check each major route for:
 
 ## AI-Search Signals
 
-- Identity phrase appears clearly: `Manish Sharma - AI for Laser Metal Deposition at Exafuse, Germany`.
-- Broader category appears clearly: `Industrial AI & Decision Systems`.
+- Professional introduction clearly connects Manish Sharma with laser-based manufacturing, photonics and industrial systems.
+- DED/LMD remains the strongest technical evidence; photonics/sensing and technical/R&D leadership are visible beyond an education list or job title.
+- Applied AI remains an engineering capability and research topic; it does not replace the physical-engineering identity.
+- External PhD remains in progress, expected 2027; the unresolved master's end month is not guessed.
 - Exafuse boundary appears clearly: Exafuse owns commercial services, RFQs, case studies, quality pages, and delivery claims.
 - Tools and frameworks are described as decision support only.
 - Monitoring is never described as final quality proof.

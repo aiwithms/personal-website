@@ -8,9 +8,9 @@ import SectionHeading from "@components/SectionHeading.astro";
 import { LINKS, SITE } from "@data/site";
 import { EXAFUSE_LINKS } from "@data/siteConfig";
 
-const title = "Contact Manish Sharma - Industrial AI & Decision Systems";
+const title = "Professional Contact - Manish Sharma";
 const description =
-  "Discuss an industrial AI problem, collaboration, speaking or writing, research, or route a commercial LMD/DED enquiry to Exafuse.";
+  "Contact Manish Sharma about technical projects, R&D, laser-based manufacturing, photonics, sensing and industrial systems. Commercial LMD/DED enquiries go to Exafuse.";
 
 const contactJsonLd = {
   "@context": "https://schema.org",
@@ -24,11 +24,11 @@ const contactJsonLd = {
 
 const routes = [
   {
-    eyebrow: "Technical discussion / collaboration / speaking / research",
-    title: "Discuss an industrial AI problem",
-    description: "Use LinkedIn for non-confidential technical discussion, collaboration, speaking or writing invitations, and research questions.",
+    eyebrow: "Technical projects / R&D / collaboration",
+    title: "Professional contact",
+    description: "For conversations about technical projects, R&D, laser-based manufacturing, photonics, sensing or industrial systems, contact me on LinkedIn. Research, speaking and writing enquiries are also welcome.",
     href: LINKS.linkedin,
-    cta: "Discuss on LinkedIn"
+    cta: "Contact Manish on LinkedIn"
   },
   {
     eyebrow: "Commercial LMD/DED enquiry",
@@ -58,13 +58,13 @@ const routes = [
       </div>
       <p class="metric-label mt-8">Choose the right route</p>
       <h1 class="mt-4 max-w-5xl text-5xl font-black leading-tight text-white md:text-6xl">
-        Start the right industrial AI conversation.
+        Professional contact.
       </h1>
       <p class="mt-6 max-w-3xl text-lg leading-8 text-slate-300">
-        I welcome non-confidential technical discussion, collaboration, speaking or writing invitations, and research questions. For current commercial LMD/DED services and RFQs, use Exafuse.
+        For conversations about technical projects, R&amp;D, laser-based manufacturing, photonics, sensing or industrial systems, contact me on LinkedIn. For commercial LMD/DED services and RFQs, use Exafuse.
       </p>
       <div class="mt-8 flex flex-wrap gap-3">
-        <CTAButton href={LINKS.linkedin} variant="primary" external>Discuss an industrial AI problem</CTAButton>
+        <CTAButton href={LINKS.linkedin} variant="primary" external>Contact Manish on LinkedIn</CTAButton>
         <CTAButton href={EXAFUSE_LINKS.contact} variant="laser" external>Contact Exafuse for LMD/DED</CTAButton>
         <CTAButton href="/thesis" variant="secondary">Read the method</CTAButton>
       </div>

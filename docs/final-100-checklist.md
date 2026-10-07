@@ -1,6 +1,6 @@
 # Final 100 Checklist
 
-Use this before a public release.
+Use this before a public release. Run built-output audits against a fresh local build. Local-only implementation does not authorize deployment or a live smoke check; `smoke:live` belongs after an authorized deployment.
 
 - No visual prompt leakage in rendered text.
 - Every rendered HTML page has exactly one meaningful H1.
@@ -20,9 +20,16 @@ Use this before a public release.
 - Print exports isolate the selected brief and include all critical questions and evidence sections.
 - Pull-request and deploy workflows run security, test, build, and release-audit gates.
 - Homepage operating loop appears once.
-- Homepage puts the LMD Decision Cockpit before proof/resource sections.
+- Homepage introduces laser-based manufacturing and industrial systems, actual employment/research roles, DED/LMD, photonics and R&D leadership before the research/method and Cockpit layer.
+- Homepage primary actions are Selected work and Research/method; `/public-work` remains the single selected-work hub.
+- Early selected work makes personal responsibility, operational consequences and source limits clear; company/partner results remain separately attributed.
+- Practical optics, illumination, calibration and camera-based sensing appear beyond Education.
+- Applied AI, modelling and automation remain engineering capabilities; topic-specific industrial-AI research is preserved.
+- Professional contact remains neutral, separate from Exafuse RFQs, and accessible through mobile navigation.
+- Actual structured employment title is `Head of AI & R&D`; the external PhD remains in progress, expected 2027, and German remains B1 progressing toward B2.
+- No six-plus-year LPBF claim or guessed master's end month appears.
 - Homepage cockpit shows the public-safe worn-shaft example without requiring a click.
-- A first-time visitor can start a guided decision flow within 90 seconds.
+- A visitor can reach the guided decision flow from the clearly linked research layer without losing existing tool URLs or anchors.
 - `LMD Decision Brief v1.0` is visible across tools, demo, template, and playbooks.
 - `/brief-standard/` presents LMD Decision Brief v1.0 as a public, portable, bounded standard.
 - Public schema and example files exist under `/schemas/` and `/examples/`.

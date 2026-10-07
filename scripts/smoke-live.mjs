@@ -6,6 +6,11 @@ const root = process.cwd();
 
 const checks = [
   { path: "/", type: "html" },
+  { path: "/about/", type: "html" },
+  { path: "/public-work/", type: "html" },
+  { path: "/contact/", type: "html" },
+  { path: "/lab-notes/lmd-control-system/", type: "html" },
+  { path: "/public-work/exafuse/duisburg-bridge-components/", type: "html" },
   { path: "/tools/", type: "html" },
   { path: "/decision-map/", type: "html" },
   { path: "/brief-standard/", type: "html" },
@@ -112,8 +117,22 @@ async function main() {
 
     if (check.path === "/") {
       const visibleText = visibleTextFromHtml(text);
-      for (const phrase of ["Manish Sharma Lab", "I build AI systems for industrial decisions that need evidence, not just predictions."]) {
+      for (const phrase of ["Manish Sharma Lab", "Laser-based manufacturing and industrial systems.", "Head of AI & R&D", "DED/LMD", "photonics", "View selected work", "Explore research and method"]) {
         if (!visibleText.includes(phrase)) findings.push(`${url}: missing homepage marker "${phrase}"`);
+      }
+    }
+
+    if (check.path === "/about/" || check.path === "/public-work/") {
+      const visibleText = visibleTextFromHtml(text);
+      for (const phrase of ["DED/LMD", "BreitbahnDED", "Print-ID"]) {
+        if (!visibleText.includes(phrase)) findings.push(`${url}: missing professional evidence marker "${phrase}"`);
+      }
+    }
+
+    if (check.path === "/contact/") {
+      const visibleText = visibleTextFromHtml(text);
+      for (const phrase of ["Professional contact", "LinkedIn", "Exafuse"]) {
+        if (!visibleText.includes(phrase)) findings.push(`${url}: missing contact route marker "${phrase}"`);
       }
     }
 
@@ -131,8 +150,8 @@ async function main() {
       }
     }
 
-    if (check.path === "/llms.txt" && !text.includes("Central artifact: LMD Decision Brief v1.0")) {
-      findings.push(`${url}: missing central artifact line`);
+    if (check.path === "/llms.txt" && !text.includes("LMD Decision Brief v1.0")) {
+      findings.push(`${url}: missing research-platform artifact`);
     }
 
     if (check.type === "json") {

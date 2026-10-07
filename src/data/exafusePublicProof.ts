@@ -127,12 +127,12 @@ export const EXAFUSE_PUBLIC_PROOF: ExafusePublicProof[] = [
       "It does not replace structural engineering, inspection, certification, or customer acceptance.",
       "It does not make the public production figures a commitment for another geometry or material."
     ],
-    personalContribution: "In 2024, I led process monitoring and control work that enabled unattended builds for Exafuse's Duisburg bridge-component project, and coordinated the overall project timeline. Testing was outside my role.",
+    personalContribution: "In 2024, I led process monitoring and control work that enabled unattended builds for Exafuse's Duisburg bridge-component project, and coordinated delivery scheduling within my scope. Testing was outside my role.",
     personalContributionSource: {
       url: "https://manishsharma.dev/about/#duisburg",
       type: "self-reported",
-      reviewed: "2026-09-23",
-      scope: "Personal account of monitoring, process control and project scheduling. Company production figures and external testing remain separately attributed."
+      reviewed: "2026-10-07",
+      scope: "Personal account of monitoring, process control and delivery scheduling within Manish's scope. Company and partner results, production figures and external testing remain separately attributed."
     },
     interpretationByManishSharmaLab: "This project connected process monitoring and control with the practical demands of long-duration manufacturing. The engineering lesson is to design the control system around the build, the available measurements and a clear response to process changes, while keeping physical testing and acceptance separate.",
     selectedMedia: {
@@ -147,7 +147,7 @@ export const EXAFUSE_PUBLIC_PROOF: ExafusePublicProof[] = [
     captions: "Large structural LMD proof component from the Duisburg bridge story.",
     altText: "Large LMD-manufactured bridge node component from the Duisburg project",
     imageCredit: "Exafuse",
-    lastReviewed: "2026-09-23"
+    lastReviewed: "2026-10-07"
   },
   {
     id: "cs10-nobufil-extrusion-screw",
